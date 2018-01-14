@@ -13,12 +13,10 @@
 	<name>basic-springmvc Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 	<dependencies>
-		<dependency>
+	<dependency>
 			<groupId>com.xc.basic</groupId>
 			<artifactId>basic-hibernate</artifactId>
-			<version>${project.version}</version>
 		</dependency>
-		
 		<dependency>
 			<groupId>org.json</groupId>
 			<artifactId>json</artifactId>

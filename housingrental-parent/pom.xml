@@ -17,6 +17,7 @@
 		<module>../housingrental-rental-core</module>
 		<module>../housingrental-house-datainterface</module>
 		<module>../housingrental-rental-datainterface</module>
+		<module>../housingrental-datainterface</module>
 		<module>../system-usermanage-datainterface</module>
 		<module>../basic-springmvc Maven Webapp</module>
 		<module>../system-usermange-web Maven Webapp</module>
