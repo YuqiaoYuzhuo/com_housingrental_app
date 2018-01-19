@@ -15,10 +15,6 @@
 		<module>../system-usermanage-core</module>
 		<module>../housingrental-house-core</module>
 		<module>../housingrental-rental-core</module>
-		<module>../housingrental-house-datainterface</module>
-		<module>../housingrental-rental-datainterface</module>
-		<module>../housingrental-datainterface</module>
-		<module>../system-usermanage-datainterface</module>
 		<module>../basic-springmvc Maven Webapp</module>
 		<module>../system-usermange-web Maven Webapp</module>
 		<module>../housingrental-house-web Maven Webapp</module>
@@ -308,6 +304,7 @@
 					<uriEncoding>UTF-8</uriEncoding>
 					<url>http://localhost:8080/manager/html</url>
 					<server>tomcat8</server>
+					<skipTests>true</skipTests>  
 				</configuration>
 			</plugin>
 			<!--Tomcat 发布网站应用配置结束 -->

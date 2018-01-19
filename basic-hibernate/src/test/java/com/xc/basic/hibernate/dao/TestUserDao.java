@@ -22,7 +22,7 @@ import com.xc.basic.model.Pager;
 import com.xc.basic.model.SystemContext;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations="classpath:/beans.xml")
+@ContextConfiguration(locations="classpath*:/beans.xml")
 public class TestUserDao {
        @Inject
 	private SessionFactory sessionFactory;

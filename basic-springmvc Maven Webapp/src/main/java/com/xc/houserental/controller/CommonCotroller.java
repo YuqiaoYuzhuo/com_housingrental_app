@@ -125,6 +125,20 @@ public class CommonCotroller {
 		else
 			responseFailJson(rmsg,response);
 	}
+	/**
+	 * <p>Description:返回数据<p>
+	 * @param rmsg
+	 * @param response
+	 * @throws IOException
+	 * @author wanglei 2018年1月20日
+	 */
+	protected void responseJson(String rmsg,HttpServletResponse response) throws IOException{
+		 response.setHeader("Content-type", "text/html;charset=UTF-8");
+	        response.setCharacterEncoding("UTF-8"); 
+	        PrintWriter pw =  response.getWriter();
+	        pw.append(rmsg);
+	        pw.close();
+	}
 	
 	/**
 	 * 返回一个包装好的json对象给前端{res:success,rmsg:rmsg}

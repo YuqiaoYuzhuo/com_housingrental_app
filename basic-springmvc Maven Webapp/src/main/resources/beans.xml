@@ -14,15 +14,16 @@
 	<!-- 打开Spring的Annotation支持 -->
 	<context:annotation-config />
 	<!-- 设定Spring 去哪些包中找Annotation -->
-	<context:component-scan base-package="com.wanglei" />
+	<context:component-scan base-package="com.xc" />
 
-	<!--整合Spring第一步创建JavaMailSenderImpl对象 -->
-	<!-- <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl"> 
+	<!--整合Spring第一步创建JavaMailSenderImpl对象 
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl"> 
 		<property name="javaMailProperties"> <props> <prop key="mail.smtp.auth">true</prop> 
 		</props> </property> </bean> 正常的情况如果要发送邮件，需要异步发送，否则会把大量的时间浪费发送邮件上面 此时可能会造成用户重复刷新，使用Spring的ThreadPoolTaskExecutor可以方便实现多线程的程序 
 		<bean id="taskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor"> 
 		<property name="corePoolSize" value="5" /> <property name="maxPoolSize" value="10" 
-		/> <property name="queueCapacity" value="25" /> </bean> -->
+		/> <property name="queueCapacity" value="25" /> </bean> 
+	-->
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
 		<property name="driverClassName" value="${jdbc.driverClassName}" />
@@ -47,9 +48,15 @@
 		<!-- 注入数据源 -->
 		<property name="dataSource" ref="dataSource" />
 		<!-- 设置Spring取那个包中查找相应的实体类 -->
-		<property name="packagesToScan">
+		<!-- 去掉注解方法  property name="packagesToScan">
 			<value>com.wanglei.graempinf_core.graempinf_core.model</value>
-		</property>
+		</property> -->
+		<!--配置文件方法 -->
+		<property name="mappingDirectoryLocations">
+            <list>
+                <value>classpath:com/xc/*/model/*.hbm.xml</value><!-- 加载hibernate的映射文件*.hbm.xml -->
+            </list>
+        </property>
 		<property name="hibernateProperties">
 			<!-- <value> hibernate.dialect=org.hibernate.dialect.HSQLDialect </value> -->
 			<props>
