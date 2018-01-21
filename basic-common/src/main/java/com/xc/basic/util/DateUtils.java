@@ -9,6 +9,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.TimeZone;
 
+import org.apache.commons.lang.StringUtils;
+
 public class DateUtils {
 	public  final static String datePatten1 = "yyyy-MM-dd";
 	    public  final static String datePatten2 = "yyyy-MM-dd HH:mm";
@@ -99,7 +101,7 @@ public class DateUtils {
 		}
 
 		public static Date getDate(String dateStr) {
-			if (StringUtils.isNll(dateStr)) {
+			if (StringUtils.isBlank(dateStr)) {
 				return null;
 			}
 			Date time = null;
@@ -112,7 +114,7 @@ public class DateUtils {
 		}
 
 		public static Date getDate(String dateStr,String pattern) throws ParseException {
-	        if (StringUtils.isNll(dateStr)) {
+	        if (StringUtils.isBlank(dateStr)) {
 	            return null;
 	        }
 	        SimpleDateFormat dateFormat = new SimpleDateFormat(pattern);
@@ -120,7 +122,7 @@ public class DateUtils {
 	    }
 		
 		public static Timestamp getTime(String timeStr) {
-			if (StringUtils.isNll(timeStr)) {
+			if (StringUtils.isBlank(timeStr)) {
 				return null;
 			}
 			Timestamp ts = null;
