@@ -1,0 +1,49 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.xc</groupId>
+		<artifactId>housingrental-parent</artifactId>
+		<version>1.0</version>
+		<relativePath>../housingrental-parent/pom.xml</relativePath>
+	</parent>
+	<artifactId>system-usermanage-core</artifactId>
+	<packaging>jar</packaging>
+
+	<name>system-usermanage-core</name>
+	<url>http://maven.apache.org</url>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<dependencies>
+	<dependency>
+			<groupId>org.easymock</groupId>
+			<artifactId>easymock</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.xc.basic</groupId>
+			<artifactId>basic-hibernate</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.xc.basic</groupId>
+			<artifactId>basic-common</artifactId>
+		</dependency>
+		
+	</dependencies>
+</project>

@@ -1,4 +1,5 @@
 package ${Paramss.packageNameStr};
+import java.io.Serializable;
 <#--导包 -->
 <#list Paramss.importStrs as importStr>
 import ${importStr};
@@ -9,14 +10,20 @@ import ${importStr};
      *
      */
 </#if>
-public class ${Paramss.beanName} {
+public class ${Paramss.beanName} implements Serializable{
+    /**
+	 * 自动生成 serialVersionUID
+	 */
+ private static final long serialVersionUID = 1L;
  
 <#--属性生成 -->
 <#list Paramss.columns as _column>
-    /*
+<#if _column.propertComment!="">
+    /**
      *${_column.propertComment}
      *
      */
+</#if>
     private ${_column.propertType} ${_column.propertName};
 </#list>
 <#list Paramss.columns as _column>
@@ -35,9 +42,9 @@ public class ${Paramss.beanName} {
 	}
 	@Override
 	public String toString() {
-		return "${Paramss.beanName} ["+
+		return "${Paramss.beanName} ["+""
 		<#list Paramss.columns as _column>
-		  "${_column.propertName}="+${_column.propertName}+","
+		 + "${_column.propertName}="+${_column.propertName}+","
 		</#list>
 		  + "]";
 	}

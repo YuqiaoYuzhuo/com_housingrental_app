@@ -12,6 +12,7 @@ import com.xc.generatorcode.model.HibernateCf;
 import com.xc.generatorcode.model.TableBean;
 import com.xc.generatorcode.util.CreateBeanModelUtils;
 import com.xc.generatorcode.util.CreateHibernateCfgUtil;
+import com.xc.generatorcode.util.GeneraltorModeAndHibernateCfgUtil;
 import com.xc.generatorcode.util.TableUtil;
 
 
@@ -46,7 +47,6 @@ public class GeneratorCodeTest {
 			CreateHibernateCfgUtil.inintHibernateCfgBean(tableBean.get(i), beanModels.get(i));
 		}
 	}
-	@Test
 	public void testCreateBean(){
 		List<BeanModel> beanModels = CreateBeanModelUtils.intJavabean(null, "com.model");
 		List<TableBean> tableBean =tableBeanUtil.getTableBeanByTable(null);
@@ -56,5 +56,9 @@ public class GeneratorCodeTest {
 			hibernateCfs.add(hcf);
 		}
 		CreateHibernateCfgUtil.createModelCfgfile("D:\\testmodel\\", "com.model", hibernateCfs);
+	}
+	@Test
+	public void testGenertorUtils(){
+		GeneraltorModeAndHibernateCfgUtil.createModelFile(true, null, "com.model", "D:\\javawork\\mywokspace\\TestHibernate\\src\\");
 	}
 }

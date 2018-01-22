@@ -38,11 +38,11 @@ public class HibernateCf {
 	/**
 	 * hql 语句
 	 */
-	private HqlModel HqlModel;
+	private HqlModel hqlModel;
 	/**
 	 * sql语句
 	 */
-	private SqlModel SqlModel;
+	private SqlModel sqlModel;
 	/**
 	 * 配置属性表
 	 */
@@ -59,19 +59,19 @@ public class HibernateCf {
 	public void setId(String id) {
 		this.id = id;
 	}
+	
 	public HqlModel getHqlModel() {
-		return HqlModel;
+		return hqlModel;
 	}
 	public void setHqlModel(HqlModel hqlModel) {
-		HqlModel = hqlModel;
+		this.hqlModel = hqlModel;
 	}
 	public SqlModel getSqlModel() {
-		return SqlModel;
+		return sqlModel;
 	}
 	public void setSqlModel(SqlModel sqlModel) {
-		SqlModel = sqlModel;
+		this.sqlModel = sqlModel;
 	}
-	
 	public List<CfgProperty> getCfgProperty() {
 		return cfgProperty;
 	}
@@ -113,10 +113,8 @@ public class HibernateCf {
 		return "HibernateCf [cfgClassName=" + cfgClassName + ", cfgTableName="
 				+ cfgTableName + ", cfgTablePk=" + cfgTablePk
 				+ ", cfgTableCatlog=" + cfgTableCatlog + ", beanName="
-				+ beanName + ", id=" + id + ", HqlModel=" + HqlModel
-				+ ", SqlModel=" + SqlModel + ", cfgProperty=" + cfgProperty
+				+ beanName + ", id=" + id + ", hqlModel=" + hqlModel
+				+ ", sqlModel=" + sqlModel + ", cfgProperty=" + cfgProperty
 				+ "]";
 	}
-	
-	
 }

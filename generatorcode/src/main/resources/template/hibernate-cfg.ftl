@@ -5,25 +5,7 @@
     自动生成hibernate 配置文件
 -->
 <hibernate-mapping>
-		<!-- 默认hql-->
-	<#if cfgPram.HqlModel ??>
-	<!-- 默认hql-->
-	<query name="${cfgPram.HqlModel.hqlName}">    
-         <![CDATA[    
-             ${cfgPram.HqlModel.hql}   
-         ]]> 
-     </query>
-	</#if>
-     <#if cfgPram.SqlModel ?? >
-	<!-- 默认sql-->
-     <sql-query name="${cfgPram.SqlModel.sqlName}">    
-         <![CDATA[    
-             ${cfgPram.SqlModel.sql}  
-         ]]> 
-         <return alias="${cfgPram.SqlModel.alias}" class="${cfgPram.SqlModel.className}"/>    
-     </sql-query>
-	</#if>
-        
+	<#if cfgPram.hqlModel ??>
     <!--列名对应关系 -->
     <class name="${cfgPram.cfgClassName}" table="${cfgPram.cfgTableName}" catalog="${cfgPram.cfgTableCatlog}">
    	  <#list cfgPram.cfgProperty as cfp>
@@ -31,8 +13,11 @@
    	  <#if cfgPram.cfgTablePk??>
    	  	<#if cfp.columnName == cfgPram.cfgTablePk>
    	  	 <id name="${cfp.propertyName}" type="${cfp.propertyType}">
-            <column name="${cfp.columnName}" length="${cfp.columnNameLength}" />
+            <column name="${cfp.columnName}" length="${cfp.columnNameLength}">
+             <#if cfp.comment!="">
             <comment>${cfp.comment}</comment>
+             </#if>
+            </column>
             <generator class="assigned" />
         </id>
    	  	</#if>
@@ -40,12 +25,30 @@
    	  	</#if>
    	  	<property name="${cfp.propertyName}" type="${cfp.propertyType}">
    	  	<#if cfp.propertyType =="java.lang.Double">
-   	  	  <column name="${cfp.columnName}" precision="${cfp.columnNameLength}" scale="${cfp.doubleScale}" />
+   	  	  <column name="${cfp.columnName}" precision="${cfp.columnNameLength}" scale="${cfp.doubleScale}">
    	  	<#else>
-            <column name="${cfp.columnName}" length="${cfp.columnNameLength}" />
+            <column name="${cfp.columnName}" length="${cfp.columnNameLength}">
          </#if>
+            <#if cfp.comment!="">
             <comment>${cfp.comment}</comment>
+            </#if>
+            </column>
         </property>
    	  </#list>
     </class>
+    <!-- 默认hql-->
+	<query name="${cfgPram.hqlModel.hqlName}">    
+         <![CDATA[    
+             ${cfgPram.hqlModel.hql}   
+         ]]> 
+     </query>
+	</#if>
+     <#if cfgPram.sqlModel ?? >
+	<!-- 默认sql-->
+     <sql-query name="${cfgPram.sqlModel.sqlName}">    
+         <![CDATA[    
+             ${cfgPram.sqlModel.sql}  
+         ]]>   
+     </sql-query>
+	</#if>
 </hibernate-mapping>

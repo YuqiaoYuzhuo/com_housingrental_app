@@ -162,7 +162,7 @@ public static String getBenaPropertiesTypeByTableColumn(String columnType){
 	}else if("DOUBLE".equalsIgnoreCase(columnType)){
 		 return "double";
 	}else if("int".equalsIgnoreCase(columnType)){
-		 return "integer";
+		 return "Integer";
 	}
 	return javaType ;
  }

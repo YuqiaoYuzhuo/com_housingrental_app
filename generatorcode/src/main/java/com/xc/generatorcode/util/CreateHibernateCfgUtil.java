@@ -13,6 +13,8 @@ import com.xc.generatorcode.model.BeanModel;
 import com.xc.generatorcode.model.BeanProperties;
 import com.xc.generatorcode.model.CfgProperty;
 import com.xc.generatorcode.model.HibernateCf;
+import com.xc.generatorcode.model.HqlModel;
+import com.xc.generatorcode.model.SqlModel;
 import com.xc.generatorcode.model.TableBean;
 import com.xc.generatorcode.model.TableColumn;
 
@@ -43,21 +45,42 @@ public class CreateHibernateCfgUtil {
 		List<CfgProperty> cfgPropertys = new ArrayList<>();
 		List<TableColumn> tcs = tbale.getTableColumn();
 		List<BeanProperties> bps = beanModel.getColumns();
+		//设置默认 hql
+		HqlModel hqm = new HqlModel();
+		hqm.setHql(" from " + beanModel.getBeanName() + " where 1=1 ");
+		hqm.setHqlName("defaultHql");
+		hibernateCf.setHqlModel(hqm);
 		//设置表属性
 		CfgProperty cfgProperty = null;
+		StringBuffer sqlbf = new StringBuffer("SELECT ");
+		int index = 0;
 		for(int i=0;i<tcs.size();i++){
 			cfgProperty = new CfgProperty();
 			cfgProperty.setColumnName(tcs.get(i).getColumnName());
+			sqlbf.append(tcs.get(i).getColumnName());
+			//如果不是最后一个属性列拼接逗号
+			if(index < tcs.size()-1){
+				sqlbf.append(",");
+			}
 			cfgProperty.setColumnType(tcs.get(i).getColumnType());
 			cfgProperty.setComment(tcs.get(i).getColumnRmark());
 			cfgProperty.setPropertyName(bps.get(i).getPropertName());
 			cfgProperty.setColumnNameLength(String.valueOf(tcs.get(i).getColumnSize()));
 			cfgProperty.setDoubleScale(String.valueOf((tcs.get(i).getColumnDecimalDigits())));
 			cfgProperty.setPropertyType(ColumnToPropertyUtil.getProperTypeClassName(bps.get(i).getPropertType()));
-			System.out.println(cfgProperty);
+			//System.out.println(cfgProperty);
+			index ++ ;
 			cfgPropertys.add(cfgProperty);
 		}
+		sqlbf.append(" FROM "+tbale.getTableName()+" WHERE 1=1 ");
+		//初始化默认的sql语句
+		SqlModel sqlm = new  SqlModel();
+		sqlm.setSqlName("defaultsql");
+		//sqlm.setAlias(beanModel.getBeanName().substring(0,1));
+		sqlm.setSql(sqlbf.toString());
+		//sqlm.setClassName(beanModel.getPackageNameStr()+"."+beanModel.getBeanName()+"");
 		hibernateCf.setCfgProperty(cfgPropertys);
+		hibernateCf.setSqlModel(sqlm);
 		//System.out.println(hibernateCf);
 		return hibernateCf;
 	}
