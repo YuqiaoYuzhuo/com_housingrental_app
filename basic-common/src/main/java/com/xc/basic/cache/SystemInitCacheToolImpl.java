@@ -1,7 +1,11 @@
 package com.xc.basic.cache;
 
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.Cache;
+import org.springframework.stereotype.Service;
 /**
  * <p>Title: 系统缓存初始化工具实现类</p>
  * <p>Description: </p>
@@ -10,17 +14,21 @@ import org.slf4j.LoggerFactory;
  * @history:
  * Created by wanglei 2018年1月22日
  */
+@Service("systemInitCacheTool")
 public class SystemInitCacheToolImpl implements SystemInitCacheTool
 {
     protected static final  Logger logger  = LoggerFactory.getLogger(SystemInitCacheToolImpl.class);
+    @Autowired
     private SystemCacheFactory systemCacheFactory;
     @Override
     public void dataDictInit(){
         logger.debug("开始加载缓存[系统数据字典]start!!!!!!!!!!!!!!");
 //        List<Map<?,?>> sysResourcePermitOperates = tabDataDictService.getDictDataList();
-//        Cache cache = psmcCacheFactory.getCacheSystem();
+           Cache cache = systemCacheFactory.getCacheSystem();
 //        cache.put(CacheContants.CACHE_SYSTEM_DATA_DICT, sysResourcePermitOperates);
         //TODO 初始换数据字典缓存
+            cache.put("testcahe", "testcahe");
+            System.out.println("开始加载缓存[系统数据字典]end!!!!!!!!!!!!!!");
         logger.debug("开始加载缓存[系统数据字典]end!!!!!!!!!!!!!!");
     }
     
@@ -50,12 +58,4 @@ public class SystemInitCacheToolImpl implements SystemInitCacheTool
         }
     }
 
-	public SystemCacheFactory getSystemCacheFactory() {
-		return systemCacheFactory;
-	}
-
-	public void setSystemCacheFactory(SystemCacheFactory systemCacheFactory) {
-		this.systemCacheFactory = systemCacheFactory;
-	}
-    
 }

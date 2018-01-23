@@ -3,6 +3,7 @@ package com.xc.basic.cache;
 import java.util.concurrent.Callable;
 
 import org.springframework.cache.Cache;
+import org.springframework.stereotype.Service;
 
 /**
  * 缓存代理类，主要对spring的cache对象做一层包装,实现缓存数据二次加载等一些附属功能

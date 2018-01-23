@@ -1,4 +1,7 @@
 package com.xc.basic.cache;
+
+import org.springframework.stereotype.Service;
+
 /**
  * <p>Title:缓存初始化加载方法</p>
  * <p>Description:缓存初始化加载方法 </p>
@@ -7,6 +10,7 @@ package com.xc.basic.cache;
  * @history:
  * Created by wanglei 2018年1月22日
  */
+
 public interface SystemInitCacheTool
 {
     /**

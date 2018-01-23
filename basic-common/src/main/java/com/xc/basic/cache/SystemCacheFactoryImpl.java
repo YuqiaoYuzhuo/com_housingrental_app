@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cache.Cache;
 import org.springframework.cache.CacheManager;
+import org.springframework.stereotype.Service;
 
 import com.xc.basic.exception.BusinessException;
 /**
@@ -14,6 +15,7 @@ import com.xc.basic.exception.BusinessException;
  * @history:
  * Created by wanglei 2018年1月22日
  */
+@Service("systemCacheFactory")
 public class SystemCacheFactoryImpl implements SystemCacheFactory
 {
     public CacheManager cacheManager; 

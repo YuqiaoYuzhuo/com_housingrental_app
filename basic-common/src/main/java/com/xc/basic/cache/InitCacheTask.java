@@ -4,6 +4,7 @@ import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.quartz.QuartzJobBean;
 
 import com.xc.basic.util.MySpringApplicationContext;
@@ -18,15 +19,15 @@ import com.xc.basic.util.MySpringApplicationContext;
 public class InitCacheTask extends QuartzJobBean
 {
     protected static final  Logger logger  = LoggerFactory.getLogger(InitCacheTask.class);
-
     private SystemInitCacheTool systemInitCacheTool;    
-    
     public InitCacheTask (){
         Object obj = MySpringApplicationContext.getObject("systemInitCacheTool");
-        if(obj !=null)
+        if(obj !=null){
             this.systemInitCacheTool = (SystemInitCacheTool)obj;
+                systemInitCacheTool.dataDictInit();
+        }
         else
-            logger.warn("bean id psmcInitCacheTool not in spring context");
+            logger.warn("bean id systemInitCacheTool not in spring context");
     }
     
     @Override
@@ -34,7 +35,7 @@ public class InitCacheTask extends QuartzJobBean
     {
         if(systemInitCacheTool!=null){
             logger.debug("InitCacheTask start! ");
-           //systemInitCacheTool.resourcePermitOperatesInit();
+           systemInitCacheTool.dataDictInit();
             logger.debug("InitCacheTask end! ");
         }
     }

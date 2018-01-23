@@ -94,4 +94,11 @@
 			<tx:method name="save*" propagation="REQUIRED" />
 		</tx:attributes>
 	</tx:advice>
+	<!-- 线程执行器配置，用于任务注册 -->
+	<bean id="executor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">
+	 <property name="corePoolSize" value="3" />
+	 <property name ="keepAliveSeconds" value ="300" /> 
+	 <property name="maxPoolSize" value="8" />
+	 <property name="queueCapacity" value="16" />
+	</bean>
 </beans>
