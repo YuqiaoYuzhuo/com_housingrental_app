@@ -7,6 +7,8 @@
 	<packaging>pom</packaging>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<spring.version>4.3.0.RELEASE</spring.version>
+	    <hibernate.version>4.2.0.Final</hibernate.version>
 	</properties>
 	<!-- 模块集成 start -->
 	<modules>
@@ -102,7 +104,7 @@
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-test</artifactId>
-				<version>3.2.2.RELEASE</version>
+				<version>${spring.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.dbunit</groupId>
@@ -145,38 +147,38 @@
 			<dependency>
 				<groupId>org.hibernate</groupId>
 				<artifactId>hibernate-core</artifactId>
-				<version>4.2.0.Final</version>
+				<version>${hibernate.version}</version>
 			</dependency>
 			<!--spring-context 的支持 -->
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-context</artifactId>
-				<version>3.2.2.RELEASE</version>
+				<version>${spring.version}</version>
 			</dependency>
 			<!--spring-core 的支持 -->
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-core</artifactId>
-				<version>3.2.2.RELEASE</version>
+				<version>${spring.version}</version>
 			</dependency>
 			<!--spring-beans 的支持 -->
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-beans</artifactId>
-				<version>3.2.2.RELEASE</version>
+				<version>${spring.version}</version>
 			</dependency>
 
 			<!--spring-aop 的支持 -->
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-aop</artifactId>
-				<version>3.2.2.RELEASE</version>
+				<version>${spring.version}</version>
 			</dependency>
 			<!--spring-orm 的支持 -->
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-orm</artifactId>
-				<version>3.2.2.RELEASE</version>
+				<version>${spring.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.json</groupId>
@@ -228,12 +230,12 @@
 			<dependency>
 				<groupId>org.hibernate</groupId>
 				<artifactId>hibernate-validator</artifactId>
-				<version>4.3.1.Final</version>
+				<version>${hibernate.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-webmvc</artifactId>
-				<version>3.2.2.RELEASE</version>
+				<version>${spring.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>javax.servlet</groupId>
