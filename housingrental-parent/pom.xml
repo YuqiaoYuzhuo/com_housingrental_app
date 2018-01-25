@@ -1,5 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.xc</groupId>
 	<artifactId>housingrental-parent</artifactId>
@@ -15,18 +15,22 @@
 		<module>../basic-common</module>
 		<module>../basic-hibernate</module>
 		<module>../system-usermanage-core</module>
+		<module>../systemmanage-core</module>
 		<module>../housingrental-house-core</module>
 		<module>../housingrental-rental-core</module>
 		<module>../basic-springmvc Maven Webapp</module>
 		<module>../system-usermange-web Maven Webapp</module>
+		<module>../systemmanage-web Maven Webapp</module>
 		<module>../housingrental-house-web Maven Webapp</module>
 		<module>../housingrental-rental-web Maven Webapp</module>
+		
 		<module>../housingrental-web Maven Webapp</module>
-	</modules>
+         
+  </modules>
 	<!-- 模块集成 end -->
 	<dependencyManagement>
 		<dependencies>
-			<!-- 内部模块依赖集成 开始 -->
+			<!-- 内部模块依赖集成 start -->
 			<dependency>
 				<groupId>com.xc.basic</groupId>
 				<artifactId>basic-common</artifactId>
@@ -53,26 +57,14 @@
 				<artifactId>housingrental-rental-core</artifactId>
 				<version>${project.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>${project.groupId}</groupId>
+				<artifactId>systemmanage-core</artifactId>
+				<version>${project.version}</version>
+			</dependency>
 			<!-- 系统核心模块引入 结束 -->
-			<!-- 系统模块数据接口 -->
-			<dependency>
-				<groupId>${project.groupId}</groupId>
-				<artifactId>housingrental-house-datainterface</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>${project.groupId}</groupId>
-				<artifactId>system-usermanage-datainterface</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>${project.groupId}</groupId>
-				<artifactId>housingrental-rental-datainterface</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<!-- 系统模块数据接口 -->
 			<!-- 系统web模块注入 start -->
-			<!-- 系统web spring mvc 配置必须在前面 -->
+			<!-- 系统web spring mvc 配置必须在前�?-->
 			<dependency>
 				<groupId>com.xc.basic</groupId>
 				<artifactId>basic-springmvc</artifactId>
@@ -95,12 +87,17 @@
 			</dependency>
 			<dependency>
 				<groupId>${project.groupId}</groupId>
+				<artifactId>systemmanage-web</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>${project.groupId}</groupId>
 				<artifactId>housingrental-web</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<!-- 系统web模块注入 end -->
 			<!-- 内部模块依赖集成 结束 -->
-			<!--外部模块依赖 开始 -->
+			<!--外部模块依赖 �?�� -->
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-test</artifactId>
@@ -129,21 +126,21 @@
 				<scope>test</scope>
 				<version>3.1</version>
 			</dependency>
-			<!--spring-junit 的支持 -->
+			<!--spring-junit 的支�?-->
 			<dependency>
 				<groupId>junit</groupId>
 				<artifactId>junit</artifactId>
 				<version>4.10</version>
 				<scope>test</scope>
 			</dependency>
-			<!--spring-test 的支持 -->
+			<!--spring-test 的支�?-->
 			<dependency>
 				<groupId>commons-lang</groupId>
 				<artifactId>commons-lang</artifactId>
 				<version>2.6</version>
 			</dependency>
 
-			<!--Hibernate 的支持 -->
+			<!--Hibernate 的支�?-->
 			<dependency>
 				<groupId>org.hibernate</groupId>
 				<artifactId>hibernate-core</artifactId>
@@ -154,32 +151,32 @@
 				<artifactId>hibernate-ehcache</artifactId>
 				<version>${hibernate.version}</version>
 			</dependency>
-			<!--spring-context 的支持 -->
+			<!--spring-context 的支�?-->
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-context</artifactId>
 				<version>${spring.version}</version>
 			</dependency>
-			<!--spring-core 的支持 -->
+			<!--spring-core 的支�?-->
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-core</artifactId>
 				<version>${spring.version}</version>
 			</dependency>
-			<!--spring-beans 的支持 -->
+			<!--spring-beans 的支�?-->
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-beans</artifactId>
 				<version>${spring.version}</version>
 			</dependency>
 
-			<!--spring-aop 的支持 -->
+			<!--spring-aop 的支�?-->
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-aop</artifactId>
 				<version>${spring.version}</version>
 			</dependency>
-			<!--spring-orm 的支持 -->
+			<!--spring-orm 的支�?-->
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-orm</artifactId>
@@ -306,7 +303,7 @@
 	</dependencyManagement>
 	<build>
 		<plugins>
-			<!--maven打包编译版本配置开始 -->
+			<!--maven打包编译版本配置�?�� -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -317,7 +314,7 @@
 				</configuration>
 			</plugin>
 			<!--maven打包编译版本配置 结束 -->
-			<!--Tomcat 发布网站应用配置开始 -->
+			<!--Tomcat 发布网站应用配置�?�� -->
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>tomcat-maven-plugin</artifactId>

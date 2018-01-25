@@ -59,6 +59,8 @@ public class GeneratorCodeTest {
 	}
 	@Test
 	public void testGenertorUtils(){
-		GeneraltorModeAndHibernateCfgUtil.createModelFile(true, null, "com.model", "D:\\javawork\\mywokspace\\TestHibernate\\src\\");
+		TableBean tablebean = new TableBean();
+		tablebean.setTableName("");
+		GeneraltorModeAndHibernateCfgUtil.createModelFile(true, tablebean, "com.xc.systemmanage_core.model", "D:\\javawork\\mywokspace\\com_housingrental_app\\systemmanage-core\\src\\main\\java\\");
 	}
 }

@@ -2,6 +2,7 @@ package com.xc.generatorcode.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.util.Properties;
 
 /**
  * <p>
@@ -85,9 +86,14 @@ public class DbHelper {
 	 */
 	public Connection getConnection() {
 		// 反射获取driverManager
+		Properties props =new Properties();
 		try {
 			Class.forName(DRIVER);
-			connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+			 props.setProperty("user", USERNAME);
+            props.setProperty("password", PASSWORD);
+            props.setProperty("remarks", "true"); //设置可以获取remarks信息 
+            props.setProperty("useInformationSchema", "true");//设置可以获取tables remarks信息
+		    connection = DriverManager.getConnection(URL,props);
 		} catch (Exception e) {
 			throw new RuntimeException("获取数据库驱动信息异常！", e);
 		}

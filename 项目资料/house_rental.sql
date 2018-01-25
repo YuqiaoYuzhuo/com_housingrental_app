@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     2018/1/20 21:58:18                           */
+/* Created on:     2018/1/25 22:07:09                           */
 /*==============================================================*/
 
 
@@ -38,18 +38,18 @@ drop table if exists TB_RENTAL_PRICE_RANGE_REL;
 
 drop table if exists TB_RENTAL_TYPE_REL;
 
-drop table if exists TB_USERINO;
-
 drop table if exists TB_USER_ACCOUNT;
+
+drop table if exists TB_USER_INO;
 
 /*==============================================================*/
 /* Table: TB_AREA_HOUSE_REL                                     */
 /*==============================================================*/
 create table TB_AREA_HOUSE_REL
 (
-   AREA_HOUSE_REL_UUID  varchar(64) not null,
-   HOUSE_UUID           varchar(64),
-   AREA_UUID            int,
+   AREA_HOUSE_REL_UUID  varchar(64) not null comment '关联关系标示',
+   HOUSE_UUID           varchar(64) comment '房屋标示',
+   AREA_UUID            int comment '地域行政区划标示',
    primary key (AREA_HOUSE_REL_UUID)
 );
 
@@ -98,20 +98,6 @@ create table TB_BACK_MONEY_CERTIFICATE
 
 alter table TB_BACK_MONEY_CERTIFICATE comment '退款凭证';
 
-/*==============================================================*/
-/* Table: TB_BASE_AREA                                          */
-/*==============================================================*/
-create table TB_BASE_AREA
-(
-   AREA_ID              int not null comment '区域标示',
-   AREA_CODE            varchar(100) comment '区域编码',
-   AREA_NAME            varchar(100) comment '区域名称',
-   AREA_PARENT_CODE     varchar(100) comment '上级行政区域编码',
-   AREA_LAST_MODIFY_TIME timestamp comment '最后修改时间',
-   primary key (AREA_ID)
-);
-
-alter table TB_BASE_AREA comment '全国基础行政区划表';
 
 /*==============================================================*/
 /* Table: TB_BUSINESS_ATTACHMENT_REL                            */
@@ -350,6 +336,8 @@ create table TB_RENTAL_PRICE_RANGE_REL
    primary key (RENTAL_PRICE_RANGE_UUID)
 );
 
+alter table TB_RENTAL_PRICE_RANGE_REL comment '租金区间房屋关联关系表';
+
 /*==============================================================*/
 /* Table: TB_RENTAL_TYPE_REL                                    */
 /*==============================================================*/
@@ -363,9 +351,28 @@ create table TB_RENTAL_TYPE_REL
 alter table TB_RENTAL_TYPE_REL comment '房屋租住类型表';
 
 /*==============================================================*/
-/* Table: TB_USERINO                                            */
+/* Table: TB_USER_ACCOUNT                                       */
 /*==============================================================*/
-create table TB_USERINO
+create table TB_USER_ACCOUNT
+(
+   USER_ACCOUNT_UUID    varchar(64) not null comment '用户账户标示',
+   UASER_ACCOUNT_NUM    varchar(255) comment '用户账号',
+   USER_ACCOUNT_PASSWORD varchar(100) comment '用户密码',
+   USER_ACCOUNT_TYPE    varchar(100) comment '用户账号类型',
+   USER_ACCOUNT_STAUS   int comment '用户账号状态',
+   USER_UUID            varchar(64) comment '用户标示',
+   ERROR_NUM            int comment '用户密码错误次数',
+   USER_ACCOUNT_CODE    varchar(100) comment '用户角色账号编码',
+   USER_ACCOUNT_NAME    varchar(100) comment '用户角色中文名称',
+   primary key (USER_ACCOUNT_UUID)
+);
+
+alter table TB_USER_ACCOUNT comment '用户账户表';
+
+/*==============================================================*/
+/* Table: TB_USER_INO                                           */
+/*==============================================================*/
+create table TB_USER_INO
 (
    USER_UUID            varchar(64) not null comment '用户标示',
    USER_NAME            varchar(255) comment '用户姓名',
@@ -386,24 +393,5 @@ create table TB_USERINO
    primary key (USER_UUID)
 );
 
-alter table TB_USERINO comment '用户信息表';
-
-/*==============================================================*/
-/* Table: TB_USER_ACCOUNT                                       */
-/*==============================================================*/
-create table TB_USER_ACCOUNT
-(
-   USER_ACCOUNT_UUID    varchar(64) not null comment '用户账户标示',
-   UASER_ACCOUNT_NUM    varchar(255) not null comment '用户账号',
-   USER_ACCOUNT_PASSWORD varchar(100) comment '用户密码',
-   USER_ACCOUNT_TYPE    varchar(100) comment '用户账号类型',
-   USER_ACCOUNT_STAUS   int comment '用户账号状态',
-   USER_UUID            varchar(64) comment '用户标示',
-   ERROR_NUM            int comment '用户密码错误次数',
-   USER_ACCOUNT_CODE    varchar(100) comment '用户角色账号编码',
-   USER_ACCOUNT_NAME    varchar(100) comment '用户角色中文名称',
-   primary key (USER_ACCOUNT_UUID, UASER_ACCOUNT_NUM)
-);
-
-alter table TB_USER_ACCOUNT comment '用户账户表';
+alter table TB_USER_INO comment '用户信息表';
 

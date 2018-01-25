@@ -53,7 +53,7 @@
 		<!--配置文件方法 -->
 		<property name="mappingDirectoryLocations">
             <list>
-                <value>classpath:com/xc/*/model/*.hbm.xml</value><!-- 加载hibernate的映射文件*.hbm.xml -->
+                <value>classpath:com/xc/*/model/*.-hbm.xml</value><!-- 加载hibernate的映射文件*.hbm.xml -->
             </list>
         </property>
 		<property name="hibernateProperties">

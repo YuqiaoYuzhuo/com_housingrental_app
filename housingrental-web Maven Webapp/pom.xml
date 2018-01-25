@@ -36,6 +36,12 @@
 		</dependency>
 		<dependency>
 		 <groupId>com.xc</groupId>
+            <artifactId>systemmanage-web</artifactId>
+            <version>1.0</version>
+            <type>war</type>
+		</dependency>
+		<dependency>
+		 <groupId>com.xc</groupId>
             <artifactId>system-usermanage-web</artifactId>
             <version>1.0</version>
             <type>war</type>
@@ -64,6 +70,10 @@
 						<overlay>
 							<groupId>com.xc</groupId>
 							<artifactId>housingrental-rental-web</artifactId>
+						</overlay>
+						<overlay>
+							<groupId>com.xc</groupId>
+							<artifactId>systemmanage-web</artifactId>
 						</overlay>
 						<overlay>
 							<groupId>com.xc</groupId>

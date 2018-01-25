@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- 
+    自动生成hibernate 配置文件
+-->
+<hibernate-mapping>
+	    <!--列名对应关系 -->
+    <class name="com.xc.system_usermanage_core.model.UserInfo" table="tb_user_info" catalog="houserental">
+   	  	 <id name="userUuid" type="java.lang.String">
+            <column name="USER_UUID" length="64">
+            <comment>用户标示</comment>
+            </column>
+            <generator class="assigned" />
+        </id>
+   	  	<property name="userUuid" type="java.lang.String">
+            <column name="USER_UUID" length="64">
+            <comment>用户标示</comment>
+            </column>
+        </property>
+   	  	<property name="userName" type="java.lang.String">
+            <column name="USER_NAME" length="255">
+            <comment>用户姓名</comment>
+            </column>
+        </property>
+   	  	<property name="userAddr" type="java.lang.String">
+            <column name="USER_ADDR" length="255">
+            <comment>用户地址</comment>
+            </column>
+        </property>
+   	  	<property name="userRegTime" type="java.sql.Timestamp">
+            <column name="USER_REG_TIME" length="19">
+            <comment>注册时间</comment>
+            </column>
+        </property>
+   	  	<property name="userEmainl" type="java.lang.String">
+            <column name="USER_EMAINL" length="100">
+            <comment>用户邮箱</comment>
+            </column>
+        </property>
+   	  	<property name="userTel" type="java.lang.String">
+            <column name="USER_TEL" length="50">
+            <comment>用户电话</comment>
+            </column>
+        </property>
+   	  	<property name="userStaus" type="java.lang.Integer">
+            <column name="USER_STAUS" length="10">
+            <comment>用户状态 </comment>
+            </column>
+        </property>
+   	  	<property name="userLevel" type="java.lang.Integer">
+            <column name="USER_LEVEL" length="10">
+            <comment>用户等级</comment>
+            </column>
+        </property>
+   	  	<property name="userLastModifyTime" type="java.sql.Timestamp">
+            <column name="USER_LAST_MODIFY_TIME" length="19">
+            <comment>最后修改时间</comment>
+            </column>
+        </property>
+   	  	<property name="userGender" type="java.lang.Integer">
+            <column name="USER_GENDER" length="10">
+            <comment>用户性别</comment>
+            </column>
+        </property>
+   	  	<property name="userBirthday" type="java.sql.Date">
+            <column name="USER_BIRTHDAY" length="10">
+            <comment>用户生日</comment>
+            </column>
+        </property>
+   	  	<property name="userQqAccount" type="java.lang.String">
+            <column name="USER_QQ_ACCOUNT" length="100">
+            <comment>用户QQ账号</comment>
+            </column>
+        </property>
+   	  	<property name="userWxAccout" type="java.lang.String">
+            <column name="USER_WX_ACCOUT" length="100">
+            <comment>用户微信账号</comment>
+            </column>
+        </property>
+   	  	<property name="userRegip" type="java.lang.String">
+            <column name="USER_REGIP" length="100">
+            <comment>用户注册ip</comment>
+            </column>
+        </property>
+   	  	<property name="userLastLoginTime" type="java.sql.Timestamp">
+            <column name="USER_LAST_LOGIN_TIME" length="19">
+            <comment>最后登录时间</comment>
+            </column>
+        </property>
+   	  	<property name="userLastLoginIp" type="java.lang.String">
+            <column name="USER_LAST_LOGIN_IP" length="100">
+            <comment>最后登录IP地址</comment>
+            </column>
+        </property>
+    </class>
+    <!-- 默认hql-->
+	<query name="defaultHql">    
+         <![CDATA[    
+              from UserInfo where 1=1    
+         ]]> 
+     </query>
+	<!-- 默认sql-->
+     <sql-query name="defaultsql">    
+         <![CDATA[    
+             SELECT USER_UUID,USER_NAME,USER_ADDR,USER_REG_TIME,USER_EMAINL,USER_TEL,USER_STAUS,USER_LEVEL,USER_LAST_MODIFY_TIME,USER_GENDER,USER_BIRTHDAY,USER_QQ_ACCOUNT,USER_WX_ACCOUT,USER_REGIP,USER_LAST_LOGIN_TIME,USER_LAST_LOGIN_IP FROM tb_user_info WHERE 1=1   
+         ]]>   
+     </sql-query>
+</hibernate-mapping>
