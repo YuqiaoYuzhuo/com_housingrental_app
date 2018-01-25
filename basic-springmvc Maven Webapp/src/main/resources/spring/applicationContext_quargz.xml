@@ -50,8 +50,8 @@
 	</bean>
 	
 	<!-- 设置调度 -->
-	 <bean id="quartzScheduler" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
-	 <!-- <property name="quartzProperties">  
+	 <bean id="quartzScheduler"  class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+	  <property name="quartzProperties">  
 	 <props>  
         <prop key="org.quartz.scheduler.instanceName">quartzScheduler</prop>  
         <prop key="org.quartz.scheduler.instanceId">AUTO</prop>  
@@ -59,8 +59,11 @@
         <prop key="org.quartz.threadPool.class">org.quartz.simpl.SimpleThreadPool</prop>  
         <prop key="org.quartz.threadPool.threadCount">10</prop>  
         <prop key="org.quartz.threadPool.threadPriority">5</prop>  
-      
-        <prop key="org.quartz.jobStore.class">org.quartz.impl.jdbcjobstore.JobStoreTX</prop>  
+        <!-- 如果不想把定时调度任务记录在表里则把这些放开 记录在内存 -->
+        <prop key="org.quartz.jobStore.class">org.quartz.simpl.RAMJobStore</prop> 
+        <!-- 调度任务记录在数据库 -->
+        <!-- <prop key="org.quartz.jobStore.class">org.quartz.impl.jdbcjobstore.JobStoreTX</prop>   
+       
         <prop key="org.quartz.jobStore.tablePrefix">QRTZ_</prop>  
         <prop key="org.quartz.jobStore.driverDelegateClass">org.quartz.impl.jdbcjobstore.StdJDBCDelegate</prop>
         <prop key="org.quartz.jobStore.txIsolationLevelSerializable">true</prop>
@@ -77,14 +80,15 @@
         <prop key="org.quartz.dataSource.myDS.user">${jdbc_username}</prop>  
         <prop key="org.quartz.dataSource.myDS.password">${jdbc_password}</prop>  
         <prop key="org.quartz.dataSource.myDS.maxConnections">10</prop>  
+        -->
     </props>  
 	</property> 
-	<property name="schedulerName" value="CRMscheduler" />   -->
+	<property name="schedulerName" value="CRMscheduler" />  
     <!--必须的，QuartzScheduler 延时启动，应用启动完后 QuartzScheduler 再启动-->  
-   <!--  <property name="startupDelay" value="5"/>  
+    <property name="startupDelay" value="5"/>  
     <property name="applicationContextSchedulerContextKey" value="applicationContextKey" />
-    可选，QuartzScheduler 启动时更新己存在的Job，这样就不用每次修改targetObject后删除qrtz_job_details表对应记录了  
-    <property name="overwriteExistingJobs" value="true" />   -->
+    <!-- 可选，QuartzScheduler 启动时更新己存在的Job，这样就不用每次修改targetObject后删除qrtz_job_details表对应记录了   -->
+    <property name="overwriteExistingJobs" value="true" />   
     <!-- 设置自动启动 -->  
     <property name="autoStartup" value="false" />  
 	 <property name="triggers">
