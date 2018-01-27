@@ -2,7 +2,6 @@ package com.xc.system_usermanage_core.dao;
 
 import com.xc.basic.hibernate.dao.IBaseDao;
 import com.xc.basic.model.Pager;
-import com.xc.system_usermanage_core.model.UserAccount;
 import com.xc.system_usermanage_core.model.UserInfo;
 
 /**
@@ -14,6 +13,10 @@ import com.xc.system_usermanage_core.model.UserInfo;
  * Created by wanglei 2018年1月25日
  */
 public interface UserDao extends IBaseDao<UserInfo>{
-
-	
+	/**
+	 * <p>Description:<p>
+	 * @return
+	 * @author wanglei 2018年1月27日
+	 */
+	Pager<UserInfo> findUserListByPage(Pager<UserInfo> pager);
 }

@@ -60,7 +60,7 @@ public class GeneratorCodeTest {
 	@Test
 	public void testGenertorUtils(){
 		TableBean tablebean = new TableBean();
-		tablebean.setTableName("");
-		GeneraltorModeAndHibernateCfgUtil.createModelFile(true, tablebean, "com.xc.systemmanage_core.model", "D:\\javawork\\mywokspace\\com_housingrental_app\\systemmanage-core\\src\\main\\java\\");
+		tablebean.setTableName("TB_USER_INO");
+		GeneraltorModeAndHibernateCfgUtil.createModelFile(true, tablebean, "com.xc.system_usermanage_core.model", "D:\\javawork\\mywokspace\\com_housingrental_app\\system-usermanage-core\\src\\main\\java\\");
 	}
 }

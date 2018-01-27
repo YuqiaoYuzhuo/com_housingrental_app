@@ -50,5 +50,19 @@ public interface IBaseDao <T>{
 	 * @author wanglei 2018年1月13日
 	 */
 	public void delete(Integer id);
+	/**
+	 * <p>Description:根据hql名字获取hql语句<p>
+	 * @param hqlName hql语句名字
+	 * @return hql语句
+	 * @author wanglei 2018年1月27日
+	 */
+	public String getHqlByHqlName(String hqlName);
+	/**
+	 * <p>Description:根据sql语句名字获取sql语句<p>
+	 * @param sqlName sql语句名字
+	 * @return SQL语句
+	 * @author wanglei 2018年1月27日
+	 */
+	public String getSqlBySqlName(String sqlName);
 	
 }

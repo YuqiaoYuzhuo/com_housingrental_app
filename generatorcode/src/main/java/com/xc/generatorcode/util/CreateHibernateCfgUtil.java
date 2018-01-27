@@ -48,7 +48,7 @@ public class CreateHibernateCfgUtil {
 		//设置默认 hql
 		HqlModel hqm = new HqlModel();
 		hqm.setHql(" from " + beanModel.getBeanName() + " where 1=1 ");
-		hqm.setHqlName("defaultHql");
+		hqm.setHqlName("defaultHql"+beanModel.getBeanName());
 		hibernateCf.setHqlModel(hqm);
 		//设置表属性
 		CfgProperty cfgProperty = null;
@@ -75,7 +75,7 @@ public class CreateHibernateCfgUtil {
 		sqlbf.append(" FROM "+tbale.getTableName()+" WHERE 1=1 ");
 		//初始化默认的sql语句
 		SqlModel sqlm = new  SqlModel();
-		sqlm.setSqlName("defaultsql");
+		sqlm.setSqlName("defaultsql_"+beanModel.getBeanName());
 		//sqlm.setAlias(beanModel.getBeanName().substring(0,1));
 		sqlm.setSql(sqlbf.toString());
 		//sqlm.setClassName(beanModel.getPackageNameStr()+"."+beanModel.getBeanName()+"");

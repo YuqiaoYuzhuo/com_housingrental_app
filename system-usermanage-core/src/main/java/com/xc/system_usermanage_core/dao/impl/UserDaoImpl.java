@@ -3,6 +3,7 @@ package com.xc.system_usermanage_core.dao.impl;
 import org.springframework.stereotype.Repository;
 
 import com.xc.basic.hibernate.dao.BaseDao;
+import com.xc.basic.model.Pager;
 import com.xc.system_usermanage_core.dao.UserDao;
 import com.xc.system_usermanage_core.model.UserInfo;
 /**
@@ -16,4 +17,10 @@ import com.xc.system_usermanage_core.model.UserInfo;
 @Repository("userDao")
 public class UserDaoImpl extends BaseDao<UserInfo> implements UserDao {
 
+	@Override
+	public Pager<UserInfo> findUserListByPage(Pager<UserInfo> pager) {
+		String hql = this.getHqlByHqlName("findUserByPager");
+		return this.findByHqlWithalias(hql, pager.getQueryParams());
+	}
+	
 }

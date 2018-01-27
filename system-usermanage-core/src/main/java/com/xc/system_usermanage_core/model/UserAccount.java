@@ -39,7 +39,7 @@ public class UserAccount implements Serializable{
      *用户标示
      *
      */
-    private String userUuid;
+    private String userAccUserUuid;
     /**
      *用户密码错误次数
      *
@@ -96,12 +96,12 @@ public class UserAccount implements Serializable{
         this.userAccountStaus = userAccountStauss;
     }
 
-    public String getUserUuid(){
-        return userUuid;
+    public String getUserAccUserUuid(){
+        return userAccUserUuid;
     }
     
-    public void setUserUuid(String userUuids){
-        this.userUuid = userUuids;
+    public void setUserAccUserUuid(String userAccUserUuids){
+        this.userAccUserUuid = userAccUserUuids;
     }
 
     public Integer getErrorNum(){
@@ -138,7 +138,7 @@ public class UserAccount implements Serializable{
 		 + "userAccountPassword="+userAccountPassword+","
 		 + "userAccountType="+userAccountType+","
 		 + "userAccountStaus="+userAccountStaus+","
-		 + "userUuid="+userUuid+","
+		 + "userAccUserUuid="+userAccUserUuid+","
 		 + "errorNum="+errorNum+","
 		 + "userAccountCode="+userAccountCode+","
 		 + "userAccountName="+userAccountName+","

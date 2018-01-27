@@ -4,7 +4,7 @@
 <!-- 
     自动生成hibernate 配置文件
 -->
-<hibernate-mapping>
+<hibernate-mapping >
 	    <!--列名对应关系 -->
     <class name="com.xc.system_usermanage_core.model.UserInfo" table="tb_user_info" catalog="houserental">
    	  	 <id name="userUuid" type="java.lang.String">
@@ -13,11 +13,6 @@
             </column>
             <generator class="assigned" />
         </id>
-   	  	<property name="userUuid" type="java.lang.String">
-            <column name="USER_UUID" length="64">
-            <comment>用户标示</comment>
-            </column>
-        </property>
    	  	<property name="userName" type="java.lang.String">
             <column name="USER_NAME" length="255">
             <comment>用户姓名</comment>
@@ -95,13 +90,13 @@
         </property>
     </class>
     <!-- 默认hql-->
-	<query name="defaultHql">    
+	<query name="findUserByPager">    
          <![CDATA[    
               from UserInfo where 1=1    
          ]]> 
      </query>
 	<!-- 默认sql-->
-     <sql-query name="defaultsql">    
+     <sql-query name="defaultsql2">    
          <![CDATA[    
              SELECT USER_UUID,USER_NAME,USER_ADDR,USER_REG_TIME,USER_EMAINL,USER_TEL,USER_STAUS,USER_LEVEL,USER_LAST_MODIFY_TIME,USER_GENDER,USER_BIRTHDAY,USER_QQ_ACCOUNT,USER_WX_ACCOUT,USER_REGIP,USER_LAST_LOGIN_TIME,USER_LAST_LOGIN_IP FROM tb_user_info WHERE 1=1   
          ]]>   

@@ -10,8 +10,6 @@ drop table if exists TB_ATTACHMENT;
 
 drop table if exists TB_BACK_MONEY_CERTIFICATE;
 
-drop table if exists TB_BASE_AREA;
-
 drop table if exists TB_BUSINESS_ATTACHMENT_REL;
 
 drop table if exists TB_CANCLE_RENTAL;
@@ -372,7 +370,7 @@ alter table TB_USER_ACCOUNT comment '用户账户表';
 /*==============================================================*/
 /* Table: TB_USER_INO                                           */
 /*==============================================================*/
-create table TB_USER_INO
+create table TB_USER_INFO
 (
    USER_UUID            varchar(64) not null comment '用户标示',
    USER_NAME            varchar(255) comment '用户姓名',
@@ -385,7 +383,7 @@ create table TB_USER_INO
    USER_LAST_MODIFY_TIME timestamp comment '最后修改时间',
    USER_GENDER          int comment '用户性别',
    USER_BIRTHDAY        date comment '用户生日',
-   USER_QQ——ACCOUNT     varchar(100) comment '用户QQ账号',
+   USER_QQ_ACCOUNT     varchar(100) comment '用户QQ账号',
    USER_WX_ACCOUT       varchar(100) comment '用户微信账号',
    USER_REGIP           varchar(100) comment '用户注册ip',
    USER_LAST_LOGIN_TIME timestamp comment '最后登录时间',
@@ -393,5 +391,5 @@ create table TB_USER_INO
    primary key (USER_UUID)
 );
 
-alter table TB_USER_INO comment '用户信息表';
+alter table TB_USER_INFO comment '用户信息表';
 

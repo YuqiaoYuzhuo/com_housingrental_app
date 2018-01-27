@@ -6,69 +6,86 @@
 -->
 <hibernate-mapping>
 	    <!--列名对应关系 -->
-    <class name="com.xc.system_usermanage_core.model.UserAccount" table="tb_user_account" catalog="houserental">
+    <class name="com.xc.system_usermanage_core.model.UserAccount" table="TB_USER_ACCOUNT" catalog="houserental">
    	  	 <id name="userAccountUuid" type="java.lang.String">
             <column name="USER_ACCOUNT_UUID" length="64">
             <comment>用户账户标示</comment>
             </column>
             <generator class="assigned" />
         </id>
-   	  	<property name="userAccountUuid" type="java.lang.String">
-            <column name="USER_ACCOUNT_UUID" length="64">
-            <comment>用户账户标示</comment>
-            </column>
-        </property>
-   	  	<property name="uaserAccountNum" type="java.lang.String">
+        <property name="uaserAccountNum" type="java.lang.String">
             <column name="UASER_ACCOUNT_NUM" length="255">
             <comment>用户账号</comment>
             </column>
         </property>
-   	  	<property name="userAccountPassword" type="java.lang.String">
+        <property name="userAccountPassword" type="java.lang.String">
             <column name="USER_ACCOUNT_PASSWORD" length="100">
             <comment>用户密码</comment>
             </column>
         </property>
-   	  	<property name="userAccountType" type="java.lang.String">
+        <property name="userAccountType" type="java.lang.String">
             <column name="USER_ACCOUNT_TYPE" length="100">
             <comment>用户账号类型</comment>
             </column>
         </property>
-   	  	<property name="userAccountStaus" type="java.lang.Integer">
+        <property name="userAccountStaus" type="java.lang.Integer">
             <column name="USER_ACCOUNT_STAUS" length="10">
             <comment>用户账号状态</comment>
             </column>
         </property>
-   	  	<property name="userUuid" type="java.lang.String">
-            <column name="USER_UUID" length="64">
+        <property name="userAccUserUuid" type="java.lang.String">
+            <column name="USER_ACC_USER_UUID" length="64">
             <comment>用户标示</comment>
             </column>
         </property>
-   	  	<property name="errorNum" type="java.lang.Integer">
+        <property name="errorNum" type="java.lang.Integer">
             <column name="ERROR_NUM" length="10">
             <comment>用户密码错误次数</comment>
             </column>
         </property>
-   	  	<property name="userAccountCode" type="java.lang.String">
+        <property name="userAccountCode" type="java.lang.String">
             <column name="USER_ACCOUNT_CODE" length="100">
             <comment>用户角色账号编码</comment>
             </column>
         </property>
-   	  	<property name="userAccountName" type="java.lang.String">
+        <property name="userAccountName" type="java.lang.String">
             <column name="USER_ACCOUNT_NAME" length="100">
             <comment>用户角色中文名称</comment>
             </column>
         </property>
     </class>
     <!-- 默认hql-->
-	<query name="defaultHql">    
+	<query name="defaultHqlUserAccount">    
          <![CDATA[    
               from UserAccount where 1=1    
          ]]> 
      </query>
-	<!-- 默认sql-->
-     <sql-query name="defaultsql">    
+     <!--根据用户id查询用户信息  -->
+     <query name="findUserAccByuserid">    
          <![CDATA[    
-             SELECT USER_ACCOUNT_UUID,UASER_ACCOUNT_NUM,USER_ACCOUNT_PASSWORD,USER_ACCOUNT_TYPE,USER_ACCOUNT_STAUS,USER_UUID,ERROR_NUM,USER_ACCOUNT_CODE,USER_ACCOUNT_NAME FROM tb_user_account WHERE 1=1   
+              from UserAccount as uc where 1=1    
+              and uc.userAccUserUuid =:userUuid
+         ]]> 
+     </query>
+     <!--根据用户账号和密码查询用户  -->
+     <query name="findUserAccByuserAccountAndPass">    
+         <![CDATA[    
+              from UserAccount as uc where 1=1    
+              and uc.uaserAccountNum = :acount
+              and uc.userAccountPassword = :passswd
+         ]]> 
+     </query>
+     <!-- 根据用户信息删除用户账号 -->
+     <query name="deleteUserAccByuserAccuuid">    
+         <![CDATA[    
+              delete UserAccount as uc where 1=1    
+              and uc.userAccUserUuid = :userUuid
+         ]]> 
+     </query>
+	<!-- 默认sql-->
+     <sql-query name="defaultsql_UserAccount">    
+         <![CDATA[    
+             SELECT USER_ACCOUNT_UUID,UASER_ACCOUNT_NUM,USER_ACCOUNT_PASSWORD,USER_ACCOUNT_TYPE,USER_ACCOUNT_STAUS,USER_ACC_USER_UUID,ERROR_NUM,USER_ACCOUNT_CODE,USER_ACCOUNT_NAME FROM TB_USER_ACCOUNT WHERE 1=1   
          ]]>   
      </sql-query>
 </hibernate-mapping>

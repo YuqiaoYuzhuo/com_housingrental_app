@@ -1,6 +1,7 @@
 package com.xc.basic.model;
 
 import java.util.List;
+import java.util.Map;
 /**
  * <p>Title:公共的分页信息 </p>
  * <p>Description: </p>
@@ -29,6 +30,10 @@ public class Pager<T> {
 	 * 分页的数据
 	 */
 	private List<T> datas;
+	/**
+	 * 分页参数
+	 */
+	private Map<String,Object> queryParams;
 	public int getSize() {
 		return size;
 	}
@@ -59,6 +64,14 @@ public class Pager<T> {
 
 	public void setDatas(List<T> datas) {
 		this.datas = datas;
+	}
+	
+	public Map<String, Object> getQueryParams() {
+		return queryParams;
+	}
+
+	public void setQueryParams(Map<String, Object> queryParams) {
+		this.queryParams = queryParams;
 	}
 
 	public Pager() {

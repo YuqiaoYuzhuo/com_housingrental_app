@@ -556,6 +556,13 @@ public class BaseDao<T>  implements IBaseDao<T> {
 		if(obj==null) return 0;
 		return (Integer)obj;
 	}
-	
+	@Override
+	public String getHqlByHqlName(String hqlName) {
+		return sessionFactory.openSession().getNamedQuery(hqlName).getQueryString();
+	}
+	@Override
+	public String getSqlBySqlName(String sqlName) {
+		return sessionFactory.openSession().getNamedQuery(sqlName).getQueryString();
+	}
 	
 }

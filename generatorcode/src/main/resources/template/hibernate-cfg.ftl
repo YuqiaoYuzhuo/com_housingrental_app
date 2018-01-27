@@ -20,10 +20,8 @@
             </column>
             <generator class="assigned" />
         </id>
-   	  	</#if>
-   	  	</#if>
-   	  	</#if>
-   	  	<property name="${cfp.propertyName}" type="${cfp.propertyType}">
+        <#elseif cfp.columnName != cfgPram.cfgTablePk>
+        <property name="${cfp.propertyName}" type="${cfp.propertyType}">
    	  	<#if cfp.propertyType =="java.lang.Double">
    	  	  <column name="${cfp.columnName}" precision="${cfp.columnNameLength}" scale="${cfp.doubleScale}">
    	  	<#else>
@@ -34,6 +32,9 @@
             </#if>
             </column>
         </property>
+   	  	</#if>
+   	  	</#if>
+   	  	</#if>
    	  </#list>
     </class>
     <!-- 默认hql-->
