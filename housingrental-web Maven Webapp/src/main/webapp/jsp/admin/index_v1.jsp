@@ -9,13 +9,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!--360浏览器优先以webkit内核解析-->
-    <title> ${SysPro.system_name}</title>
-    <link rel="shortcut icon" href="favicon.ico"> <link href="${SysPro.system_static_sourceurl_prefix}/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
-    <link href="${SysPro.system_static_sourceurl_prefix}/css/font-awesome.css?v=4.4.0" rel="stylesheet">
-
-    <link href="${SysPro.system_static_sourceurl_prefix}/css/animate.css" rel="stylesheet">
-    <link href="${SysPro.system_static_sourceurl_prefix}/css/style.css?v=4.1.0" rel="stylesheet">
-
+ <%@include file="/common/commonheader.jsp" %>
 </head>
 
 <body class="gray-bg">
@@ -603,14 +597,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </div>
     </div>
     <!-- 全局js -->
-    <script src="${SysPro.system_static_sourceurl_prefix}/js/jquery.min.js?v=2.1.4"></script>
-    <script src="${SysPro.system_static_sourceurl_prefix}/js/bootstrap.min.js?v=3.3.6"></script>
-    <script src="${SysPro.system_static_sourceurl_prefix}/js/plugins/layer/layer.min.js"></script>
-    <!-- Flot -->
-    <script src="${SysPro.system_static_sourceurl_prefix}/js/plugins/flot/jquery.flot.js"></script>
-    <script src="${SysPro.system_static_sourceurl_prefix}/js/plugins/flot/jquery.flot.tooltip.min.js"></script>
-    <script src="${SysPro.system_static_sourceurl_prefix}/js/plugins/flot/jquery.flot.resize.js"></script>
-    <script src="${SysPro.system_static_sourceurl_prefix}/js/plugins/flot/jquery.flot.pie.js"></script>
+    <%@include file="/common/commonfooter.jsp" %>
     <!-- 自定义js -->
     <script src="${SysPro.system_static_sourceurl_prefix}/js/content.js"></script>
     <!--flotdemo-->

@@ -5,8 +5,10 @@ import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
+import com.xc.basic.exception.BusinessException;
 import com.xc.basic.hibernate.dao.BaseDao;
 import com.xc.system_usermanage_core.dao.UserAccountDao;
+import com.xc.system_usermanage_core.enums.UserEnum;
 import com.xc.system_usermanage_core.model.UserAccount;
 
 /**
@@ -36,6 +38,21 @@ public class UserAccountDaoImpl extends BaseDao<UserAccount> implements
 		Map<String, Object> alias = new HashMap<String, Object>();
 		alias.put("acount", acount);
 		alias.put("passswd", passswd);
+		UserAccount uc = (UserAccount) this.queryObjectByHqlWithParamsAndaials(hql, alias);
+		if(uc!=null){
+			//如果禁止登陆则登录失败
+			if(uc.getUserAccountStaus()==UserEnum.USER_STATUS_LIMIT.getValue()){
+				throw new BusinessException("该账号已经被禁止登陆请联系管理员！");
+			}
+		}
+		return uc;
+	}
+
+	@Override
+	public UserAccount findUserAccountByUserAccNum(String accNum) {
+		String hql = this.getHqlByHqlName("findUserAccByuserAccount");
+		Map<String, Object> alias = new HashMap<String, Object>();
+		alias.put("acount", accNum);
 		return (UserAccount) this.queryObjectByHqlWithParamsAndaials(hql, alias);
 	}
 

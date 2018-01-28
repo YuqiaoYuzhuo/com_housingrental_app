@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.xc</groupId>
 	<artifactId>housingrental-parent</artifactId>
@@ -23,10 +24,10 @@
 		<module>../systemmanage-web Maven Webapp</module>
 		<module>../housingrental-house-web Maven Webapp</module>
 		<module>../housingrental-rental-web Maven Webapp</module>
-		
+
 		<module>../housingrental-web Maven Webapp</module>
-         
-  </modules>
+
+	</modules>
 	<!-- 模块集成 end -->
 	<dependencyManagement>
 		<dependencies>
@@ -64,7 +65,7 @@
 			</dependency>
 			<!-- 系统核心模块引入 结束 -->
 			<!-- 系统web模块注入 start -->
-			<!-- 系统web spring mvc 配置必须在前�?-->
+			<!-- 系统web spring mvc 配置必须在前�? -->
 			<dependency>
 				<groupId>com.xc.basic</groupId>
 				<artifactId>basic-springmvc</artifactId>
@@ -99,6 +100,11 @@
 			<!-- 内部模块依赖集成 结束 -->
 			<!--外部模块依赖 �?�� -->
 			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-annotations</artifactId>
+				<version>2.7.5</version>
+			</dependency>
+			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-test</artifactId>
 				<version>${spring.version}</version>
@@ -126,21 +132,21 @@
 				<scope>test</scope>
 				<version>3.1</version>
 			</dependency>
-			<!--spring-junit 的支�?-->
+			<!--spring-junit 的支�? -->
 			<dependency>
 				<groupId>junit</groupId>
 				<artifactId>junit</artifactId>
 				<version>4.12</version>
 				<scope>test</scope>
 			</dependency>
-			<!--spring-test 的支�?-->
+			<!--spring-test 的支�? -->
 			<dependency>
 				<groupId>commons-lang</groupId>
 				<artifactId>commons-lang</artifactId>
 				<version>2.6</version>
 			</dependency>
 
-			<!--Hibernate 的支�?-->
+			<!--Hibernate 的支�? -->
 			<dependency>
 				<groupId>org.hibernate</groupId>
 				<artifactId>hibernate-core</artifactId>
@@ -151,32 +157,32 @@
 				<artifactId>hibernate-ehcache</artifactId>
 				<version>${hibernate.version}</version>
 			</dependency>
-			<!--spring-context 的支�?-->
+			<!--spring-context 的支�? -->
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-context</artifactId>
 				<version>${spring.version}</version>
 			</dependency>
-			<!--spring-core 的支�?-->
+			<!--spring-core 的支�? -->
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-core</artifactId>
 				<version>${spring.version}</version>
 			</dependency>
-			<!--spring-beans 的支�?-->
+			<!--spring-beans 的支�? -->
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-beans</artifactId>
 				<version>${spring.version}</version>
 			</dependency>
 
-			<!--spring-aop 的支�?-->
+			<!--spring-aop 的支�? -->
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-aop</artifactId>
 				<version>${spring.version}</version>
 			</dependency>
-			<!--spring-orm 的支�?-->
+			<!--spring-orm 的支�? -->
 			<dependency>
 				<groupId>org.springframework</groupId>
 				<artifactId>spring-orm</artifactId>

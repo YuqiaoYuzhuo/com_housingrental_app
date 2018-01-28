@@ -56,6 +56,21 @@ public class UserAccountServiceImpl implements UserAccountService {
 
 	@Override
 	public void addUserAccount(UserAccount useAccount) {
+		if(null==useAccount){
+			throw new BusinessException("用户账号信息不存在!");
+		}
+		UserAccount useAccountTemp = userAccountDao.findUserAccountByUserAccNum(useAccount.getUaserAccountNum());
+		if(null!=useAccountTemp){
+			throw new BusinessException("用户名已经存在注册失败!");
+		}
+		String securityPassd = null;
+		//密码加密
+		try {
+		   securityPassd = SecurityUtil.md5(useAccount.getUaserAccountNum(),useAccount.getUserAccountPassword());
+		} catch (NoSuchAlgorithmException e) {
+			logger.error(e.getMessage());
+		}
+		useAccount.setUserAccountPassword(securityPassd);
 		userAccountDao.add(useAccount);
 	}
 

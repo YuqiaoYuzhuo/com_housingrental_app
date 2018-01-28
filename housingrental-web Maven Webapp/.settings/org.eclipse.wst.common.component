@@ -7,6 +7,21 @@
         <dependent-module archiveName="basic-common-1.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/basic-common/basic-common">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="system-usermanage-core-1.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/system-usermanage-core/system-usermanage-core">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="basic-hibernate-1.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/basic-hibernate/basic-hibernate">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="housingrental-house-core-1.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/housingrental-house-core/housingrental-house-core">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="housingrental-rental-core-1.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/housingrental-rental-core/housingrental-rental-core">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="systemmanage-core-1.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/systemmanage-core/systemmanage-core">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <dependent-module deploy-path="/" handle="module:/overlay/prj/system-usermange-web Maven Webapp?includes=**/**&amp;excludes=META-INF/MANIFEST.MF">
             <dependency-type>consumes</dependency-type>
         </dependent-module>

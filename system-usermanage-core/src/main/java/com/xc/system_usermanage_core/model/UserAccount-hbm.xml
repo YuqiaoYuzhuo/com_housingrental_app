@@ -75,6 +75,13 @@
               and uc.userAccountPassword = :passswd
          ]]> 
      </query>
+      <!--根据用户账号和密码查询用户  -->
+     <query name="findUserAccByuserAccount">    
+         <![CDATA[    
+              from UserAccount as uc where 1=1    
+              and uc.uaserAccountNum = :acount
+         ]]> 
+     </query>
      <!-- 根据用户信息删除用户账号 -->
      <query name="deleteUserAccByuserAccuuid">    
          <![CDATA[    

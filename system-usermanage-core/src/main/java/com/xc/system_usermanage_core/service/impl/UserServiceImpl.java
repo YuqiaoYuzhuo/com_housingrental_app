@@ -5,8 +5,12 @@ import org.springframework.stereotype.Service;
 
 import com.xc.basic.exception.BusinessException;
 import com.xc.basic.model.Pager;
+import com.xc.basic.util.DateUtil;
 import com.xc.basic.util.UUIDGenerator;
 import com.xc.system_usermanage_core.dao.UserDao;
+import com.xc.system_usermanage_core.enums.UserEnum;
+import com.xc.system_usermanage_core.enums.UserRoleEnum;
+import com.xc.system_usermanage_core.enums.UserTypeEnum;
 import com.xc.system_usermanage_core.model.UserAccount;
 import com.xc.system_usermanage_core.model.UserInfo;
 import com.xc.system_usermanage_core.model.UserInofAndAccountQm;
@@ -27,10 +31,9 @@ public class UserServiceImpl implements UserService {
 	private UserDao userDao;
 	@Autowired
 	private UserAccountService userAccountService;
-	@SuppressWarnings("null")
 	@Override
-	public void addRegister(UserAccount userAccount) {
-		if(null!=userAccount){
+	public void addPcRegister(UserAccount userAccount) {
+		if(null==userAccount){
 			throw new BusinessException("注册失败!用户账号信息不能为空！");
 		}
 		//赋值用户账号信息
@@ -38,10 +41,15 @@ public class UserServiceImpl implements UserService {
 		userAccount.setUserAccountUuid(UUIDGenerator.createUUID());
 		userAccount.setUserAccUserUuid(userUuid);
 		userAccount.setErrorNum(0);
-		userAccount.setUserAccountStaus(1);
+		userAccount.setUserAccountStaus(UserEnum.USER_STATUS_NOEMAL.getValue());
+		userAccount.setUserAccountName(UserRoleEnum.ROLE_USER_HOUSE_OWNER.getRoleName());
+		userAccount.setUserAccountCode(UserRoleEnum.ROLE_USER_HOUSE_OWNER.getRoleCode());
+		userAccount.setUserAccountType(UserTypeEnum.USER_TYEP_BACKSTAGE_HOUSEOWNER.getUserTypeCode());
 		//赋值用户信息
 		UserInfo userInfo = new UserInfo();
 		userInfo.setUserUuid(userUuid);
+		userInfo.setUserRegTime(DateUtil.getCurrentTimstamp());
+		userInfo.setUserStaus(UserEnum.USER_STATUS_NOEMAL.getValue());
 		//增加用户信息
 		userDao.add(userInfo);
 		//增加用户账号信息
@@ -49,7 +57,56 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
+	public void addWxRegister(UserAccount userAccount) {
+		if(null==userAccount){
+			throw new BusinessException("注册失败!用户账号信息不能为空！");
+		}
+		//赋值用户账号信息
+		String userUuid = UUIDGenerator.createUUID();
+		userAccount.setUserAccountUuid(UUIDGenerator.createUUID());
+		userAccount.setUserAccUserUuid(userUuid);
+		userAccount.setErrorNum(0);
+		userAccount.setUserAccountStaus(UserEnum.USER_STATUS_NOEMAL.getValue());
+		userAccount.setUserAccountName(UserRoleEnum.ROLE_RENTING_USER.getRoleName());
+		userAccount.setUserAccountCode(UserRoleEnum.ROLE_RENTING_USER.getRoleCode());
+		userAccount.setUserAccountType(UserTypeEnum.USER_TYEP_WX_RENTINGUSER.getUserTypeCode());
+		//赋值用户信息
+		UserInfo userInfo = new UserInfo();
+		userInfo.setUserUuid(userUuid);
+		userInfo.setUserRegTime(DateUtil.getCurrentTimstamp());
+		userInfo.setUserStaus(UserEnum.USER_STATUS_NOEMAL.getValue());
+		//增加用户信息
+		userDao.add(userInfo);
+		//增加用户账号信息
+		userAccountService.addUserAccount(userAccount);
+	}
+	@Override
+	public void addAdminRegister(UserAccount userAccount) {
+		if(null==userAccount){
+			throw new BusinessException("添加管理员失败!用户账号信息不能为空！");
+		}
+		//赋值用户账号信息
+		String userUuid = UUIDGenerator.createUUID();
+		userAccount.setUserAccountUuid(UUIDGenerator.createUUID());
+		userAccount.setUserAccUserUuid(userUuid);
+		userAccount.setErrorNum(0);
+		userAccount.setUserAccountStaus(UserEnum.USER_STATUS_NOEMAL.getValue());
+		userAccount.setUserAccountName(UserRoleEnum.ROLE_ADMIN.getRoleName());
+		userAccount.setUserAccountCode(UserRoleEnum.ROLE_ADMIN.getRoleCode());
+		userAccount.setUserAccountType(UserTypeEnum.USER_TYEP_BACKSTAGE_ADMIN.getUserTypeCode());
+		//赋值用户信息
+		UserInfo userInfo = new UserInfo();
+		userInfo.setUserUuid(userUuid);
+		userInfo.setUserRegTime(DateUtil.getCurrentTimstamp());
+		userInfo.setUserStaus(UserEnum.USER_STATUS_NOEMAL.getValue());
+		//增加用户信息
+		userDao.add(userInfo);
+		//增加用户账号信息
+		userAccountService.addUserAccount(userAccount);
+	}
+	@Override
 	public void delete(String id) {
+		// TODO 需要判断该用户是不是有房间和订单管理信息
 		//先删除用户信息
 		userDao.delete(id);
 		//在删除用户账号信息
@@ -57,14 +114,10 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void update(UserInfo userInfo, UserAccount userAccount) {
-		//更新用户信息
-		userDao.update(userInfo);
-		//更新用户账号信息
-		userAccountService.updateUserAccount(userAccount);
-	}
-	@Override
 	public void update(UserInfo userInfo) {
+		if(null!=userInfo){
+			throw new BusinessException("修改用户信息失败！");
+		}
 		userDao.update(userInfo);
 	}
 
@@ -78,13 +131,12 @@ public class UserServiceImpl implements UserService {
 		return userDao.load(uid);
 	}
 
-	@SuppressWarnings("null")
 	@Override
 	public UserInofAndAccountQm getLogin(String username, String password) {
 		UserInofAndAccountQm uaqm = new UserInofAndAccountQm();
 		UserAccount userAccount = null;
 		userAccount = userAccountService.findUserAccountByUserAccountAndPasswd(username, password);
-		if(null!=userAccount){
+		if(null==userAccount){
 			throw new BusinessException("账号或密码错误!");
 		}
 		//登录后获取用户信息
@@ -102,5 +154,4 @@ public class UserServiceImpl implements UserService {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
 }

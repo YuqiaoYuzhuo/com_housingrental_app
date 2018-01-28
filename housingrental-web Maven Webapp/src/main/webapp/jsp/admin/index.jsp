@@ -15,15 +15,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
     <meta name="keywords" content="">
     <meta name="description" content="">
-
+    <%@include file="/common/commonheader.jsp" %>
     <!--[if lt IE 9]>
     <meta http-equiv="refresh" content="0;ie.html" />
     <![endif]-->
-
-    <link rel="shortcut icon" href="favicon.ico"> <link href="${SysPro.system_static_sourceurl_prefix}/css/bootstrap.min.css" rel="stylesheet">
-    <link href="${SysPro.system_static_sourceurl_prefix}/css/font-awesome.min.css" rel="stylesheet">
-    <link href="${SysPro.system_static_sourceurl_prefix}/css/animate.css" rel="stylesheet">
-    <link href="${SysPro.system_static_sourceurl_prefix}/css/style.css" rel="stylesheet">
+    
 </head>
 
 <body class="fixed-sidebar full-height-layout gray-bg" style="overflow:hidden">
@@ -480,24 +476,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </div>
         <!--右侧部分结束-->
     </div>
-
-    <!-- 全局js -->
-    <script src="${SysPro.system_static_sourceurl_prefix}/js/jquery.min.js?v=2.1.4"></script>
-    <script src="${SysPro.system_static_sourceurl_prefix}/js/bootstrap.min.js?v=3.3.6"></script>
-    <script src="${SysPro.system_static_sourceurl_prefix}/js/plugins/metisMenu/jquery.metisMenu.js"></script>
-    <script src="${SysPro.system_static_sourceurl_prefix}/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
-    <script src="${SysPro.system_static_sourceurl_prefix}/js/plugins/layer/layer.min.js"></script>
-
-    <!-- 自定义js -->
-    <script src="${SysPro.system_static_sourceurl_prefix}/js/hAdmin.js?v=4.1.0"></script>
-    <script type="text/javascript" src="${SysPro.system_static_sourceurl_prefix}/js/index.js"></script>
-
-    <!-- 第三方插件 -->
-    <script src="../resources/managesource/js/plugins/pace/pace.min.js"></script>
 <div style="text-align:center;">
 <p>来源:<a href="http://www.mycodes.net/" target="_blank">源码之家</a></p>
 </div>
 </body>
-
+    <%@include file="/common/commonfooter.jsp" %>
+    <!-- 自定义js -->
+<script src="${SysPro.system_static_sourceurl_prefix}/js/hAdmin.js?v=4.1.0"></script>
+<script type="text/javascript" src="${SysPro.system_static_sourceurl_prefix}/js/index.js"></script>
 </html>
 

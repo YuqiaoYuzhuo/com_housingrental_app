@@ -45,6 +45,10 @@ public class SystemPropertiesUtil
      * 系统css后缀
      */
     private static final String system_static_sourceurl_csssuffix ="system_static_sourceurl_csssuffix";
+    /**
+     * 系统是否有验证码
+     */
+    private static final String system_isCheckCode ="system_isCheckCode";
     
     /**
      * 初始化system.propeties
@@ -103,6 +107,11 @@ public class SystemPropertiesUtil
 	    public static String getUploadPathPropertyValue(){
 	        return getPropertyValue(system_upload_dir);
 	    }
+	    
+	public static String getSystemIscheckcode() {
+			return getPropertyValue(system_isCheckCode);
+		}
+
 	public static String getPropertyValue(String key){
         if(props.containsKey(key)){
             return props.getProperty(key);

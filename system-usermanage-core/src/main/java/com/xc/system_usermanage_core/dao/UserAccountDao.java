@@ -20,6 +20,13 @@ public interface UserAccountDao extends IBaseDao<UserAccount> {
 	 */
 	public UserAccount findUserAccountByUseruuid(String userUuid);
 	/**
+	 * <p>Description:根据用户账号查询用户信息<p>
+	 * @param accNum 用户账号
+	 * @return 用户实体类
+	 * @author wanglei 2018年1月28日
+	 */
+	public UserAccount findUserAccountByUserAccNum(String accNum);
+	/**
 	 * <p>Description:根据用户账号和密码查询用户账号信息<p>
 	 * @param acount 用户账号
 	 * @param passswd 密码

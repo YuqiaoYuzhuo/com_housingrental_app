@@ -13,7 +13,7 @@
 	<name>basic-springmvc Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 	<dependencies>
-	<dependency>
+		<dependency>
 			<groupId>com.xc.basic</groupId>
 			<artifactId>basic-hibernate</artifactId>
 		</dependency>
@@ -66,19 +66,23 @@
 		<dependency>
 			<groupId>commons-fileupload</groupId>
 			<artifactId>commons-fileupload</artifactId>
-			</dependency>
+		</dependency>
 		<dependency>
 			<groupId>jsptags</groupId>
 			<artifactId>pager-taglib</artifactId>
 		</dependency>
 		<dependency>
-				<groupId>net.sf.ehcache</groupId>
-				<artifactId>ehcache</artifactId>
-			</dependency>
-			<dependency>
-				<groupId>com.alibaba</groupId>
-				<artifactId>fastjson</artifactId>
-			</dependency>
+			<groupId>net.sf.ehcache</groupId>
+			<artifactId>ehcache</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+		</dependency>
 	</dependencies>
 	<build>
 		<finalName>basic-springmvc</finalName>

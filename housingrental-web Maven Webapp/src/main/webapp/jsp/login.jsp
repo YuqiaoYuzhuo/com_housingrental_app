@@ -5,18 +5,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 %>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <title>用户登录</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
-    <link href="resources/managesource/css/bootstrap.min.css" rel="stylesheet">
-    <link href="resources/managesource/css/font-awesome.css?v=4.4.0" rel="stylesheet">
-    <link href="resources/managesource/css/animate.css" rel="stylesheet">
-    <link href="resources/managesource/css/style.css" rel="stylesheet">
-    <link href="resources/managesource/css/login.css" rel="stylesheet">
+    <%@include file="/common/commonheader.jsp" %>
     <!--[if lt IE 9]>
     <meta http-equiv="refresh" content="0;ie.html" />
     <![endif]-->
@@ -28,26 +23,77 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 </head>
 
-<body class="signin">
-    <div class="signinpanel">
-        <div class="row">
-            <div class="col-sm-12">
-                <form method="get" action="jsp/index.jsp">
-                    <h4 class="no-margins">有房么</h4>
-                    <p class="m-t-md">欢迎登录有房么后台管理系统</p>
-                    <input type="text" class="form-control uname" placeholder="用户名" />
-                    <input type="password" class="form-control pword m-b" placeholder="密码" />
-                    <a href="">忘记密码了？</a>
-                    <button class="btn btn-success btn-block">登录</button>
-                </form>
+
+<body class="gray-bg">
+    <div class="middle-box text-center loginscreen  animated fadeInDown">
+        <div>
+            <div>
+                <h1 class="logo-name">M</h1>
             </div>
-        </div>
-        <div class="signup-footer">
-            <div class="pull-left">
-                &copy; hAdmin
-            </div>
+            <h3>欢迎使用${SysPro.system_name}</h3>
+            <form class="m-t" role="form" id="loginForm">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="用户名" required="">
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" placeholder="密码" required="">
+                </div>
+                <c:if test="${SysPro.system_isCheckCode}">
+                <div class="form-group">
+                    <input type="text"  id="validateCode" name="checkcode" class="col-lg-8 form-control" placeholder="验证码" required="">
+                    <br><br>
+                    <span style="cursor:pointer">
+					<img src="<%=path %>/drawCheckCode" class=" img-responsive" onclick="reCheckcode(this)"/></span>
+                    <span style="float:right; margin-top:-10% "><small>看不清，点击图片更换</small></span>
+                </div>
+                </c:if>
+                
+                <button type="button" class="btn btn-primary block full-width m-b" onclick="submintForm()">登 录</button>
+                <p class="text-muted text-center"> <a href="#"><small>忘记密码了？</small></a> | <a href="<%=path %>/jsp/register.jsp">注册一个新账号</a>
+                </p>
+
+            </form>
         </div>
     </div>
+    <!-- 全局js -->
+    <%@include file="/common/commonfooter.jsp" %>
 </body>
-
+<script type="text/javascript">
+//获取验证码
+function reCheckcode(img) {
+	img.src="<%=path %>/drawCheckCode?"+Math.random();
+}
+//提交表单
+function submintForm(){
+	if(validateCheckcode()){
+		alert("通过校验");
+	}else{
+		alert("验证码不对");
+	}
+}
+/*动态验证验证码是否正确*/
+function validateCheckcode(){
+	var url = '<%=path %>/validateCheckcode';
+    var flag = true;
+	//获取表单值，并以json的数据形式保存到params中   
+	var params = {
+		dataType : "JSON",
+		checkcode : $("#validateCode").val()
+	};
+	$.ajax({
+		    cache: false,
+			async: false,
+			url : url,
+			type : 'POST',
+			data : params,
+			dataType : "JSON",
+			success : function(data) {
+			 if(data.istrue=="false") {	
+				 flag = false;
+			  }
+			}
+	});
+	return flag;
+}
+</script>
 </html>

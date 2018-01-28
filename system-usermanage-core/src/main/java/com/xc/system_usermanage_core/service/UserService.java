@@ -15,28 +15,29 @@ import com.xc.system_usermanage_core.model.UserInofAndAccountQm;
  */
 public interface UserService {
 	/**
-	 * <p>Description:添加用户信息<p>
-	 * @param userInfo 用户信息
+	 * <p>Description:pc端用户注册<p>
 	 * @param userAccount 用户账号
 	 * @author wanglei 2018年1月27日
 	 */
-	public void addRegister(UserAccount userAccount);
+	public void addPcRegister(UserAccount userAccount);
+	/**
+	 * <p>Description:微信端用户注册<p>
+	 * @param userAccount 用户账号信息
+	 * @author wanglei 2018年1月28日
+	 */
+	public void addWxRegister(UserAccount userAccount);
+	/**
+	 * <p>Description:后台管理员添加<p>
+	 * @param userAccount 用户账号
+	 * @author wanglei 2018年1月28日
+	 */
+	public void addAdminRegister(UserAccount userAccount);
 	/**
 	 * <p>Description:删除用户<p>
 	 * @param id 用户id
 	 * @author WangLei 2018-1-25
 	 */
 	public void delete(String id);
-	/**
-	 * <p>Description:更新用户信息，如果rids的角色在用户中已经存在不做操作，
-	 * 如果rids在用户中不存在就要添加角色，如果用户的角色不存在于Rids中则要删除
-	 * 用户组同理<p>
-	 * @param user 用户
-	 * @param rids 角色信息
-	 * @param gids 用户id
-	 * @author WangLei 2018-1-25
-	 */
-	public void update(UserInfo userInfo ,UserAccount userAccount);
 	/**
 	 * <p>Description:更新用户状态。如果开启则停用如果停用则开启<p>
 	 * @param uid 用户id
