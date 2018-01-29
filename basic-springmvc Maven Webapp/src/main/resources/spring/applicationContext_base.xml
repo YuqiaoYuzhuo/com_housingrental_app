@@ -51,11 +51,15 @@
 			<value>com.wanglei.graempinf_core.graempinf_core.model</value>
 		</property> -->
 		<!--配置文件方法 -->
-		<property name="mappingDirectoryLocations">
-            <list>
-                <value>classpath:com/xc/*/model/*.-hbm.xml</value><!-- 加载hibernate的映射文件*.hbm.xml -->
-            </list>
-        </property>
+		<!--配置文件方法 -->
+		<property name="mappingLocations">
+		   <list>
+		      <!--
+		         spring容器会去该包及子包下搜索所有的映射文件
+		       -->
+		      <value>classpath*:com/xc/*/model/*-hbm.xml</value>
+		   </list>
+				</property>
 		<property name="hibernateProperties">
 			<!-- <value> hibernate.dialect=org.hibernate.dialect.HSQLDialect </value> -->
 			<props>

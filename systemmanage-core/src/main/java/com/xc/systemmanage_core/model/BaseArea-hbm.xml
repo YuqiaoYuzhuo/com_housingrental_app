@@ -13,35 +13,30 @@
             </column>
             <generator class="assigned" />
         </id>
-   	  	<property name="id" type="java.lang.Integer">
-            <column name="id" length="10">
-            <comment>区唯一标示</comment>
-            </column>
-        </property>
-   	  	<property name="areaID" type="java.lang.String">
+        <property name="areaID" type="java.lang.String">
             <column name="areaID" length="50">
             <comment>区行政代码</comment>
             </column>
         </property>
-   	  	<property name="area" type="java.lang.String">
+        <property name="area" type="java.lang.String">
             <column name="area" length="60">
             <comment>区名称</comment>
             </column>
         </property>
-   	  	<property name="father" type="java.lang.String">
+        <property name="father" type="java.lang.String">
             <column name="father" length="6">
             <comment>上级单位行政编码</comment>
             </column>
         </property>
     </class>
     <!-- 默认hql-->
-	<query name="defaultHql">    
+	<query name="defaultHqlBaseArea">    
          <![CDATA[    
               from BaseArea where 1=1    
          ]]> 
      </query>
 	<!-- 默认sql-->
-     <sql-query name="defaultsql">    
+     <sql-query name="defaultsql_BaseArea">    
          <![CDATA[    
              SELECT id,areaID,area,father FROM tb_base_area WHERE 1=1   
          ]]>   

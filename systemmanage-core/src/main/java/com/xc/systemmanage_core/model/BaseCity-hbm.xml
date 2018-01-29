@@ -13,35 +13,30 @@
             </column>
             <generator class="assigned" />
         </id>
-   	  	<property name="id" type="java.lang.Integer">
-            <column name="id" length="10">
-            <comment>市唯一标示</comment>
-            </column>
-        </property>
-   	  	<property name="cityID" type="java.lang.String">
+        <property name="cityID" type="java.lang.String">
             <column name="cityID" length="6">
             <comment>市行政编码</comment>
             </column>
         </property>
-   	  	<property name="city" type="java.lang.String">
+        <property name="city" type="java.lang.String">
             <column name="city" length="50">
             <comment>市名称</comment>
             </column>
         </property>
-   	  	<property name="father" type="java.lang.String">
+        <property name="father" type="java.lang.String">
             <column name="father" length="6">
             <comment>上级单位行政编码</comment>
             </column>
         </property>
     </class>
     <!-- 默认hql-->
-	<query name="defaultHql">    
+	<query name="defaultHqlBaseCity">    
          <![CDATA[    
               from BaseCity where 1=1    
          ]]> 
      </query>
 	<!-- 默认sql-->
-     <sql-query name="defaultsql">    
+     <sql-query name="defaultsql_BaseCity">    
          <![CDATA[    
              SELECT id,cityID,city,father FROM tb_base_city WHERE 1=1   
          ]]>   

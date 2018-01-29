@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:mvc="http://www.springframework.org/schema/mvc"
-	xmlns:dwr="http://www.directwebremoting.org/schema/spring-dwr"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:dwr="http://www.directwebremoting.org/schema/spring-dwr"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
-		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
 		http://www.directwebremoting.org/schema/spring-dwr http://www.directwebremoting.org/schema/spring-dwr-3.0.xsd">
 	<!--基于注解配置 -->
-	 <context:component-scan base-package="com.xc.*.controller"/> 
-	 <context:component-scan base-package="com.xc.*.remoteservice"/> 
+	<context:component-scan base-package="com.xc.*.controller" />
+	<context:component-scan base-package="com.xc.*.remoteservice" />
 	<mvc:annotation-driven />
 	<!-- 将静态文件指定到某个特殊的文件夹中统一处理 -->
 	<mvc:resources location="/resources/" mapping="/resources/**" />
@@ -22,44 +20,59 @@
 		<property name="prefix" value="/WEB-INF/jsp/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
-	 <mvc:interceptors>
+	<mvc:interceptors>
 		<mvc:interceptor>
-			<mvc:mapping path="/admin/**"/>
-			<bean class="com.xc.houserental.web.AuthInterceptor"/>
+			<!-- 拦截所有的请求，这个必须写在前面，也就是写在【不拦截】的上面 -->
+			<mvc:mapping path="/**" />
+			<!-- 但是排除下面这些，也就是不拦截请求 -->
+			<mvc:exclude-mapping path="/jsp/login.jsp" />
+			<mvc:exclude-mapping path="/jsp/register.jsp" />
+			<mvc:exclude-mapping path="/common/commonfooter.jsp" />
+			<mvc:exclude-mapping path="/common/commonheader.jsp" />
+			<mvc:exclude-mapping path="/login" />
+			<mvc:exclude-mapping path="/validateCheckcode" />
+			<mvc:exclude-mapping path="/drawCheckCode" />
+			<mvc:exclude-mapping path="/register"/>
+			<mvc:exclude-mapping path="/resources/**"/>
+			<bean class="com.xc.houserental.web.AuthInterceptor" />
 		</mvc:interceptor>
-	</mvc:interceptors> 
-	<dwr:controller id="dwrController" debug="true"/>
+	</mvc:interceptors>
+	<dwr:controller id="dwrController" debug="true" />
 	<dwr:annotation-config id="dwrAnnotationConfig" />
-  	<dwr:annotation-scan base-package="com.xc.houserental.dwr" scanDataTransferObject="true"/>
+	<dwr:annotation-scan base-package="com.xc.houserental.dwr"
+		scanDataTransferObject="true" />
 	<bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
-	  <property value="true" name="alwaysUseFullPath"></property> 
-	  <property name="mappings">
-	    <props> 
-	      <prop key="/dwr/**/*">dwrController</prop>
-	    </props>
-	 </property> 
+		<property value="true" name="alwaysUseFullPath"></property>
+		<property name="mappings">
+			<props>
+				<prop key="/dwr/**/*">dwrController</prop>
+			</props>
+		</property>
 	</bean>
-	
-     <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
-  <property name="messageConverters">
-   <list >
-    <ref bean="mappingJacksonHttpMessageConverter" />
-   </list>
-  </property>
- </bean>
- <bean id="mappingJacksonHttpMessageConverter"
-  class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
-  <property name="supportedMediaTypes">
-   <list>
-    <value>text/html;charset=UTF-8</value>
-   </list>
-  </property>
- </bean> 
+
+	<bean
+		class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+		<property name="messageConverters">
+			<list>
+				<ref bean="mappingJacksonHttpMessageConverter" />
+			</list>
+		</property>
+	</bean>
+	<bean id="mappingJacksonHttpMessageConverter"
+		class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+		<property name="supportedMediaTypes">
+			<list>
+				<value>text/html;charset=UTF-8</value>
+			</list>
+		</property>
+	</bean>
 
 
 	<!-- 配置文件上传 -->
-	<bean id="multipartResolver" class ="org.springframework.web.multipart.commons.CommonsMultipartResolver"> 
-		<property name="maxUploadSize" value="5000000"></property> </bean> 
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="5000000"></property>
+	</bean>
 	<!-- 配置自定义异常处理类 -->
-    <bean id="handlerExceptionResolver" class="com.xc.houserental.excepthandler.MyExceptionHandler"/> 
+	<bean id="handlerExceptionResolver" class="com.xc.houserental.excepthandler.MyExceptionHandler" />
 </beans>

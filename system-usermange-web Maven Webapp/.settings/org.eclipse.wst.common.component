@@ -7,6 +7,9 @@
         <dependent-module archiveName="basic-hibernate-1.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/basic-hibernate/basic-hibernate">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="systemmanage-core-1.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/systemmanage-core/systemmanage-core">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <dependent-module archiveName="system-usermanage-core-1.0.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/system-usermanage-core/system-usermanage-core">
             <dependency-type>uses</dependency-type>
         </dependent-module>

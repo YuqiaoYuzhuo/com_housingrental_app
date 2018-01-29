@@ -30,13 +30,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div>
                 <h1 class="logo-name">M</h1>
             </div>
-            <h3>欢迎使用${SysPro.system_name}</h3>
-            <form class="m-t" role="form" id="loginForm">
+            <h4><span id="msg" style="color:red;">iiiiii</span></h4>
+            <form class="m-t" role="form" id="loginForm" onkeydown='on_return()'>
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="用户名" required="">
+                    <input type="text" class="form-control" name="userAccount" id ="userAccount" placeholder="用户名" required="">
                 </div>
                 <div class="form-group">
-                    <input type="password" class="form-control" placeholder="密码" required="">
+                    <input type="password" class="form-control" name="passWord" id ="passWord" placeholder="密码" required="">
                 </div>
                 <c:if test="${SysPro.system_isCheckCode}">
                 <div class="form-group">
@@ -59,16 +59,96 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <%@include file="/common/commonfooter.jsp" %>
 </body>
 <script type="text/javascript">
+$(document).ready(function(){
+	$("#msg").hide();
+	var logginTimeOut = "${logginTimeOut}";
+	if(logginTimeOut=="true"){
+		$("#msg").show();
+		$("#msg").text("登录超时，请重新登录！");
+	}
+});
 //获取验证码
 function reCheckcode(img) {
 	img.src="<%=path %>/drawCheckCode?"+Math.random();
 }
+//校验用户名
+function validateUserName(){
+	if(!$("#userAccount").val()){
+		$("#msg").show();
+		$("#msg").text("用户名不能为空!");
+		return false;
+	}else{
+		return true;
+	}
+		
+}
+//校验密码
+function validateUserPassword(){
+	if(!$("#passWord").val()){
+		$("#msg").show();
+		$("#msg").text("密码不能为空!");
+		return false;
+	}
+	else{
+		return true;
+	}
+}
+//校验验证码
+function validateCheckCodeIsNull(){
+	if(!$("#validateCode").val()){
+		$("#msg").show();
+		$("#msg").text("验证码不能为空!");
+		return false;
+	}else{
+		return validateCheckcode();
+	}
+}
+//登录校验
+function validateLoginInfo (){
+	if(validateUserName() && validateUserPassword()){
+		if(validateCheckCodeIsNull()){
+			return true;
+		}else{
+			$("#msg").show();
+			$("#msg").text("验证码错误!");
+		}
+	}
+	return false;
+}
+//点击enter 登录
+function on_return(){
+	 if(window.event.keyCode == 13){
+	  if (document.all('submitbtn')!=null){
+	   document.all('submitbtn').click();
+	   }
+	 }
+}
 //提交表单
 function submintForm(){
-	if(validateCheckcode()){
-		alert("通过校验");
-	}else{
-		alert("验证码不对");
+	if(validateLoginInfo ()){
+		if(validateCheckcode()){
+			var params = {
+			    userAccount : $("#userAccount").val(),
+				passWord : $("#passWord").val()
+				};
+			var url = '<%=path %>/login';
+			$.ajax({
+			    cache: false,
+				async: false,
+				url : url,
+				type : 'POST',
+				data : params,
+				dataType : "JSON",
+				success : function(data) {
+					if(data.success=="false"){
+						$("#msg").show();
+						$("#msg").text(data.message);
+					}else{
+						window.location.href="<%=path%>/jsp/admin/index.jsp";
+					}
+				}
+		});
+		}
 	}
 }
 /*动态验证验证码是否正确*/

@@ -13,50 +13,45 @@
             </column>
             <generator class="assigned" />
         </id>
-   	  	<property name="dictUuid" type="java.lang.String">
-            <column name="DICT_UUID" length="64">
-            <comment>字典码标示</comment>
-            </column>
-        </property>
-   	  	<property name="dcitTypeuuid" type="java.lang.String">
+        <property name="dcitTypeuuid" type="java.lang.String">
             <column name="DCIT_TYPEUUID" length="64">
             <comment>字典类型标示</comment>
             </column>
         </property>
-   	  	<property name="dcitEnum" type="java.lang.Integer">
+        <property name="dcitEnum" type="java.lang.Integer">
             <column name="DCIT_ENUM" length="10">
             <comment>字典码值</comment>
             </column>
         </property>
-   	  	<property name="dictName" type="java.lang.String">
+        <property name="dictName" type="java.lang.String">
             <column name="DICT_NAME" length="100">
             <comment>字典码名称</comment>
             </column>
         </property>
-   	  	<property name="dictValid" type="java.lang.Integer">
+        <property name="dictValid" type="java.lang.Integer">
             <column name="DICT_VALID" length="10">
             <comment>字典码是否有效</comment>
             </column>
         </property>
-   	  	<property name="dcitSort" type="java.lang.Integer">
+        <property name="dcitSort" type="java.lang.Integer">
             <column name="DCIT_SORT" length="10">
             <comment>字典码排序</comment>
             </column>
         </property>
-   	  	<property name="dcitLastModifyTime" type="java.sql.Timestamp">
+        <property name="dcitLastModifyTime" type="java.sql.Timestamp">
             <column name="DCIT_LAST_MODIFY_TIME" length="19">
             <comment>最后修改时间</comment>
             </column>
         </property>
     </class>
     <!-- 默认hql-->
-	<query name="defaultHql">    
+	<query name="defaultHqlDict">    
          <![CDATA[    
               from Dict where 1=1    
          ]]> 
      </query>
 	<!-- 默认sql-->
-     <sql-query name="defaultsql">    
+     <sql-query name="defaultsql_Dict">    
          <![CDATA[    
              SELECT DICT_UUID,DCIT_TYPEUUID,DCIT_ENUM,DICT_NAME,DICT_VALID,DCIT_SORT,DCIT_LAST_MODIFY_TIME FROM tb_dict WHERE 1=1   
          ]]>   

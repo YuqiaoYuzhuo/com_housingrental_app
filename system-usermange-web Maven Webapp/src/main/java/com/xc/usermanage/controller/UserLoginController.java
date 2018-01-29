@@ -37,6 +37,11 @@ public class UserLoginController extends CommonCotroller {
 	private static Logger logger = Logger.getLogger(UserLoginController.class);
 	@Autowired
 	private UserService userService ;
+	@RequestMapping(value="/login",method=RequestMethod.GET)
+	public String login(Model model) {
+		model.addAttribute("error", "");
+		return "/login";
+	}
 	/**
 	 * <p>Description:用户登录<p>
 	 * @param userAccount 用户账号
@@ -45,18 +50,23 @@ public class UserLoginController extends CommonCotroller {
 	 * @param session session
 	 * @author wanglei 2018年1月28日
 	 */
-	@RequestMapping(value="/login",method=RequestMethod.POST)
+	@RequestMapping(value="/login",method=RequestMethod.POST,produces = "application/json; charset=utf-8")
+	@ResponseBody
 	public String login(String userAccount,String passWord,Model model,HttpSession session){
+		Map<String,String> map= new HashMap<>();
 		UserInofAndAccountQm loginUser =null;
 		try {
 			loginUser = userService.getLogin(userAccount, passWord);
+			session.setAttribute("loginUser", loginUser);
+			logger.info("---------------------用户["+loginUser.getUserAcc().getUaserAccountNum()+"]登录成功！"+"-----------");
+			ProjectSessionContext.addSessoin(session);
+			map.put("success", "true");
 		} catch (Exception e) {
+			map.put("success", "false");
+			map.put("message", e.getMessage());
 			logger.error("-----------------------------用户登录失败："+e.getMessage()+"-----------");
 		}
-		session.setAttribute("loginUser", loginUser);
-		logger.info("---------------------用户["+loginUser.getUserAcc().getUaserAccountNum()+"]登录成功！"+"-----------");
-		ProjectSessionContext.addSessoin(session);
-		return "redirect:jsp/admin/index";
+		return JSONObject.toJSONString(map);
 	}
 	/**
 	 * <p>Description:验证码校验<p>
