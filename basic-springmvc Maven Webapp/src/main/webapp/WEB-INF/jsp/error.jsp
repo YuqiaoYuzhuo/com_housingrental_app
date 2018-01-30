@@ -33,7 +33,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <div class="error-desc">
             服务器好像出错了...
             <br/>返回
-            <br/><a href="<%=basePath%>/jsp/index.jsp" class="btn btn-primary m-t">主页</a>
+            <br/><a href="<%=basePath%>/admin/index" class="btn btn-primary m-t">主页</a>
         </div>
     </div>
 

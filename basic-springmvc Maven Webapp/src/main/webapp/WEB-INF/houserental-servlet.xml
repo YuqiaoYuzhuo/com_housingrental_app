@@ -23,17 +23,8 @@
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<!-- 拦截所有的请求，这个必须写在前面，也就是写在【不拦截】的上面 -->
-			<mvc:mapping path="/**" />
+			<mvc:mapping path="/admin/**" />
 			<!-- 但是排除下面这些，也就是不拦截请求 -->
-			<mvc:exclude-mapping path="/jsp/login.jsp" />
-			<mvc:exclude-mapping path="/jsp/register.jsp" />
-			<mvc:exclude-mapping path="/common/commonfooter.jsp" />
-			<mvc:exclude-mapping path="/common/commonheader.jsp" />
-			<mvc:exclude-mapping path="/login" />
-			<mvc:exclude-mapping path="/validateCheckcode" />
-			<mvc:exclude-mapping path="/drawCheckCode" />
-			<mvc:exclude-mapping path="/register"/>
-			<mvc:exclude-mapping path="/resources/**"/>
 			<bean class="com.xc.houserental.web.AuthInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>

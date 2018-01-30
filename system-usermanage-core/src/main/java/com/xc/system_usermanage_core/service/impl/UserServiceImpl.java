@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.xc.basic.exception.BusinessException;
 import com.xc.basic.model.Pager;
+import com.xc.basic.model.UserSession;
 import com.xc.basic.util.DateUtil;
 import com.xc.basic.util.UUIDGenerator;
 import com.xc.system_usermanage_core.dao.UserDao;
@@ -150,8 +151,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public UserInfo getCurentLoginUser() {
-		// TODO Auto-generated method stub
-		return null;
+	public UserInofAndAccountQm getCurentLoginUser() {
+		return UserSession.get("loginUser", UserInofAndAccountQm.class);
 	}
 }

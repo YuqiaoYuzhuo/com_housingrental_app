@@ -30,7 +30,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div>
                 <h1 class="logo-name">M</h1>
             </div>
-            <h4><span id="msg" style="color:red;">iiiiii</span></h4>
+            <h4><span id="msg" style="color:red;"></span></h4>
             <form class="m-t" role="form" id="loginForm" onkeydown='on_return()'>
                 <div class="form-group">
                     <input type="text" class="form-control" name="userAccount" id ="userAccount" placeholder="用户名" required="">
@@ -57,6 +57,59 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </div>
     <!-- 全局js -->
     <%@include file="/common/commonfooter.jsp" %>
+      <%--如果配置不需要验证码则不输出验证码 --%>
+     <c:if test="${SysPro.system_isCheckCode}">
+	     <script type="text/javascript" >
+	   //获取验证码
+	 	function reCheckcode(img) {
+	 		img.src="<%=path %>/drawCheckCode?"+Math.random();
+	 	}
+	 	//校验验证码
+	 	function validateCheckCodeIsNull(){
+	 		if(!$("#validateCode").val()){
+	 			$("#msg").show();
+	 			$("#msg").text("验证码不能为空!");
+	 			return false;
+	 		}else{
+	 			return validateCheckcode();
+	 		}
+	 	}
+	     </script>
+     </c:if>
+        <%--如果配置不需要验证码则不输出验证码 --%>
+     <c:if test="${SysPro.system_isCheckCode}">
+      <script type="text/javascript" >
+     	//登录校验
+			function validateLoginInfo (){
+				if(validateUserName() && validateUserPassword()){
+					if(ischeck=="true"){
+						if(validateCheckCodeIsNull()){
+							return true;
+						}else{
+							$("#msg").show();
+							$("#msg").text("验证码错误!");
+						}
+					}else{
+						return true;
+					}
+					
+				}
+				return false;
+			}
+     	</script>
+     </c:if>
+     <%--如果配置不需要验证码则不输出验证码 --%>
+     <c:if test="${!SysPro.system_isCheckCode}">
+      <script type="text/javascript" >
+     	//登录校验
+		function validateLoginInfo (){
+			if(validateUserName() && validateUserPassword()){
+					return true;
+				}
+				return false;
+			}
+     	</script>
+     </c:if>
 </body>
 <script type="text/javascript">
 $(document).ready(function(){
@@ -67,10 +120,6 @@ $(document).ready(function(){
 		$("#msg").text("登录超时，请重新登录！");
 	}
 });
-//获取验证码
-function reCheckcode(img) {
-	img.src="<%=path %>/drawCheckCode?"+Math.random();
-}
 //校验用户名
 function validateUserName(){
 	if(!$("#userAccount").val()){
@@ -93,40 +142,15 @@ function validateUserPassword(){
 		return true;
 	}
 }
-//校验验证码
-function validateCheckCodeIsNull(){
-	if(!$("#validateCode").val()){
-		$("#msg").show();
-		$("#msg").text("验证码不能为空!");
-		return false;
-	}else{
-		return validateCheckcode();
-	}
-}
-//登录校验
-function validateLoginInfo (){
-	if(validateUserName() && validateUserPassword()){
-		if(validateCheckCodeIsNull()){
-			return true;
-		}else{
-			$("#msg").show();
-			$("#msg").text("验证码错误!");
-		}
-	}
-	return false;
-}
 //点击enter 登录
 function on_return(){
-	 if(window.event.keyCode == 13){
-	  if (document.all('submitbtn')!=null){
-	   document.all('submitbtn').click();
-	   }
-	 }
+ if(window.event.keyCode == 13){
+	 submintForm();
+ }
 }
 //提交表单
 function submintForm(){
 	if(validateLoginInfo ()){
-		if(validateCheckcode()){
 			var params = {
 			    userAccount : $("#userAccount").val(),
 				passWord : $("#passWord").val()
@@ -144,11 +168,10 @@ function submintForm(){
 						$("#msg").show();
 						$("#msg").text(data.message);
 					}else{
-						window.location.href="<%=path%>/jsp/admin/index.jsp";
+						window.location.href="<%=path%>/admin/index";
 					}
 				}
 		});
-		}
 	}
 }
 /*动态验证验证码是否正确*/

@@ -58,7 +58,7 @@ public class UserLoginController extends CommonCotroller {
 		try {
 			loginUser = userService.getLogin(userAccount, passWord);
 			session.setAttribute("loginUser", loginUser);
-			logger.info("---------------------用户["+loginUser.getUserAcc().getUaserAccountNum()+"]登录成功！"+"-----------");
+			logger.info("---------------------用户["+loginUser.getUserInfo().getUserName()+"]登录成功！"+"-----------");
 			ProjectSessionContext.addSessoin(session);
 			map.put("success", "true");
 		} catch (Exception e) {
@@ -67,6 +67,23 @@ public class UserLoginController extends CommonCotroller {
 			logger.error("-----------------------------用户登录失败："+e.getMessage()+"-----------");
 		}
 		return JSONObject.toJSONString(map);
+	}
+	/**
+	 * <p>Description:退出登录<p>
+	 * @param session
+	 * @return
+	 * @author wanglei 2018年1月30日
+	 */
+	@RequestMapping(value="/loginout",method=RequestMethod.GET)
+	public String loginout(HttpSession session){
+		UserInofAndAccountQm loginUser =(UserInofAndAccountQm)session.getAttribute("loginUser");
+		if(null!=loginUser){
+			logger.debug("------------用户["+loginUser.getUserInfo().getUserName()+"]退出了系统--------");
+		}
+		session.removeAttribute("loginUser");
+		ProjectSessionContext.removeSession(session);
+		session.invalidate();
+		return "/login";
 	}
 	/**
 	 * <p>Description:验证码校验<p>

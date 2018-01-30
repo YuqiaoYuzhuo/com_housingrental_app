@@ -38,7 +38,7 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 		UserInofAndAccountQm user = (UserInofAndAccountQm)session.getAttribute("loginUser");
 		if(user==null) {
 			request.setAttribute("logginTimeOut", true);
-			request.getRequestDispatcher("/jsp/login.jsp").forward(request, response);
+			request.getRequestDispatcher("/login").forward(request, response);
 			return false;
 		}
 //		} else {

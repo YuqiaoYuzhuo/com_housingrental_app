@@ -55,8 +55,8 @@ public class UserServiceTest {
 	
 	public void testaddAdminRegister(){
 		UserAccount userAccount =new UserAccount ();
-		userAccount.setUaserAccountNum("1883455676");
-		userAccount.setUserAccountPassword("1qaz!QAZ");
+		userAccount.setUaserAccountNum("admin");
+		userAccount.setUserAccountPassword("1");
 		userService.addAdminRegister(userAccount);
 	}
 	@Test

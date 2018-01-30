@@ -16,6 +16,10 @@
 			<groupId>com.xc.basic</groupId>
 			<artifactId>basic-common</artifactId>
 		</dependency>
+		  <dependency>
+				<groupId>com.xc.basic</groupId>
+				<artifactId>basic-springmvc</artifactId>
+			</dependency>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<artifactId>system-usermanage-core</artifactId>
