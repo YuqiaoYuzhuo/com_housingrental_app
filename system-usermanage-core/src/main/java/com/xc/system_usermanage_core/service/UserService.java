@@ -72,4 +72,5 @@ public interface UserService {
 	 * @author WangLei 2017年2月11日
 	 */
 	public UserInofAndAccountQm getCurentLoginUser();
+
 }

@@ -108,4 +108,27 @@ public class UserAccountServiceImpl implements UserAccountService {
 		userAccountDao.update(userAccount);
 	}
 
+	@Override
+	public boolean checkoldPasswd(String useaccountrid, String oldPassd) {
+		boolean istrue = true;
+		UserAccount temUacc  = userAccountDao.load(useaccountrid);
+		//如果用户不存在不能更新
+		if(null==temUacc){
+			logger.debug("用户不存在不能修改密码");
+			throw new BusinessException("用户不存在不能修改密码!");
+		}
+		String securityPassd = null;
+		//密码加密
+		try {
+		   securityPassd = SecurityUtil.md5(temUacc.getUaserAccountNum(),oldPassd);
+		} catch (NoSuchAlgorithmException e) {
+			logger.error(e.getMessage());
+		}
+		if(!securityPassd.equals(temUacc.getUserAccountPassword())){
+			logger.debug("和原密码不一致，不能修改!");
+			istrue =false;
+		}
+		return istrue;
+	}
+
 }

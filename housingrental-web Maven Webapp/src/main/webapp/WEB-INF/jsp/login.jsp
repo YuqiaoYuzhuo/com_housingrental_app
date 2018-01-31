@@ -49,7 +49,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </c:if>
                 
                 <button type="button" class="btn btn-primary block full-width m-b" onclick="submintForm()">登 录</button>
-                <p class="text-muted text-center"> <a href="#"><small>忘记密码了？</small></a> | <a href="<%=path %>/jsp/register.jsp">注册一个新账号</a>
+                <p class="text-muted text-center"> <a href="#"><small>忘记密码了？</small></a> | <a href="<%=basePath %>/register.jsp">注册一个新账号</a>
                 </p>
 
             </form>

@@ -42,7 +42,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </div>
                 <button type="submit" class="btn btn-primary block full-width m-b">注 册</button>
 
-                <p class="text-muted text-center"><small>已经有账户了？</small><a href="jsp/login.jsp">点此登录</a>
+                <p class="text-muted text-center"><small>已经有账户了？</small><a href="login.jsp">点此登录</a>
                 </p>
 
             </form>

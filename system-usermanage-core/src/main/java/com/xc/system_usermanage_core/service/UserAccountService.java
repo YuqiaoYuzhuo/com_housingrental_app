@@ -64,4 +64,12 @@ public interface UserAccountService {
 	 * @author wanglei 2018年1月27日
 	 */
 	public void updateUserAccount(UserAccount userAccount);
+	/**
+	 * <p>Description:校验原始密码是否正确<p>
+	 * @param useaccountrid 用户id
+	 * @param oldPassd 旧密码
+	 * @return
+	 * @author wanglei 2018年1月31日
+	 */
+	public boolean checkoldPasswd(String useaccountrid,String oldPassd);
 }

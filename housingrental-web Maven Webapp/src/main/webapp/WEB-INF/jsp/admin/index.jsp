@@ -226,7 +226,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             </a>
                             <ul class="dropdown-menu dropdown-alerts">
                                 <li>
-                                    <a class="J_menuItem"  href="user/profile">
+                                    <a class="J_menuItem dropdown-toggle" data-toggle="dropdown"  href="user/profile">
                                         <div>
                                             <i class="glyphicon glyphicon-user"></i>
                                             		个人资料
@@ -269,5 +269,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <!-- 自定义js -->
 <script src="${SysPro.system_static_sourceurl_prefix}/js/hAdmin.js?v=4.1.0"></script>
 <script type="text/javascript" src="${SysPro.system_static_sourceurl_prefix}/js/index.js"></script>
+<script type="text/javascript">
+$(function () {          
+    $(".J_menuItem").on('click', function (e) {
+    	$(".dropdown").removeClass('open');
+    });
+
+});
+</script>
 </html>
 

@@ -25,6 +25,11 @@ public class AdminController extends CommonCotroller {
 	public String index(){
 		return "/admin/index";
 	}
+	/**
+	 * <p>Description:欢迎首页文件<p>
+	 * @return
+	 * @author wanglei 2018年1月31日
+	 */
 	@RequestMapping(value="/welcomeindex",method=RequestMethod.GET)
 	public String welcomeIndex(){
 		return "/admin/index_v1";

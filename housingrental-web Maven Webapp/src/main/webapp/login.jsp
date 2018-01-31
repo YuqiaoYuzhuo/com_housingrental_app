@@ -30,7 +30,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div>
                 <h1 class="logo-name">M</h1>
             </div>
-            <h4><span id="msg" style="color:red;">iiiiii</span></h4>
+            <h4><span id="msg" style="color:red;"></span></h4>
             <form class="m-t" role="form" id="loginForm" onkeydown='on_return()'>
                 <div class="form-group">
                     <input type="text" class="form-control" name="userAccount" id ="userAccount" placeholder="用户名" required="">
@@ -49,7 +49,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </c:if>
                 
                 <button type="button"  class="btn btn-primary block full-width m-b" onclick="submintForm()">登 录</button>
-                <p class="text-muted text-center"> <a href="#"><small>忘记密码了？</small></a> | <a href="<%=path %>/jsp/register.jsp">注册一个新账号</a>
+                <p class="text-muted text-center"> <a href="#"><small>忘记密码了？</small></a> | <a href="<%=path %>/register.jsp">注册一个新账号</a>
                 </p>
 
             </form>
