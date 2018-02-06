@@ -8,7 +8,7 @@
 	<packaging>pom</packaging>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<spring.version>4.2.5.RELEASE</spring.version>
+		<spring.version>4.3.0.RELEASE</spring.version>
 		<hibernate.version>4.2.0.Final</hibernate.version>
 	</properties>
 	<!-- 模块集成 start -->
@@ -336,40 +336,5 @@
 			</plugin>
 			<!--Tomcat 发布网站应用配置结束 -->
 		</plugins>
-		<pluginManagement>
-			<plugins>
-				<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
-				<plugin>
-					<groupId>org.eclipse.m2e</groupId>
-					<artifactId>lifecycle-mapping</artifactId>
-					<version>1.0.0</version>
-					<configuration>
-						<lifecycleMappingMetadata>
-							<pluginExecutions>
-								<pluginExecution>
-									<pluginExecutionFilter>
-										<groupId>
-											org.apache.maven.plugins
-										</groupId>
-										<artifactId>
-											maven-resources-plugin
-										</artifactId>
-										<versionRange>
-											[2.5,)
-										</versionRange>
-										<goals>
-											<goal>testResources</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<ignore></ignore>
-									</action>
-								</pluginExecution>
-							</pluginExecutions>
-						</lifecycleMappingMetadata>
-					</configuration>
-				</plugin>
-			</plugins>
-		</pluginManagement>
 	</build>
 </project>
