@@ -83,6 +83,6 @@
 	</filter-mapping>
 	<servlet-mapping>
 		<servlet-name>houserental</servlet-name>
-		<url-pattern>/dwr/*</url-pattern>
+		<url-pattern>/*</url-pattern>
 	</servlet-mapping>
 </web-app>

@@ -5,7 +5,7 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
 		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
-		http://www.directwebremoting.org/schema/spring-dwr http://www.directwebremoting.org/schema/spring-dwr-3.0.xsd">
+       http://www.directwebremoting.org/schema/spring-dwr http://www.directwebremoting.org/schema/spring-dwr-3.0.xsd">
 	<!--基于注解配置 -->
 	<context:component-scan base-package="com.xc.*.controller" />
 	<context:component-scan base-package="com.xc.*.remoteservice" />
@@ -28,10 +28,6 @@
 			<bean class="com.xc.houserental.web.AuthInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>
-	<dwr:controller id="dwrController" debug="true" />
-	<dwr:annotation-config id="dwrAnnotationConfig" />
-	<dwr:annotation-scan base-package="com.xc.houserental.dwr"
-		scanDataTransferObject="true" />
 	<bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
 		<property value="true" name="alwaysUseFullPath"></property>
 		<property name="mappings">
