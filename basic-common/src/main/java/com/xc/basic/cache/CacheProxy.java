@@ -1,7 +1,5 @@
 package com.xc.basic.cache;
 
-import java.util.concurrent.Callable;
-
 import org.springframework.cache.Cache;
 
 /**
@@ -55,17 +53,6 @@ public class CacheProxy implements Cache
         	systemInitCacheTool.initCache(key);
         }
         obj = cache.get(key,type);
-        return obj;
-    }
-
-    @Override
-    public <T> T get(Object key, Callable<T> valueLoader)
-    {
-        T obj =cache.get(key,valueLoader);
-        if(obj == null){
-        	systemInitCacheTool.initCache(key);
-        }
-        obj = cache.get(key,valueLoader);
         return obj;
     }
 

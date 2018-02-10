@@ -81,8 +81,4 @@
 		<filter-name>SystemContextFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
-	<servlet-mapping>
-		<servlet-name>houserental</servlet-name>
-		<url-pattern>/dwr/*</url-pattern>
-	</servlet-mapping>
 </web-app>

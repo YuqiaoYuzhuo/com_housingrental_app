@@ -1,97 +1,128 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<parent>
-		<groupId>com.xc</groupId>
-		<artifactId>housingrental-parent</artifactId>
-		<version>1.0</version>
-		<relativePath>../housingrental-parent/pom.xml</relativePath>
-	</parent>
-
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<spring.version>4.2.5.RELEASE</spring.version>
+		<hibernate.version>4.2.0.Final</hibernate.version>
+		<jackson.version>2.7.5</jackson.version>
+		<junit.version>4.10</junit.version>
+		<json-lib.version>2.4</json-lib.version>
+		<commons-compress.version>1.5</commons-compress.version>
+		<commons-beanutils.version>1.8.3</commons-beanutils.version>
+		<commons-io.version>2.4</commons-io.version>
+		<commons-logging.version>1.1.1</commons-logging.version>
+		<commons-lang.version>2.6</commons-lang.version>
+		<freemarker.version>2.3.23</freemarker.version>
+		<poi.version>3.9</poi.version>
+		<quartz.version>2.2.3</quartz.version>
+		<ehcache-spring.version>1.2.0</ehcache-spring.version>
+		<net.sf.ehcache.version>2.10.3</net.sf.ehcache.version>
+		<log4j-core.version>2.0.2</log4j-core.version>
+		<log4j.version>1.2.16</log4j.version>
+		<slf4j-api.version>1.7.2</slf4j-api.version>
+		<mysql-connector.version>5.1.41</mysql-connector.version>
+		<project.version>1.0</project.version>
+		<javax.inject.version>1</javax.inject.version>
+	    <javax.annotation.version>1.0</javax.annotation.version>
+	    <commons-dbcp.version>1.4</commons-dbcp.version>
+		<org.aspectj.version>1.8.9</org.aspectj.version>
+	</properties>
 	<groupId>com.xc.basic</groupId>
 	<artifactId>basic-hibernate</artifactId>
+	<version>1.0</version>
 	<packaging>jar</packaging>
 
 	<name>basic-hibernate</name>
 	<url>http://maven.apache.org</url>
-	<properties>
-		<argLine>-Dfile.encoding=UTF-8</argLine>
-	</properties>
 	<dependencies>
-
 		<dependency>
 			<groupId>commons-beanutils</groupId>
 			<artifactId>commons-beanutils</artifactId>
+			<version>${commons-beanutils.version}</version>
 		</dependency>
-		<!--Hibernate 的支持 -->
+		<!--Hibernate 的支�? -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
+			<version>${hibernate.version}</version>
 		</dependency>
-		<!--spring-context 的支持 -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-ehcache</artifactId>
+			<version>${hibernate.version}</version>
+		</dependency>
+		<!--spring-context 的支�? -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
+			<version>${spring.version}</version>
 		</dependency>
-		<!--spring-core 的支持 -->
+		<!--spring-core 的支�? -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
+			<version>${spring.version}</version>
 		</dependency>
-		<!--spring-beans 的支持 -->
+		<!--spring-beans 的支�? -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-beans</artifactId>
+			<version>${spring.version}</version>
 		</dependency>
-		<!--spring-test 的支持 -->
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-test</artifactId>
-		</dependency>
-		<!--spring-aop 的支持 -->
+
+		<!--spring-aop 的支�? -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-aop</artifactId>
+			<version>${spring.version}</version>
 		</dependency>
-		<!--spring-orm 的支持 -->
+		<!--spring-orm 的支�? -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-orm</artifactId>
-		</dependency>
-		<!--spring-junit 的支持 -->
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<scope>test</scope>
+			<version>${spring.version}</version>
 		</dependency>
 		<!--数据库驱动的支持 -->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
+			<version>${mysql-connector.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>javax.inject</groupId>
 			<artifactId>javax.inject</artifactId>
+			<version>${javax.inject.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>javax.annotation</groupId>
 			<artifactId>jsr250-api</artifactId>
+			<version>${javax.annotation.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>commons-dbcp</groupId>
 			<artifactId>commons-dbcp</artifactId>
+			<version>${commons-dbcp.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
+			<version>${slf4j-api.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>${log4j.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjweaver</artifactId>
+			<version>${org.aspectj.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.xc.basic</groupId>
 			<artifactId>basic-common</artifactId>
+			<version>${project.version}</version>
 		</dependency>
 	</dependencies>
 	<build>
@@ -99,9 +130,9 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				 <configuration>  
-          			<skipTests>true</skipTests>  
-        		</configuration> 
+				<configuration>
+					<skipTests>true</skipTests>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

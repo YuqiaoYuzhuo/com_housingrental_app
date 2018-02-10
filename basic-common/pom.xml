@@ -13,19 +13,33 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<jackson.version>2.7.5</jackson.version>
+		<spring.version>4.2.5.RELEASE</spring.version>
+		<junit.version>4.10</junit.version>
+		<commons-beanutils.veesion>4.10</commons-beanutils.veesion>
+		<json-lib.version>2.4</json-lib.version>
+		<commons-compress.version>1.5</commons-compress.version>
+		<commons-beanutils.version>1.8.3</commons-beanutils.version>
+		<commons-io.version>2.4</commons-io.version>
+		<freemarker.version>2.3.23</freemarker.version>
+		<slf4j-api.version>1.7.2</slf4j-api.version>
+		<poi.version>3.9</poi.version>
+		<quartz.version>2.2.3</quartz.version>
+		<ehcache-spring.version>1.2.0</ehcache-spring.version>
+		<net.sourceforge.jexcelapi.version>2.6.12</net.sourceforge.jexcelapi.version>
+		<net.sf.ehcache.version>2.10.3</net.sf.ehcache.version>
 	</properties>
 
 	<dependencies>
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.10</version>
+			<version>${junit.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>      
 		    <groupId>net.sf.json-lib</groupId>      
 		    <artifactId>json-lib</artifactId>      
-		    <version>2.4</version>      
+		   <version>${json-lib.version}</version> 
 		    <classifier>jdk15</classifier>      
 			</dependency>   
 		<dependency>
@@ -43,77 +57,72 @@
 		<dependency>
 			<groupId>commons-beanutils</groupId>
 			<artifactId>commons-beanutils</artifactId>
-			<version>1.8.3</version>
+			<version>${commons-beanutils.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-compress</artifactId>
-			<version>1.5</version>
+			<version>${commons-compress.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>
-			<version>2.4</version>
+			<version>${commons-io.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.freemarker</groupId>
 			<artifactId>freemarker</artifactId>
-			<version>2.3.20</version>
+			<version>${freemarker.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.poi</groupId>
 			<artifactId>poi</artifactId>
-			<version>3.9</version>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-log4j12</artifactId>
-			<version>1.7.2</version>
+			<version>${poi.version}</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
 		<dependency>
 		    <groupId>org.slf4j</groupId>
 		    <artifactId>slf4j-api</artifactId>
-		    <version>1.7.5</version>
+		    <version>${slf4j-api.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>net.sourceforge.jexcelapi</groupId>
 			<artifactId>jxl</artifactId>
-			<version>2.6.12</version>
+			<version>${net.sourceforge.jexcelapi.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-beans</artifactId>
-			<version>4.3.0.RELEASE</version>
+			<version>${spring.version}</version>
 		</dependency>
 
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
-			<version>4.3.0.RELEASE</version>
+			<version>${spring.version}</version>
 		</dependency>
 		
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context-support</artifactId>
-			<version>4.3.0.RELEASE</version>
+			<version>${spring.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-tx</artifactId>
-			<version>4.3.0.RELEASE</version>
+			<version>${spring.version}</version>
 		</dependency>
 		<dependency>
 		    <groupId>org.quartz-scheduler</groupId>
 		    <artifactId>quartz</artifactId>
-		    <version>2.2.3</version>
+		    <version>${quartz.version}</version>
 		</dependency>
 		<dependency>
 		    <groupId>com.googlecode.ehcache-spring-annotations</groupId>
 		    <artifactId>ehcache-spring-annotations</artifactId>
-		    <version>1.2.0</version>
+		    <version>${ehcache-spring.version}</version>
 		</dependency>
 				
 
@@ -121,7 +130,7 @@
 		<dependency>
 		    <groupId>net.sf.ehcache</groupId>
 		    <artifactId>ehcache</artifactId>
-		    <version>2.10.3</version>
+		    <version>${net.sf.ehcache.version}</version>
 		</dependency>
 	</dependencies>
 	<build>
@@ -133,18 +142,6 @@
 				<configuration>
 					<source>1.7</source>
 					<target>1.7</target>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>tomcat-maven-plugin</artifactId>
-				<version>1.1</version>
-				<configuration>
-					<path>/housingrental</path>
-					<port>8080</port>
-					<uriEncoding>UTF-8</uriEncoding>
-					<url>http://localhost:8080/manager/html</url>
-					<server>tomcat8</server>
 				</configuration>
 			</plugin>
 		</plugins>

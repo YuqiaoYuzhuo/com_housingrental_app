@@ -28,19 +28,6 @@
 			<bean class="com.xc.houserental.web.AuthInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>
-	<dwr:controller id="dwrController" debug="true" />
-	<dwr:annotation-config id="dwrAnnotationConfig" />
-	<dwr:annotation-scan base-package="com.xc.houserental.dwr"
-		scanDataTransferObject="true" />
-	<bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
-		<property value="true" name="alwaysUseFullPath"></property>
-		<property name="mappings">
-			<props>
-				<prop key="/dwr/**/*">dwrController</prop>
-			</props>
-		</property>
-	</bean>
-
 	<bean
 		class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
 		<property name="messageConverters">
