@@ -19,6 +19,7 @@ public class UserController extends CommonCotroller {
 	static Logger log = Logger.getLogger(UserController.class);
 	@Autowired
 	private UserService userService ;
+	@Autowired
 	private UserAccountService userAccountService;
 	@RequestMapping("/users")
 	public String findUserPage(){
@@ -31,15 +32,27 @@ public class UserController extends CommonCotroller {
 	}
 	@RequestMapping(value="/updatepasswd",method=RequestMethod.GET)
 	public String findupdatepasswd(){
-		
 		return "/admin/user/updatepassd";
 	}
-	@RequestMapping(value="/checkpasswd",method=RequestMethod.GET)
-	public void findcheckpasswd(String useAccountid,String oldpasswd,HttpServletResponse response) throws IOException{
+	@RequestMapping(value="/checkpasswd",method=RequestMethod.POST)
+	public void findcheckpasswd(String oldpasswd,HttpServletResponse response) throws IOException{
 		String equStr ="true";
+		String useAccountid = userService.getCurentLoginUser().getUserAcc().getUserAccountUuid();
 		if(!userAccountService.checkoldPasswd(useAccountid, oldpasswd)){
 			equStr ="false";
 		}
 		this.responseJson(equStr, response);
+	}
+	@RequestMapping(value="/updatepasswdsave",method=RequestMethod.POST)
+	public void updatepasswdsave(String newpassword,String oldpasswd,HttpServletResponse response) throws IOException{
+		String msg = "恭喜你！修改密码成功！";
+		String useAccountid = userService.getCurentLoginUser().getUserAcc().getUserAccountUuid();
+		try {
+			userAccountService.updatePwd(useAccountid, oldpasswd, newpassword);
+		} catch (Exception e) {
+			msg = e.getMessage();
+			log.debug(e.getMessage());
+		}
+		this.responseJson(msg, response);
 	}
 }

@@ -111,6 +111,7 @@ public class SystemPropertiesUtil
 	public static String getSystemIscheckcode() {
 			return getPropertyValue(system_isCheckCode);
 		}
+	
 
 	public static String getPropertyValue(String key){
         if(props.containsKey(key)){

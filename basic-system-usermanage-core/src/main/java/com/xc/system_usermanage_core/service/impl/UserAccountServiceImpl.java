@@ -20,7 +20,7 @@ public class UserAccountServiceImpl implements UserAccountService {
 
 	@Override
 	public void updatePwd(String uid, String oldPwd, String newPwd) {
-		UserAccount temUacc  = userAccountDao.findUserAccountByUseruuid(uid);
+		UserAccount temUacc  = userAccountDao.load(uid);
 		//如果用户不存在不能更新
 		if(null==temUacc){
 			logger.debug("用户不存在不能修改密码");

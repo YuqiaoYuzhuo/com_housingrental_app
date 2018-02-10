@@ -27,7 +27,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="user.variant" value=""/>
     <property name="os.name" value="Windows 8"/>
-    <property name="classworlds.conf" value="D:\javawork\mywokspace\.metadata\.plugins\org.eclipse.m2e.launching\launches\m2conf5404557007690451415.tmp"/>
+    <property name="classworlds.conf" value="D:\javawork\mywokspace\.metadata\.plugins\org.eclipse.m2e.launching\launches\m2conf2990270055056185604.tmp"/>
     <property name="sun.jnu.encoding" value="GBK"/>
     <property name="java.library.path" value="C:\Users\bingx\MyEclipse Professional 2014\binary\com.sun.java.jdk7.win32.x86_64_1.7.0.u45\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\ProgramData\Oracle\Java\javapath;D:\javawork\tomcat-8.0.26\bin;D:\javawork\tomcat-8.0.26\lib;C:\Program Files\Java\jdk1.8.0_60\\bin;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;D:\javawork\apache-maven-3.3.9\bin;C:\Program Files\MySQL\MySQL Utilities 1.6\;D:\Program Files\nodejs8.2;D:\Program Files\nodejs8.2\node-global;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;&quot;;C:\Users\bingx\AppData\Local\Android\sdk\platform-tools;C:\Users\bingx\AppData\Local\Android\sdk\tools;D:\php\php-7.2.0&quot;;C:\Program Files\TortoiseSVN\bin;C:\Users\bingx\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;&quot;;D:\php\php-7.2.0&quot;;;."/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
@@ -38,13 +38,13 @@
     <property name="user.timezone" value="Asia/Shanghai"/>
     <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"/>
     <property name="java.specification.version" value="1.7"/>
-    <property name="file.encoding" value="GBK"/>
+    <property name="file.encoding" value="UTF-8"/>
     <property name="user.name" value="bingx"/>
     <property name="java.class.path" value="D:\javawork\apache-maven-3.3.9\boot\plexus-classworlds-2.5.2.jar"/>
     <property name="java.vm.specification.version" value="1.7"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="java.home" value="C:\Users\bingx\MyEclipse Professional 2014\binary\com.sun.java.jdk7.win32.x86_64_1.7.0.u45\jre"/>
-    <property name="sun.java.command" value="org.codehaus.classworlds.Launcher -B -s D:\javawork\apache-maven-3.3.9\conf\settings.xml tomcat:redeploy"/>
+    <property name="sun.java.command" value="org.codehaus.classworlds.Launcher -B -s D:\javawork\apache-maven-3.3.9\conf\settings.xml install"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="user.language" value="zh"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>

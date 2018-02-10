@@ -1,5 +1,7 @@
 package com.xc.houserental.web;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -21,6 +23,7 @@ import com.xc.system_usermanage_core.model.UserInofAndAccountQm;
  */
 public class AuthInterceptor extends HandlerInterceptorAdapter {
 	private static Logger logger = Logger.getLogger(AuthInterceptor.class);
+	@SuppressWarnings("unchecked")
 	@Override
 	public boolean preHandle(HttpServletRequest request,
 			HttpServletResponse response, Object handler) throws Exception {

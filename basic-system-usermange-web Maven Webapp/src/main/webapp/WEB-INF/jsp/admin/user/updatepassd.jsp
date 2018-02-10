@@ -11,7 +11,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <title>修改密码</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
- 	<%@include file="/common/commonheader.jsp" %>
+    <%@include file="/common/commonheader.jsp" %>
 </head>
 
 <body class="gray-bg">
@@ -24,14 +24,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <div class="ibox-content">
                         <div class="row">
                             <div class="col-sm-12">
-                                 <form class="form-horizontal" id="updatepasswdform">
-								<div class="form-group">
-									<label class="col-sm-3 control-label">原密码：</label>
-									<div class="col-sm-8">
-										<input type="password" id="oldpasswd" name="oldpasswd" placeholder="原密码" class="form-control">
-									</div>
-								</div>
-								<div class="form-group">
+                                 <form class="form-horizontal" id="updatepasswdform" method="post">
+                                 
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label">原密码：</label>
+                                    <div class="col-sm-8">
+                                        <input type="password" id="oldpasswd" name="oldpasswd" placeholder="原密码" class="form-control">
+                                        <span id="msg" style="color:red;"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
                                     <label class="col-sm-3 control-label">新密码：</label>
                                     <div class="col-sm-8">
                                         <input type="password" id="newpassword" name="newpassword" placeholder="密码" class="form-control">
@@ -43,12 +45,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                         <input type="password" id="confirm_password" name="confirm_password" placeholder="确认密码" class="form-control">
                                     </div>
                                 </div>
-								<div class="form-group">
-									<div class="col-sm-offset-3 col-sm-8">
-										<button class="btn btn-lg btn-info" type="submit">确认修改        </button>
-									</div>
-								</div>
-							</form>
+                                <div class="form-group">
+                                    <div class="col-sm-offset-3 col-sm-8">
+                                        <button class="btn btn-lg btn-info" onclick="submitUpForm()" type="button">确认修改        </button>
+                                    </div>
+                                </div>
+                            </form>
                             </div>
                         </div>
                     </div>
@@ -67,9 +69,63 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <script src="${SysPro.system_static_sourceurl_prefix}js/updatepasswd.validator${SysPro.system_static_sourceurl_jssuffix}"></script>
     <script>
         $(document).ready(function () {
-          
+             $("#msg").hide();
+              $("#oldpasswd").blur(function(){
+                  checkOldPassd();
+              });
         });
-        //
+        //修改密码提交方法
+        function submitUpForm(){
+         if(checkOldPassd()){
+            var oldPass = $("#oldpasswd").val();
+            var params = {
+                    oldpasswd : oldPass,
+                    newpassword:$("#newpassword").val()
+                    };
+            }
+            var url = '<c:url value="updatepasswdsave"/>';
+            $.ajax({
+                cache: false,
+                async: false,
+                url : url,
+                type : 'POST',
+                data : params,
+                success : function(data) {
+                        alert(data);
+                }
+            });
+        }
+        //校验原密码是否正确
+        function checkOldPassd(){
+            var isright = false;
+            var oldPass = $("#oldpasswd").val();
+            if(oldPass!=""&&oldPass.length>=6){
+                var params = {
+                        oldpasswd : oldPass
+                        };
+                var url = '<c:url value="checkpasswd"/>';
+                $.ajax({
+                    cache: false,
+                    async: false,
+                    url : url,
+                    type : 'POST',
+                    data : params,
+                    dataType : "JSON",
+                    success : function(data) {
+                        if(data){
+                            $("#msg").hide();
+                            $("#msg").text("");
+                            isright = true;
+                        }else{
+                            $("#msg").show();
+                            $("#msg").text("原密码不正确!");
+                            isright = false;
+                        }
+                    }
+            });
+            }
+            return isright;
+        }
     </script>
 </body>
 </html>

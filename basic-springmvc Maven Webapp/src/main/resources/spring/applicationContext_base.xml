@@ -82,7 +82,7 @@
 	<aop:config>
 		<!-- 设置pointCut表示哪些方法要加入事务处理 -->
 		<aop:pointcut id="allMethods"
-			expression="execution(* com.wanglei.graempinf.service.*.*(..))" />
+			expression="execution(* com.xc.*.service.*.*(..))" />
 		<!-- 通过advisor来确定具体要加入事务控制的方法 -->
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="allMethods" />
 	</aop:config>

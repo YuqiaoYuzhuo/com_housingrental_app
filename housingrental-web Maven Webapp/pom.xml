@@ -148,30 +148,35 @@
 			<artifactId>basic-springmvc</artifactId>
 			<version>${project.version}</version>
 			<type>war</type>
+			 <scope>runtime</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.xc</groupId>
 			<artifactId>housingrental-house-web</artifactId>
 			<version>${project.version}</version>
 			<type>war</type>
+			 <scope>runtime</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.xc</groupId>
 			<artifactId>housingrental-rental-web</artifactId>
 			<version>${project.version}</version>
 			<type>war</type>
+			 <scope>runtime</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.xc.basic</groupId>
 			<artifactId>basic-systemmanage-web</artifactId>
 			<version>${project.version}</version>
 			<type>war</type>
+			 <scope>runtime</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.xc.basic</groupId>
 			<artifactId>basic-system-usermanage-web</artifactId>
 			<version>${project.version}</version>
 			<type>war</type>
+			 <scope>runtime</scope>
 		</dependency>
 	</dependencies>
 	<build>
@@ -208,6 +213,32 @@
 							<artifactId>basic-system-usermanage-web</artifactId>
 						</overlay>
 					</overlays>
+				</configuration>
+			</plugin>
+			<!--maven打包编译版本配置 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
+			<!--Tomcat 发布网站应用配置�?�� -->
+			<plugin>
+				 <groupId>org.codehaus.mojo</groupId>
+                <artifactId>tomcat-maven-plugin</artifactId>
+				<configuration>
+					<port>8080</port>
+					<uriEncoding>UTF-8</uriEncoding>
+				    <url>http://localhost:8080/manager/text</url>
+					 <server>houserental-server</server>  
+	                <username>admin</username>  
+	                <password>admin</password>  
+           			<path>/housingrental</path> 
+           			<update>true</update>
+					<skipTests>true</skipTests>
 				</configuration>
 			</plugin>
 			<!--Tomcat 发布网站应用配置结束 -->
