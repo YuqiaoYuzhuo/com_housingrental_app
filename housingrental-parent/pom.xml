@@ -17,6 +17,8 @@
 		<module>../basic-springmvc Maven Webapp</module>
 		<module>../basic-system-usermange-web Maven Webapp</module>
 		<module>../basic-systemmanage-web Maven Webapp</module>
+		<module>../housingrental-house-web Maven Webapp</module>
+		<module>../housingrental-rental-web Maven Webapp</module>
 		<module>../housingrental-web Maven Webapp</module>
 	</modules>
 	<!-- 模块集成 end -->
