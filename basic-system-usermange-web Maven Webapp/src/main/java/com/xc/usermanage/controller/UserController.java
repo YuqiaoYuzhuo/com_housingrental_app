@@ -7,10 +7,12 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.xc.houserental.controller.CommonCotroller;
+import com.xc.system_usermanage_core.model.UserInfo;
 import com.xc.system_usermanage_core.service.UserAccountService;
 import com.xc.system_usermanage_core.service.UserService;
 @Controller
@@ -27,7 +29,10 @@ public class UserController extends CommonCotroller {
 	}
 	
 	@RequestMapping(value="/profile",method=RequestMethod.GET)
-	public String findprofile(){
+	public String findprofile(Model model){
+		String useAccountid = userService.getCurentLoginUser().getUserInfo().getUserUuid();
+		 UserInfo userinf =  userService.loadUser(useAccountid);
+		 model.addAttribute("uif", userinf);
 		return "/admin/user/profile";
 	}
 	@RequestMapping(value="/updatepasswd",method=RequestMethod.GET)

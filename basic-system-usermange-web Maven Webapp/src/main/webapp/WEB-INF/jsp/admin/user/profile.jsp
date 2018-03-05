@@ -27,35 +27,59 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <img alt="image" class="img-responsive" src="${SysPro.system_static_sourceurl_prefix}/img/profile_big.jpg">
                         </div>
                         <div class="ibox-content profile-content">
-                            <h4><strong>Beaut-zihan</strong></h4>
-                            <p><i class="fa fa-map-marker"></i> 上海市闵行区绿地科技岛广场A座2606室</p>
+                            <h4><strong>${uif.userName}</strong></h4>
+                            <p><i class="fa fa-map-marker"></i> ${uif.userAddr}</p>
                             <h5>
-                                    关于我
-                                </h5>
+                           	   邮箱
+                            </h5>
                             <p>
-                                会点前端技术，div+css啊，jQuery之类的，不是很精；热爱生活，热爱互联网，热爱新技术；有一个小的团队，在不断的寻求新的突破。
+                           		 ${uif.userEmainl}
                             </p>
-                            <div class="row m-t-lg">
-                                <div class="col-sm-4">
-                                    <span class="bar">5,3,9,6,5,9,7,3,5,2</span>
-                                    <h5><strong>169</strong> 文章</h5>
-                                </div>
-                                <div class="col-sm-4">
-                                    <span class="line">5,3,9,6,5,9,7,3,5,2</span>
-                                    <h5><strong>28</strong> 关注</h5>
-                                </div>
-                                <div class="col-sm-4">
-                                    <span class="bar">5,3,2,-1,-3,-2,2,3,5,2</span>
-                                    <h5><strong>240</strong> 关注者</h5>
-                                </div>
-                            </div>
+                            <h5>
+                           	  生日
+                            </h5>
+                            <p>
+                           		 ${uif.userBirthday}
+                            </p>
+                            <h5>
+                           	   电话
+                            </h5>
+                            <p>
+                           		 ${uif.userTel}
+                            </p>
+                            <h5>
+                           	  用户等级
+                            </h5>
+                            <p>
+                           		 ${uif.userLevel}
+                            </p>
+                            <h5>
+                           	   性别
+                            </h5>
+                            <p>
+                        		 <c:if test="${uif.userGender =='1'}">
+                        		       男
+                        		 </c:if>
+                        		  <c:if test="${uif.userGender =='2'}">
+                        		       女
+                        		 </c:if>
+                            </p>
+                            <h5>
+                           	   QQ
+                            </h5>
+                            <p>
+                           		 ${uif.userQqAccount}
+                            </p>
+                            <h5>
+                           	 微信
+                            </h5>
+                            <p>
+                           		 ${uif.userWxAccout}
+                            </p>
                             <div class="user-button">
                                 <div class="row">
-                                    <div class="col-sm-6">
-                                        <button type="button" class="btn btn-primary btn-sm btn-block"><i class="fa fa-envelope"></i> 发送消息</button>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <button type="button" class="btn btn-default btn-sm btn-block"><i class="fa fa-coffee"></i> 赞助</button>
+                                    <div class="col-sm-12">
+                                        <button type="button" class="btn btn-primary btn-sm btn-block"><i class="fa fa-envelope"></i>修改信息</button>
                                     </div>
                                 </div>
                             </div>

@@ -28,31 +28,25 @@
             $("#updatepasswdform").validate({
                 rules: {
                     oldpasswd: {
-                        required: true,
-                        minlength: 6
+                        required: true
                     },
                     newpassword: {
-                        required: true,
-                        minlength: 6
+                        required: true
                     },
                     confirm_password: {
                         required: true,
-                        minlength: 6,
                         equalTo: "#newpassword"
                     }
                 },
                 messages: {
                 	oldpasswd: {
-                         required: icon + "请输入您的原始密码",
-                         minlength: icon + "密码必须6个字符以上"
+                         required: icon + "请输入您的原始密码"
                      },
                      newpassword: {
-                        required: icon + "请输入您的新密码",
-                        minlength: icon + "密码必须6个字符以上"
+                        required: icon + "请输入您的新密码"
                     },
                     confirm_password: {
                         required: icon + "请再次输入密码",
-                        minlength: icon + "密码必须6个字符以上",
                         equalTo: icon + "两次输入的密码不一致"
                     }
                 }

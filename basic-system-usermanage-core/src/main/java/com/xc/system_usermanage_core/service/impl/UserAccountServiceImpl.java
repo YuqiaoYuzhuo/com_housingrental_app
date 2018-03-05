@@ -2,6 +2,7 @@ package com.xc.system_usermanage_core.service.impl;
 
 import java.security.NoSuchAlgorithmException;
 
+import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,10 @@ public class UserAccountServiceImpl implements UserAccountService {
 		}
 		String securityPassd = null;
 		String securityNewPassd = null;
+		if(StringUtils.isBlank(newPwd)){
+			logger.debug("用户新密码不能为空！");
+			throw new BusinessException("用户新密码不能为空！");
+		}
 		//密码加密
 		try {
 		   securityPassd = SecurityUtil.md5(temUacc.getUaserAccountNum(),oldPwd);

@@ -47,7 +47,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-offset-3 col-sm-8">
-                                        <button class="btn btn-lg btn-info" onclick="submitUpForm()" type="button">确认修改        </button>
+                                        <button class="btn btn-lg btn-info"  id="sub_butn" type="submit">确认修改        </button>
                                     </div>
                                 </div>
                             </form>
@@ -74,6 +74,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                   checkOldPassd();
               });
         });
+       	//表单提交
+        $("#updatepasswdform").submit(function(e){
+        	submitUpForm();
+        });
         //修改密码提交方法
         function submitUpForm(){
          if(checkOldPassd()){
@@ -82,7 +86,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     oldpasswd : oldPass,
                     newpassword:$("#newpassword").val()
                     };
-            }
             var url = '<c:url value="updatepasswdsave"/>';
             $.ajax({
                 cache: false,
@@ -94,12 +97,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         alert(data);
                 }
             });
+         }
         }
         //校验原密码是否正确
         function checkOldPassd(){
             var isright = false;
             var oldPass = $("#oldpasswd").val();
-            if(oldPass!=""&&oldPass.length>=6){
+            if(oldPass!=""){
                 var params = {
                         oldpasswd : oldPass
                         };
@@ -115,14 +119,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         if(data){
                             $("#msg").hide();
                             $("#msg").text("");
+                            $("#sub_butn").removeAttr("disabled");
+                            $("#newpassword").removeAttr("disabled"); 
+                            $("#confirm_password").removeAttr("disabled");
                             isright = true;
                         }else{
                             $("#msg").show();
                             $("#msg").text("原密码不正确!");
+                            $("#sub_butn").attr("disabled","disabled");  
+                            $("#newpassword").attr("disabled","disabled"); 
+                            $("#confirm_password").attr("disabled","disabled"); 
                             isright = false;
                         }
                     }
             });
+            }
+            if($("#newpassword").val()=="" ||$("#confirm_password").val()==""){
+            	isright = false;
             }
             return isright;
         }
