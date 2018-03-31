@@ -31,6 +31,18 @@ public interface IBaseDao <T>{
 	 */
 	public void delete (String id);
 	/**
+	 * <p>Description:根据hql语句删除<p>
+	 * @param hql hql语句
+	 * @author wanglei 2018年3月11日
+	 */
+	public void excByHql(String hql);
+	/**
+	 * <p>Description:批量删除<p>
+	 * @param ids 主键列表
+	 * @author wanglei 2018年3月11日
+	 */
+	public void batchDele(String ids);
+	/**
 	 * <p>Description:根据id查询对象<p>
 	 * @param id
 	 * @return
@@ -64,5 +76,38 @@ public interface IBaseDao <T>{
 	 * @author wanglei 2018年1月27日
 	 */
 	public String getSqlBySqlName(String sqlName);
-	
+	/**
+	 * <p>Description:根据获取获取删除条件参数<p>
+	 * @param ids
+	 * @return
+	 * @author wanglei 2018年3月11日
+	 */
+	public String getHqlCondition(String ids);
+	/**
+	 * <p>Description:根据条件执行sql<p>
+	 * @param sql
+	 * @param args
+	 * @author wanglei 2018年3月14日
+	 */
+	public void  excSqlWithArgs(String sql,Object[] args);
+	/**
+	 * <p>Description:根据一个参数执行sql<p>
+	 * @param sql
+	 * @param args
+	 * @author wanglei 2018年3月14日
+	 */
+	public void  excSqlWithArg(String sql,Object arg);
+	/**
+	 * <p>Description:执行sql<p>
+	 * @param sql SQL语句
+	 * @author wanglei 2018年3月14日
+	 */
+	public void excSql(String sql);
+	/**
+	 * <p>Description:根据","分割的参数获取条件值<p>
+	 * @param ids 条件
+	 * @return
+	 * @author wanglei 2018年3月14日
+	 */
+	public Object[] getParmsByString (String ids);
 }

@@ -3,6 +3,10 @@
 	<name>housingrental-web Maven Webapp</name>
 	<comment></comment>
 	<projects>
+		<project>housingrental-house-core</project>
+		<project>housingrental-rental-core</project>
+		<project>basic-systemmanage-core</project>
+		<project>basic-system-usermanage-core</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
@@ -47,11 +51,11 @@
 		</buildCommand>
 	</buildSpec>
 	<natures>
+		<nature>org.eclipse.m2e.core.maven2Nature</nature>
 		<nature>com.genuitec.eclipse.springframework.springnature</nature>
 		<nature>org.eclipse.jem.workbench.JavaEMFNature</nature>
 		<nature>org.eclipse.wst.common.modulecore.ModuleCoreNature</nature>
 		<nature>org.eclipse.jdt.core.javanature</nature>
-		<nature>org.eclipse.m2e.core.maven2Nature</nature>
 		<nature>org.eclipse.wst.common.project.facet.core.nature</nature>
 		<nature>org.eclipse.wst.jsdt.core.jsNature</nature>
 	</natures>

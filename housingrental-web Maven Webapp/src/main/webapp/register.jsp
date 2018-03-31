@@ -24,21 +24,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </div>
             <h3>欢迎注册 ${SysPro.system_name}</h3>
             <p>创建一个${SysPro.system_name}新账户</p>
-            <form class="m-t" role="form" action="login.html">
+            <form class="m-t" role="form" method="POST" id ="userRegister" action="admin/user/addRegisterHouseOwner">
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="请输入用户名" required="">
+                    <input type="text" class="form-control" id="uaserAccountNum" name="uaserAccountNum" placeholder="请输入手机号" required="">
                 </div>
                 <div class="form-group">
-                    <input type="password" class="form-control" placeholder="请输入密码" required="">
+                    <input type="password" class="form-control" id="userAccountPassword" name="userAccountPassword"  placeholder="请输入密码" required="">
                 </div>
                 <div class="form-group">
-                    <input type="password" class="form-control" placeholder="请再次输入密码" required="">
-                </div>
-                <div class="form-group text-left">
-                    <div class="checkbox i-checks">
-                        <label class="no-padding">
-                            <input type="checkbox"><i></i> 我同意注册协议</label>
-                    </div>
+                    <input type="password" class="form-control" id="confirm_password" name="confirm_password"   placeholder="请再次输入密码" required="">
                 </div>
                 <button type="submit" class="btn btn-primary block full-width m-b">注 册</button>
 
@@ -53,13 +47,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <%@include file="/common/commonfooter.jsp" %>
     <!-- iCheck -->
     <script src="${SysPro.system_static_sourceurl_prefix}/js/plugins/iCheck/icheck.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $('.i-checks').iCheck({
-                checkboxClass: 'icheckbox_square-green',
-                radioClass: 'iradio_square-green',
-            });
-        });
-    </script>
+   <script src="${SysPro.system_static_sourceurl_prefix}js/plugins/validate/jquery.validate.min${SysPro.system_static_sourceurl_jssuffix}"></script>
+    <script src="${SysPro.system_static_sourceurl_prefix}js/plugins/validate/messages_zh.min${SysPro.system_static_sourceurl_jssuffix}"></script>
+     <script src="${SysPro.system_static_sourceurl_prefix}js/common.validator${SysPro.system_static_sourceurl_jssuffix}"></script>
 </body>
 </html>

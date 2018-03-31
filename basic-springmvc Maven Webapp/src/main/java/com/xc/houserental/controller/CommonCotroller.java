@@ -13,10 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
-
-
-
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -24,6 +20,7 @@ import org.springframework.web.context.ContextLoader;
 import org.springframework.web.servlet.View;
 
 import com.xc.basic.excel.CreateExcelDataFileFactory;
+import com.xc.basic.util.CommonFileUtils;
 import com.xc.houserental.model.ReturnModel;
 import com.xc.houserental.springview.DownloadByFileView;
 import com.xc.houserental.springview.DownloadByURLView;
@@ -99,7 +96,18 @@ public class CommonCotroller {
 	protected View responseFile(File file,String exportFileName,HttpServletResponse response) throws IOException{
 			return new DownloadByFileView(file,exportFileName);
 	}
-	
+	/**
+	 * <p>Description:zip压缩下载<p>
+	 * @param file
+	 * @param exportFileName
+	 * @param response
+	 * @return
+	 * @throws IOException
+	 * @author wanglei 2018年3月31日
+	 */
+	protected View responseZipFile(List<File> files,String exportFileName,HttpServletResponse response) throws IOException{
+		return new DownloadByFileView(CommonFileUtils.zipFiles(files, exportFileName),exportFileName);
+    }
 	/**
 	 * 生成文件给客户端下载
 	 * @param url 文件地址

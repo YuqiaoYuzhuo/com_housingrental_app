@@ -27,6 +27,7 @@
 		<ehcache-spring.version>1.2.0</ehcache-spring.version>
 		<net.sourceforge.jexcelapi.version>2.6.12</net.sourceforge.jexcelapi.version>
 		<net.sf.ehcache.version>2.10.3</net.sf.ehcache.version>
+		<ftpclinet.version>3.3</ftpclinet.version>
 	</properties>
 
 	<dependencies>
@@ -52,7 +53,12 @@
 			<artifactId>jackson-annotations</artifactId>
 			<version>${jackson.version}</version>
 		</dependency>
-
+		<!-- ftpclient 组件 -->
+		<dependency>
+		    <groupId>commons-net</groupId>
+		    <artifactId>commons-net</artifactId>
+		    <version>${ftpclinet.version}</version>
+		</dependency>
 
 		<dependency>
 			<groupId>commons-beanutils</groupId>

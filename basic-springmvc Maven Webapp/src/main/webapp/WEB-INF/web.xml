@@ -7,6 +7,26 @@
     <welcome-file>/login.jsp</welcome-file>
     </welcome-file-list>  
 	<display-name>houserental</display-name>
+	<!-- 需要访问的资源不存在 -->
+   <error-page>
+      <error-code>404</error-code>
+      <location>/404.jsp</location>
+   </error-page>
+   <!-- 出现异常 -->
+   <error-page>
+      <exception-type>org.apache.jasper.JasperException</exception-type>
+      <location>/webExceptionPage.jsp</location>
+   </error-page>
+   <!-- 出现异常 -->
+   <error-page>
+      <exception-type>java.lang.ArithmeticException</exception-type>
+      <location>/webExceptionPage.jsp</location>
+   </error-page>
+   <!-- 服务器内部错误 -->
+   <error-page>
+      <error-code>500</error-code>
+      <location>/error.jsp</location>
+   </error-page>
 	<!--配置dispatchterservlet -->
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>

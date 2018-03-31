@@ -59,8 +59,8 @@ public class GeneratorCodeTest {
 	}
 	@Test
 	public void testGenertorUtils(){
-		TableBean tablebean = new TableBean();
-		tablebean.setTableName("tb_dict_type");
-		GeneraltorModeAndHibernateCfgUtil.createModelFile(true, tablebean, "com.xc.systemmanage_core.model", "D:\\javawork\\mywokspace\\com_housingrental_app\\systemmanage-core\\src\\main\\java\\");
+//		TableBean tablebean = new TableBean();
+//		tablebean.setTableName("");
+//		GeneraltorModeAndHibernateCfgUtil.createModelFile(true, tablebean, "com.xc.systemmanage_core.model", "D:\\javawork\\mywokspace\\com_housingrental_app\\basic-systemmanage-core\\src\\main\\java\\");
 	}
 }

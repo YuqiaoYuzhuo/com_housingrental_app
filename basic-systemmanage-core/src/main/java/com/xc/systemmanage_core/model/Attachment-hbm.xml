@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- 
+    自动生成hibernate 配置文件
+-->
+<hibernate-mapping>
+	    <!--列名对应关系 -->
+    <class name="com.xc.systemmanage_core.model.Attachment" table="tb_attachment" catalog="houserental">
+   	  	 <id name="attachUuid" type="java.lang.String">
+            <column name="ATTACH_UUID" length="64">
+            <comment>附件标示</comment>
+            </column>
+            <generator class="assigned" />
+        </id>
+        <property name="attachSysName" type="java.lang.String">
+            <column name="ATTACH_SYS_NAME" length="200">
+            <comment>附件系统名称</comment>
+            </column>
+        </property>
+        <property name="attachRealName" type="java.lang.String">
+            <column name="ATTACH_REAL_NAME" length="200">
+            <comment>附件原名称</comment>
+            </column>
+        </property>
+        <property name="attachType" type="java.lang.Integer">
+            <column name="ATTACH_TYPE" length="10">
+            <comment>附件类型</comment>
+            </column>
+        </property>
+        <property name="attachSysPath" type="java.lang.String">
+            <column name="ATTACH_SYS_PATH" length="100">
+            <comment>附件系统路径</comment>
+            </column>
+        </property>
+        <property name="attachUpPath" type="java.lang.String">
+            <column name="ATTACH_UP_PATH" length="100">
+            <comment>附件原上传路径</comment>
+            </column>
+        </property>
+        <property name="attachSize" type="java.lang.Double">
+   	  	  <column name="ATTACH_SIZE" precision="22" scale="0">
+            <comment>附件大小</comment>
+            </column>
+        </property>
+        <property name="attachEtc" type="java.lang.String">
+            <column name="ATTACH_ETC" length="20">
+            <comment>附件后缀</comment>
+            </column>
+        </property>
+        <property name="attachUpTime" type="java.sql.Timestamp">
+            <column name="ATTACH_UP_TIME" length="19">
+            <comment>附件上传时间</comment>
+            </column>
+        </property>
+        <property name="attachUpPerson" type="java.lang.String">
+            <column name="ATTACH_UP_PERSON" length="64">
+            <comment>附件上传人标示</comment>
+            </column>
+        </property>
+        <property name="attachMemo" type="java.lang.String">
+            <column name="ATTACH_MEMO" length="255">
+            <comment>备注</comment>
+            </column>
+        </property>
+        <property name="attachModifyTime" type="java.sql.Timestamp">
+            <column name="ATTACH_MODIFY_TIME" length="19">
+            <comment>附件最后修改时间</comment>
+            </column>
+        </property>
+    </class>
+    <!-- 默认hql-->
+	<query name="defaultHqlAttachment">    
+         <![CDATA[    
+              from Attachment where 1=1    
+         ]]> 
+     </query>
+	<!-- 默认sql-->
+     <sql-query name="defaultsql_Attachment">    
+         <![CDATA[    
+             SELECT ATTACH_UUID,ATTACH_SYS_NAME,ATTACH_REAL_NAME,ATTACH_TYPE,ATTACH_SYS_PATH,ATTACH_UP_PATH,ATTACH_SIZE,ATTACH_ETC,ATTACH_UP_TIME,ATTACH_UP_PERSON,ATTACH_MEMO,ATTACH_MODIFY_TIME FROM tb_attachment WHERE 1=1   
+         ]]> 
+         </sql-query>
+         <!-- 根据业务id查询-->
+      <query name="listByBussinessId">    
+         <![CDATA[    
+              from Attachment at where 1=1  
+              and   at.attachUuid in (select bar.attachUuid from BusinessAttachmentRel bar where bar.businessUuid =:businessId)
+         ]]> 
+     </query>
+</hibernate-mapping>

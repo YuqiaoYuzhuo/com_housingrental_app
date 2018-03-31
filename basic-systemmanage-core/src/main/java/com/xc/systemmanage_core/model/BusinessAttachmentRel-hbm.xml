@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- 
+    自动生成hibernate 配置文件
+-->
+<hibernate-mapping>
+	    <!--列名对应关系 -->
+    <class name="com.xc.systemmanage_core.model.BusinessAttachmentRel" table="tb_business_attachment_rel" catalog="houserental">
+   	  	 <id name="attachRelUuid" type="java.lang.String">
+            <column name="ATTACH_REL_UUID" length="64">
+            <comment>关联关系标示</comment>
+            </column>
+            <generator class="assigned" />
+        </id>
+        <property name="attachUuid" type="java.lang.String">
+            <column name="ATTACH_UUID" length="64">
+            <comment>附件标示</comment>
+            </column>
+        </property>
+        <property name="businessUuid" type="java.lang.String">
+            <column name="BUSINESS_UUID" length="64">
+            <comment>业务标示</comment>
+            </column>
+        </property>
+        <property name="attachMemo" type="java.lang.String">
+            <column name="ATTACH_MEMO" length="225">
+            <comment>备注</comment>
+            </column>
+        </property>
+        <property name="attachRelLastmodifyTime" type="java.sql.Timestamp">
+            <column name="ATTACH_REL_LASTMODIFY_TIME" length="19">
+            <comment>最后修改时间</comment>
+            </column>
+        </property>
+    </class>
+    <!-- 默认hql-->
+	<query name="defaultHqlBusinessAttachmentRel">    
+         <![CDATA[    
+              from BusinessAttachmentRel where 1=1    
+         ]]> 
+     </query>
+	<!-- 默认sql-->
+     <sql-query name="defaultsql_BusinessAttachmentRel">    
+         <![CDATA[    
+             SELECT ATTACH_REL_UUID,ATTACH_UUID,BUSINESS_UUID,ATTACH_MEMO,ATTACH_REL_LASTMODIFY_TIME FROM tb_business_attachment_rel WHERE 1=1   
+         ]]>   
+     </sql-query>
+</hibernate-mapping>

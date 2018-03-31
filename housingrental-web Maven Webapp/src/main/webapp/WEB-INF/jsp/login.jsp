@@ -20,7 +20,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             window.top.location = window.location;
         }
     </script>
-
+	<c:if test ="${not empty regmsg}">
+	<script>
+	  alert("${regmsg}");
+	  </script>
+</c:if>
 </head>
 
 

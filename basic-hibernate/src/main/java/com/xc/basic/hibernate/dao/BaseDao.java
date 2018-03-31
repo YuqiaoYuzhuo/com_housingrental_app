@@ -9,12 +9,15 @@ import java.util.Set;
 
 import javax.inject.Inject;
 
+import org.apache.commons.lang.StringUtils;
 import org.hibernate.Query;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.metadata.ClassMetadata;
 import org.hibernate.transform.Transformers;
 
+import com.xc.basic.exception.BusinessException;
 import com.xc.basic.model.Pager;
 import com.xc.basic.model.SystemContext;
 
@@ -159,6 +162,7 @@ public class BaseDao<T>  implements IBaseDao<T> {
 	public void delete(String id) {
 		getSession().delete(this.load(id));
 	}
+	
 	@Override
 	public void delete(Integer id) {
 		getSession().delete(this.load(id));
@@ -563,6 +567,57 @@ public class BaseDao<T>  implements IBaseDao<T> {
 	@Override
 	public String getSqlBySqlName(String sqlName) {
 		return sessionFactory.openSession().getNamedQuery(sqlName).getQueryString();
+	}
+	@Override
+	public void excByHql(String hql) {
+		sessionFactory.openSession().createQuery(hql).executeUpdate();
+	}
+	@Override
+	public String getHqlCondition(String ids) {
+		if(StringUtils.isBlank(ids)) throw new BusinessException("条件不能为空!");
+		String [] idsArr = ids.split(","); 
+		StringBuffer sbf = new  StringBuffer(" in ( ");
+		int index = 0 ;
+		for(String id:idsArr){
+			index ++;
+			sbf.append("'"+id+"'");
+			if(index <=idsArr.length-1){
+				sbf.append(", ");
+			}
+			if(index ==idsArr.length){
+				sbf.append(" )");
+			}
+		}
+		
+		return sbf.toString();
+	}
+	@Override
+	public void batchDele(String ids) {
+		ClassMetadata meta = sessionFactory.getClassMetadata(getClz()); 
+		//主键名称  
+		String pkName = meta.getIdentifierPropertyName();
+		String hql = "delete from "+getClz().getSimpleName()+" where "+pkName+this.getHqlCondition(ids);
+		this.excByHql(hql);
+	}
+	@Override
+	public void excSqlWithArgs(String sql, Object[] args) {
+		Query sqlquery = this.getSession().createSQLQuery(sql);
+		setParameter(sqlquery, args);
+		sqlquery.executeUpdate();
+	}
+	@Override
+	public void excSql(String sql) {
+		this.excSqlWithArgs(sql, null);
+	}
+	@Override
+	public void excSqlWithArg(String sql, Object arg) {
+		this.excSqlWithArgs(sql, new Object[]{arg});
+	}
+	@Override
+	public Object[] getParmsByString(String ids) {
+		if(StringUtils.isBlank(ids)) throw new BusinessException("条件不能为空!");
+		String [] idsArr = ids.split(","); 
+		return idsArr;
 	}
 	
 }

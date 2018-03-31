@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -14,36 +15,34 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <title>500错误</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
-
     <link rel="shortcut icon" href="favicon.ico"> <link href="${SysPro.system_static_sourceurl_prefix}/css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
     <link href="${SysPro.system_static_sourceurl_prefix}/css/font-awesome.css?v=4.4.0" rel="stylesheet">
-
     <link href="${SysPro.system_static_sourceurl_prefix}/css/animate.css" rel="stylesheet">
     <link href="${SysPro.system_static_sourceurl_prefix}/css/style.css?v=4.1.0" rel="stylesheet">
 
 </head>
 
 <body class="gray-bg">
-
-
+<c:if test="${not empty  exception}">
     <div class="middle-box text-center animated fadeInDown">
         <h1>500</h1>
         <h3 class="font-bold">${exception}</h3>
-
         <div class="error-desc">
-            服务器好像出错了...
+                           服务器好像出错了...
             <br/>返回
-            <br/><a href="<%=basePath%>/admin/index" class="btn btn-primary m-t">主页</a>
+              <br/><a href="/housingrental/admin/welcomeindex" class="btn btn-primary m-t">返回主页
         </div>
     </div>
-
+</c:if>
+<c:if test="${not empty  businessEx}">
+<script>
+       alert("${businessEx}");
+       window.history.back(); 
+</script>
+</c:if>
     <!-- 全局js -->
     <script src="${SysPro.system_static_sourceurl_prefix}/js/jquery.min.js?v=2.1.4"></script>
     <script src="${SysPro.system_static_sourceurl_prefix}/js/bootstrap.min.js?v=3.3.6"></script>
-
-    
-    
-
 </body>
 
 </html>

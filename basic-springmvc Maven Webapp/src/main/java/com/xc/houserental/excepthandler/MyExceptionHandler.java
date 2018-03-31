@@ -28,17 +28,31 @@ public class MyExceptionHandler implements HandlerExceptionResolver {
  		 logger.error("发生错误啦!",ex);   
 		//如果是业务异常则在前台提示业务异常信息 如果是系统系统则前台提示系统异常
          if(ex instanceof BusinessException){
-        	 ModelAndView mv = new ModelAndView();  
-             /*  使用FastJson提供的FastJsonJsonView视图返回，不需要捕获异常   */  
-             FastJsonJsonView view = new FastJsonJsonView();  
-             Map<String, Object> attributes = new HashMap<String, Object>();  
-        	 attributes.put("msg", ex.getMessage()); 
-        	 attributes.put("error","false");
-        	 view.setAttributesMap(attributes);  
-             mv.setView(view);   
-             return mv;  
+        	 if(this.isAjaxRequest(request)){
+        		 ModelAndView mv = new ModelAndView();  
+                 /*  使用FastJson提供的FastJsonJsonView视图返回，不需要捕获异常   */  
+                 FastJsonJsonView view = new FastJsonJsonView();  
+                 Map<String, Object> attributes = new HashMap<String, Object>();  
+            	 attributes.put("msg", ex.getMessage()); 
+            	 attributes.put("error","false");
+            	 view.setAttributesMap(attributes);  
+                 mv.setView(view);   
+                 return mv;  
+        	 }else{
+        		 return new ModelAndView("error").addObject("businessEx",ex.getMessage());  
+        	 }
          }
          return new ModelAndView("error").addObject("exception","系统异常!"); 
 	}
-
+	/**
+	 * <p>Description:判断请求是否为ajax请求<p>
+	 * @param request 请求
+	 * @return
+	 * @author wanglei 2018年3月10日
+	 */
+	private boolean isAjaxRequest(HttpServletRequest request){  
+	    String header = request.getHeader("X-Requested-With");  
+	    boolean isAjax = "XMLHttpRequest".equals(header) ? true:false;  
+	    return isAjax;  
+	}  
 }
