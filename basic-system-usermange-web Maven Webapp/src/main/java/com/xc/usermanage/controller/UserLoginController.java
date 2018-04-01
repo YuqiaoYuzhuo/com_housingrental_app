@@ -3,9 +3,11 @@ package com.xc.usermanage.controller;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.imageio.ImageIO;
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
@@ -21,8 +23,11 @@ import com.alibaba.fastjson.JSONObject;
 import com.xc.basic.util.Captcha;
 import com.xc.houserental.controller.CommonCotroller;
 import com.xc.houserental.web.ProjectSessionContext;
+import com.xc.system_usermanage_core.enums.SystemEnum;
 import com.xc.system_usermanage_core.model.UserInofAndAccountQm;
 import com.xc.system_usermanage_core.service.UserService;
+import com.xc.systemmanage_core.model.SystemMenu;
+import com.xc.systemmanage_core.service.SystemMenuService;
 
 /**
  * <p>Title:用户登录，退出登录的的controller </p>
@@ -37,6 +42,14 @@ public class UserLoginController extends CommonCotroller {
 	private static Logger logger = Logger.getLogger(UserLoginController.class);
 	@Autowired
 	private UserService userService ;
+	@Autowired
+	private SystemMenuService systemMenuService;
+	/**
+	 * <p>Description:登录<p>
+	 * @param model
+	 * @return
+	 * @author wanglei 2018年4月1日
+	 */
 	@RequestMapping(value="/login",method=RequestMethod.GET)
 	public String login(Model model) {
 		model.addAttribute("error", "");
@@ -56,9 +69,17 @@ public class UserLoginController extends CommonCotroller {
 		Map<String,String> map= new HashMap<>();
 		UserInofAndAccountQm loginUser =null;
 		try {
+			//用户登录
 			loginUser = userService.getLogin(userAccount, passWord);
+			//初始化session
 			session.setAttribute("loginUser", loginUser);
 			logger.info("---------------------用户["+loginUser.getUserInfo().getUserName()+"]登录成功！"+"-----------");
+			//查询用户的菜单
+			String roleCode = loginUser.getUserAcc().getUserAccountCode();
+			List<SystemMenu> systemMenus = systemMenuService.findSystemMenuByRoleCodeAndType(roleCode, SystemEnum.MENU_TYPE_BACK.getValue());
+			ServletContext application = session.getServletContext();
+			//将用户菜单放入application中
+			application.setAttribute("systemMenus",systemMenus);
 			ProjectSessionContext.addSessoin(session);
 			map.put("success", "true");
 		} catch (Exception e) {

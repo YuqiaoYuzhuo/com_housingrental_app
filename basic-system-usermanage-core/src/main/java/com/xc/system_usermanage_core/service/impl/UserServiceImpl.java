@@ -152,7 +152,18 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public UserInofAndAccountQm getCurentLoginUser() {
-		return UserSession.get("loginUser", UserInofAndAccountQm.class);
+		UserInofAndAccountQm uaqm = UserSession.get("loginUser", UserInofAndAccountQm.class);
+		//如果获取当前登录用户为空则默认一个虚拟用户避免程序报错
+		if(null==uaqm){
+			uaqm = new UserInofAndAccountQm();
+			UserAccount uc = new UserAccount();
+			uc.setUserAccountName("Guest");
+			UserInfo uif = new UserInfo();
+			uif.setUserName("Guest");
+			uaqm.setUserAcc( uc);
+			uaqm.setUserInfo(uif);
+		}
+		return uaqm;
 	}
 
 }

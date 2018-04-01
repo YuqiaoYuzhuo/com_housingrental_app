@@ -22,14 +22,4 @@
 		<module>../housingrental-web Maven Webapp</module>
 	</modules>
 	<!-- 模块集成 end -->
-	<dependencyManagement>
-		<dependencies>
-		
-		</dependencies>
-	</dependencyManagement>
-	<build>
-	<plugins>
-			
-			</plugins>
-	</build>
 </project>

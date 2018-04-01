@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- 
+    自动生成hibernate 配置文件
+-->
+<hibernate-mapping>
+	    <!--列名对应关系 -->
+    <class name="com.xc.systemmanage_core.model.SystemMenu" table="tb_system_menu" catalog="houserental">
+   	  	 <id name="menuUuid" type="java.lang.String">
+            <column name="MENU_UUID" length="64">
+            <comment>菜单标示</comment>
+            </column>
+            <generator class="assigned" />
+        </id>
+        <property name="menuName" type="java.lang.String">
+            <column name="MENU_NAME" length="100">
+            <comment>菜单名称</comment>
+            </column>
+        </property>
+        <property name="menuType" type="java.lang.Integer">
+            <column name="MENU_TYPE" length="10">
+            <comment>菜单类型</comment>
+            </column>
+        </property>
+        <property name="menuUrl" type="java.lang.String">
+            <column name="MENU_URL" length="255">
+            <comment>菜单路径</comment>
+            </column>
+        </property>
+        <property name="menuParentUuid" type="java.lang.String">
+            <column name="MENU_PARENT_UUID" length="64">
+            <comment>父级菜单标示</comment>
+            </column>
+        </property>
+        <property name="createUserUuid" type="java.lang.String">
+            <column name="CREATE_USER_UUID" length="64">
+            <comment>创建人标示</comment>
+            </column>
+        </property>
+        <property name="createUserName" type="java.lang.String">
+            <column name="CREATE_USER_NAME" length="100">
+            <comment>创建人</comment>
+            </column>
+        </property>
+        <property name="createTime" type="java.sql.Timestamp">
+            <column name="CREATE_TIME" length="19">
+            <comment>创建时间</comment>
+            </column>
+        </property>
+        <property name="menuOrder" type="java.lang.Integer">
+            <column name="MENU_ORDER" length="10">
+            <comment>排序</comment>
+            </column>
+        </property>
+        <property name="menuStaus" type="java.lang.Integer">
+            <column name="MENU_STAUS" length="10">
+            <comment>菜单状态</comment>
+            </column>
+        </property>
+        <property name="menuRemark" type="java.lang.String">
+            <column name="MENU_REMARK" length="255">
+            <comment>菜单的图标</comment>
+            </column>
+        </property>
+    </class>
+    <!-- 默认hql-->
+	<query name="defaultHqlSystemMenu">    
+         <![CDATA[    
+              from SystemMenu where 1=1    
+         ]]> 
+     </query>
+      <!-- 根据角色编码和菜单类型获取菜单hql-->
+	<query name="findByRoleCodeAndType">    
+         <![CDATA[    
+              from SystemMenu  sm where 1=1  
+              and sm.menuUuid in (select rmr.menuUuid from RoleMenuRel rmr where rmr.roleCode=:roleCode) 
+              and sm.menuType=:menuType
+              and sm.menuStaus=2 
+         ]]> 
+     </query>
+	<!-- 默认sql-->
+     <sql-query name="defaultsql_SystemMenu">    
+         <![CDATA[    
+             SELECT MENU_UUID,MENU_NAME,MENU_TYPE,MENU_URL,MENU_PARENT_UUID,CREATE_USER_UUID,CREATE_USER_NAME,CREATE_TIME,MENU_ORDER,MENU_STAUS,MENU_REMARK FROM tb_system_menu WHERE 1=1   
+         ]]>   
+     </sql-query>
+</hibernate-mapping>

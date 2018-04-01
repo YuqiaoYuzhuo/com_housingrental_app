@@ -5,23 +5,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 %>
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit">
-
     <title> ${SysPro.system_name}主页</title>
-
     <meta name="keywords" content="">
     <meta name="description" content="">
     <%@include file="/common/commonheader.jsp" %>
     <!--[if lt IE 9]>
     <meta http-equiv="refresh" content="0;ie.html" />
     <![endif]-->
-    
 </head>
-
 <body class="fixed-sidebar full-height-layout gray-bg" style="overflow:hidden">
     <div id="wrapper">
         <!--左侧导航开始-->
@@ -45,7 +40,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         </div>
                     </li>
                     <li class="hidden-folded padder m-t m-b-sm text-muted text-xs">
-                        <span class="ng-scope">分类</span>
+                        <span class="ng-scope">系统菜单</span>
                     </li>
                     <li>
                         <a class="J_menuItem" href="welcomeindex">
@@ -53,157 +48,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <span class="nav-label">主页</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="#">
-                            <i class="glyphicon glyphicon-wrench"></i>
-                            <span class="nav-label">系统配置</span>
+                    <!--用户菜单  -->
+                   <c:forEach items="${systemMenus}" var="systemMenu" >
+                    <c:if test="${empty systemMenu.menuUrl}">
+                      <li>
+                    	<a href="#">
+                            <i class="${systemMenu.menuRemark}"></i>
+                            <span class="nav-label">${systemMenu.menuName}</span>
                             <span class="fa arrow"></span>
                         </a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a class="J_menuItem" href="graph_echarts.html">百度ECharts</a>
+                         <ul class="nav nav-second-level">
+                         <c:forEach items="${systemMenus}" var="systemsubMenu">
+                           <c:if test="${systemsubMenu.menuParentUuid==systemMenu.menuUuid}">
+                           	 <li>
+                                <a class="J_menuItem" href="<c:url value='${systemsubMenu.menuUrl}'/>">${systemsubMenu.menuName}</a>
                             </li>
-                            <li>
-                                <a class="J_menuItem" href="graph_flot.html">Flot</a>
-                            </li>
-                            <li>
-                                <a class="J_menuItem" href="graph_morris.html">Morris.js</a>
-                            </li>
-                            <li>
-                                <a class="J_menuItem" href="graph_rickshaw.html">Rickshaw</a>
-                            </li>
-                            <li>
-                                <a class="J_menuItem" href="graph_peity.html">Peity</a>
-                            </li>
-                            <li>
-                                <a class="J_menuItem" href="graph_sparkline.html">Sparkline</a>
-                            </li>
-                            <li>
-                                <a class="J_menuItem" href="graph_metrics.html">图表组合</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="glyphicon glyphicon-user"></i>
-                            <span class="nav-label">用户管理</span>
-                            <span class="fa arrow"></span>
-                        </a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a class="J_menuItem" href="graph_echarts.html">百度ECharts</a>
-                            </li>
-                            <li>
-                                <a class="J_menuItem" href="graph_flot.html">Flot</a>
-                            </li>
-                            <li>
-                                <a class="J_menuItem" href="graph_morris.html">Morris.js</a>
-                            </li>
-                            <li>
-                                <a class="J_menuItem" href="graph_rickshaw.html">Rickshaw</a>
-                            </li>
-                            <li>
-                                <a class="J_menuItem" href="graph_peity.html">Peity</a>
-                            </li>
-                            <li>
-                                <a class="J_menuItem" href="graph_sparkline.html">Sparkline</a>
-                            </li>
-                            <li>
-                                <a class="J_menuItem" href="graph_metrics.html">图表组合</a>
-                            </li>
-                        </ul>
-                    </li>
-                     <li class="line dk"></li>
-                    <li>
-                        <a href="#">
-                            <i class="glyphicon glyphicon-home"></i>
-                            <span class="nav-label">房间管理</span>
-                            <span class="fa arrow"></span>
-                        </a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a class="J_menuItem" href="graph_echarts.html">百度ECharts</a>
-                            </li>
-                            <li>
-                                <a class="J_menuItem" href="graph_flot.html">Flot</a>
-                            </li>
-                            <li>
-                                <a class="J_menuItem" href="graph_morris.html">Morris.js</a>
-                            </li>
-                            <li>
-                                <a class="J_menuItem" href="graph_rickshaw.html">Rickshaw</a>
-                            </li>
-                            <li>
-                                <a class="J_menuItem" href="graph_peity.html">Peity</a>
-                            </li>
-                            <li>
-                                <a class="J_menuItem" href="graph_sparkline.html">Sparkline</a>
-                            </li>
-                            <li>
-                                <a class="J_menuItem" href="graph_metrics.html">图表组合</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="glyphicon glyphicon-th"></i>
-                            <span class="nav-label">订单管理</span>
-                            <span class="fa arrow"></span>
-                        </a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a class="J_menuItem" href="graph_echarts.html">百度ECharts</a>
-                            </li>
-                            <li>
-                                <a class="J_menuItem" href="graph_flot.html">Flot</a>
-                            </li>
-                            <li>
-                                <a class="J_menuItem" href="graph_morris.html">Morris.js</a>
-                            </li>
-                            <li>
-                                <a class="J_menuItem" href="graph_rickshaw.html">Rickshaw</a>
-                            </li>
-                            <li>
-                                <a class="J_menuItem" href="graph_peity.html">Peity</a>
-                            </li>
-                            <li>
-                                <a class="J_menuItem" href="graph_sparkline.html">Sparkline</a>
-                            </li>
-                            <li>
-                                <a class="J_menuItem" href="graph_metrics.html">图表组合</a>
-                            </li>
-                        </ul>
-                    </li>
-                     <li>
-                        <a href="#">
-                            <i class="glyphicon glyphicon-tasks"></i>
-                            <span class="nav-label">房屋出租管理</span>
-                            <span class="fa arrow"></span>
-                        </a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a class="J_menuItem" href="graph_echarts.html">百度ECharts</a>
-                            </li>
-                            <li>
-                                <a class="J_menuItem" href="graph_flot.html">Flot</a>
-                            </li>
-                            <li>
-                                <a class="J_menuItem" href="graph_morris.html">Morris.js</a>
-                            </li>
-                            <li>
-                                <a class="J_menuItem" href="graph_rickshaw.html">Rickshaw</a>
-                            </li>
-                            <li>
-                                <a class="J_menuItem" href="graph_peity.html">Peity</a>
-                            </li>
-                            <li>
-                                <a class="J_menuItem" href="graph_sparkline.html">Sparkline</a>
-                            </li>
-                            <li>
-                                <a class="J_menuItem" href="graph_metrics.html">图表组合</a>
-                            </li>
-                        </ul>
-                    </li>
+                           </c:if>
+                         </c:forEach>
+                         </ul>
+                        </li>
+                    </c:if>
+                   </c:forEach>
+                    <!--用户菜单结束  -->
                 </ul>
             </div>
         </nav>

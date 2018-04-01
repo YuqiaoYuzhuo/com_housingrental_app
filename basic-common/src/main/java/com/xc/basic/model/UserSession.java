@@ -14,31 +14,26 @@ public class UserSession {
 
 	    /**
 	     * 获得线程中保存的属性.
-	     * 
-	     * @param attribute
-	     *            属性名称
+	     * @param attribute 属性名称
 	     * @return 属性值
 	     */
+	    @SuppressWarnings("rawtypes")
 	    public static Object get(String attribute) {
-	        @SuppressWarnings("rawtypes")
-		  Map map = (Map) SESSION_MAP.get();
-	        return map.get(attribute);
+		  Map map =  null==SESSION_MAP.get()?null:(Map)SESSION_MAP.get();
+	        return null==map?null:map.get(attribute);
 	    }
 
 	    /**
 	     * 获得线程中保存的属性，使用指定类型进行转型.
-	     * 
-	     * @param attribute
-	     *            属性名称
-	     * @param clazz
-	     *            类型
-	     * @param <T>
-	     *            自动转型
+	     * @param attribute属性名称
+	     * @param clazz类型
+	     * @param <T>自动转型
 	     * @return 属性值
 	     */
 	    @SuppressWarnings("unchecked")
 	public static <T> T get(String attribute, Class<T> clazz) {
-	        return (T) get(attribute);
+	    	Object obj = get(attribute);
+	        return null==obj?null:(T)obj;
 	    }
 
 	    /**
@@ -52,7 +47,6 @@ public class UserSession {
 	    @SuppressWarnings({"unchecked", "rawtypes"})
 	public static void set(String attribute, Object value) {
 		Map map = (Map) SESSION_MAP.get();
-
 	        if (map == null) {
 	            map = new HashMap();
 	            SESSION_MAP.set(map);

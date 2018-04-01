@@ -58,7 +58,8 @@ public class AttachmentController extends CommonCotroller {
 	@ResponseBody
 	public void fileUpload(HttpServletRequest request,HttpServletResponse response,String bussinessId) throws IllegalStateException, IOException{
 		UploadFileModel upf = uploadAssemblyInterface.getFile(request);
-		Attachment	attachment = attachMentService.addAttachment(upf,bussinessId );
+		String upPsn = userService.getCurentLoginUser().getUserInfo().getUserName();
+		Attachment	attachment = attachMentService.addAttachment(upf,bussinessId,upPsn);
 		super.responseJson(true,attachment.getAttachUuid(), response);
 	}
 	/**

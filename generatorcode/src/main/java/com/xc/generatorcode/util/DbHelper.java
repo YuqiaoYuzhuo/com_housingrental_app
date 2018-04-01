@@ -89,7 +89,7 @@ public class DbHelper {
 		Properties props =new Properties();
 		try {
 			Class.forName(DRIVER);
-			 props.setProperty("user", USERNAME);
+			props.setProperty("user", USERNAME);
             props.setProperty("password", PASSWORD);
             props.setProperty("remarks", "true"); //设置可以获取remarks信息 
             props.setProperty("useInformationSchema", "true");//设置可以获取tables remarks信息

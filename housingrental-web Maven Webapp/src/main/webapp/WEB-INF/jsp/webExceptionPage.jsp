@@ -23,22 +23,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </head>
 
 <body class="gray-bg">
-<c:if test="${not empty  exception}">
+<c:if test="${exception}">
     <div class="middle-box text-center animated fadeInDown">
-        <h1>500</h1>
-        <h3 class="font-bold">${exception}</h3>
+        <h1>页面发生未知错误!</h1>
+        <h3 class="font-bold">页面发生未知错误!</h3>
         <div class="error-desc">
                            服务器好像出错了...
             <br/>返回
-              <br/><a href="/housingrental/admin/welcomeindex" class="btn btn-primary m-t">返回主页
+            <br/><a href="<%=basePath%>/admin/index" class="btn btn-primary m-t">主页</a>
         </div>
     </div>
-</c:if>
-<c:if test="${not empty  businessEx}">
-<script>
-       alert("${businessEx}");
-       window.history.back(); 
-</script>
 </c:if>
     <!-- 全局js -->
     <script src="${SysPro.system_static_sourceurl_prefix}/js/jquery.min.js?v=2.1.4"></script>

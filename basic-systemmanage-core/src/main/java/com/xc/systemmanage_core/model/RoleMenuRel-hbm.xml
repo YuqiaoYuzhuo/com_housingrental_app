@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- 
+    自动生成hibernate 配置文件
+-->
+<hibernate-mapping>
+	    <!--列名对应关系 -->
+    <class name="com.xc.systemmanage_core.model.RoleMenuRel" table="tb_role_menu_rel" catalog="houserental">
+   	  	 <id name="roleMenuRelUuid" type="java.lang.String">
+            <column name="ROLE_MENU_REL_UUID" length="64">
+            <comment>关联标示</comment>
+            </column>
+            <generator class="assigned" />
+        </id>
+        <property name="roleCode" type="java.lang.String">
+            <column name="ROLE_CODE" length="64">
+            <comment>角色代码</comment>
+            </column>
+        </property>
+        <property name="menuUuid" type="java.lang.String">
+            <column name="MENU_UUID" length="64">
+            <comment>菜单标示</comment>
+            </column>
+        </property>
+    </class>
+    <!-- 默认hql-->
+	<query name="defaultHqlRoleMenuRel">    
+         <![CDATA[    
+              from RoleMenuRel where 1=1    
+         ]]> 
+     </query>
+	<!-- 默认sql-->
+     <sql-query name="defaultsql_RoleMenuRel">    
+         <![CDATA[    
+             SELECT ROLE_MENU_REL_UUID,ROLE_CODE,MENU_UUID FROM tb_role_menu_rel WHERE 1=1   
+         ]]>   
+     </sql-query>
+</hibernate-mapping>

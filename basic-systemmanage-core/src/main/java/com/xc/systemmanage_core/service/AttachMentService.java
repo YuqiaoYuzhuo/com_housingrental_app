@@ -23,7 +23,7 @@ public interface AttachMentService {
 	 * @param businessAttachmentRel 附件业务关联关系
 	 * @author wanglei 2018年3月11日
 	 */
-	public Attachment addAttachment(UploadFileModel upf,String bussinessId);
+	public Attachment addAttachment(UploadFileModel upf,String bussinessId,String operPsn);
 	/**
 	 * <p>Description:根据附件标示删除附件<p>
 	 * @param ids

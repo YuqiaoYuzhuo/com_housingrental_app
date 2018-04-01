@@ -60,7 +60,7 @@ public class GeneratorCodeTest {
 	@Test
 	public void testGenertorUtils(){
 //		TableBean tablebean = new TableBean();
-//		tablebean.setTableName("");
+//		tablebean.setTableName("tb_role_menu_rel");
 //		GeneraltorModeAndHibernateCfgUtil.createModelFile(true, tablebean, "com.xc.systemmanage_core.model", "D:\\javawork\\mywokspace\\com_housingrental_app\\basic-systemmanage-core\\src\\main\\java\\");
 	}
 }

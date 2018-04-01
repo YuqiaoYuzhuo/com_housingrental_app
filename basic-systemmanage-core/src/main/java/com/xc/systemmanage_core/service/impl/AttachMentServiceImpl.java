@@ -23,7 +23,7 @@ public class AttachMentServiceImpl implements AttachMentService{
 	@Autowired
 	private BusinessAttachmentRelService businessAttachmentRelService;
 	@Override
-	public Attachment addAttachment(UploadFileModel upf,String bussinessId) {
+	public Attachment addAttachment(UploadFileModel upf,String bussinessId,String operPsn) {
 		String attachUuid = UUIDGenerator.createUUID();
 		FtpUtil ftu = FtpUtil.getFtputil();
 		String filepath = null;
@@ -41,7 +41,7 @@ public class AttachMentServiceImpl implements AttachMentService{
 		attachment.setAttachSysName(upf.getFileSystemName());
 		attachment.setAttachSysPath(filepath);
 		attachment.setAttachUpPath(upf.getFile_upload_real_path());
-		//attachment.setAttachUpPerson(userService.getCurentLoginUser().getUserInfo().getUserUuid());
+		attachment.setAttachUpPerson(operPsn);
 		attachment.setAttachUpTime(DateUtil.getCurrentTimstamp());
 		attachment.setAttachUuid(attachUuid);
 		attachment.setAttachModifyTime(DateUtil.getCurrentTimstamp());

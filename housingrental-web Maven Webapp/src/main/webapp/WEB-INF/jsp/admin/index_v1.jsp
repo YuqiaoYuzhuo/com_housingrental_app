@@ -11,7 +11,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <!--360浏览器优先以webkit内核解析-->
  <%@include file="/common/commonheader.jsp" %>
 </head>
-
 <body class="gray-bg">
     <div class="wrapper wrapper-content">
                 <div class="row">
