@@ -42,12 +42,7 @@
 		<!--srpin mvc 配置模块引入 end -->
 		<dependency>
 			<groupId>com.xc.basic</groupId>
-			<artifactId>basic-systemmanage-core</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.xc.basic</groupId>
-			<artifactId>basic-system-usermanage-core</artifactId>
+			<artifactId>basic-houserental-core</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 		<dependency>

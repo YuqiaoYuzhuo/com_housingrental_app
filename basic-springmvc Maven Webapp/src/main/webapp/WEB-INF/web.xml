@@ -32,11 +32,11 @@
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 	<listener>
-		<listener-class>com.xc.houserental.web.ProjectfSessionListener</listener-class>
+		<listener-class>com.xc.webcommon.web.ProjectfSessionListener</listener-class>
 	</listener>
 	<servlet>
 		<servlet-name>initServlet</servlet-name>
-		<servlet-class>com.xc.houserental.web.InitServlet</servlet-class>
+		<servlet-class>com.xc.webcommon.web.InitServlet</servlet-class>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 	<!-- Spring 的监听器可以通过这个上下文参数来获取beans.xml的位置 -->
@@ -91,7 +91,7 @@
 
 	<filter>
 		<filter-name>SystemContextFilter</filter-name>
-		<filter-class>com.xc.houserental.web.SystemContextFilter</filter-class>
+		<filter-class>com.xc.webcommon.web.SystemContextFilter</filter-class>
 		<init-param>
 			<param-name>pageSize</param-name>
 			<param-value>10</param-value>

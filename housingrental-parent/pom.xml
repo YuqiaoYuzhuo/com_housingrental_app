@@ -10,15 +10,10 @@
 	<modules>
 		<module>../basic-common</module>
 		<module>../basic-hibernate</module>
-		<module>../basic-system-usermanage-core</module>
-		<module>../basic-systemmanage-core</module>
+		<module>../basic-houserental-core</module>
 		<module>../housingrental-house-core</module>
-		<module>../housingrental-rental-core</module>
 		<module>../basic-springmvc Maven Webapp</module>
-		<module>../basic-system-usermange-web Maven Webapp</module>
-		<module>../basic-systemmanage-web Maven Webapp</module>
 		<module>../housingrental-house-web Maven Webapp</module>
-		<module>../housingrental-rental-web Maven Webapp</module>
 		<module>../housingrental-web Maven Webapp</module>
 	</modules>
 	<!-- 模块集成 end -->

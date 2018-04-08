@@ -5,6 +5,7 @@
 <script src="${SysPro.system_static_sourceurl_prefix}/js/plugins/metisMenu/jquery.metisMenu${SysPro.system_static_sourceurl_jssuffix}"></script>
 <script src="${SysPro.system_static_sourceurl_prefix}/js/plugins/slimscroll/jquery.slimscroll.min${SysPro.system_static_sourceurl_jssuffix}"></script>
 <script src="${SysPro.system_static_sourceurl_prefix}/js/plugins/layer/layer.min${SysPro.system_static_sourceurl_jssuffix}"></script>
+<script src="${SysPro.system_static_sourceurl_prefix}/js/jquery.form${SysPro.system_static_sourceurl_jssuffix}?v=2.1.4"></script>
 <!-- Flot -->
     <script src="${SysPro.system_static_sourceurl_prefix}/js/plugins/flot/jquery.flot${SysPro.system_static_sourceurl_jssuffix}"></script>
     <script src="${SysPro.system_static_sourceurl_prefix}/js/plugins/flot/jquery.flot.tooltip.min${SysPro.system_static_sourceurl_jssuffix}"></script>

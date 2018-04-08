@@ -4,9 +4,6 @@
 	<comment></comment>
 	<projects>
 		<project>housingrental-house-core</project>
-		<project>housingrental-rental-core</project>
-		<project>basic-systemmanage-core</project>
-		<project>basic-system-usermanage-core</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

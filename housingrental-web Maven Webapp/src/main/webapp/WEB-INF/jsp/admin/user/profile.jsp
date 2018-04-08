@@ -31,7 +31,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         </div>
                         <div class="ibox-content profile-content">
                             <h5>
-                              用户名
+                             姓名
                             </h5>
                             <p>${uif.userName}</p>
                             <h5>
@@ -88,7 +88,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <div class="user-button">
                                 <div class="row">
                                     <div class="col-sm-12">
-                                        <button type="button" class="btn btn-primary btn-sm btn-block"><i class="fa fa-pencil"></i></span>修改信息</button>
+                                        <button type="button"  onclick="javascript:window.location.href='<c:url value='/admin/user/toUpdateProfile'/>';" class="btn btn-primary btn-sm btn-block"> <i class="fa fa-pencil"></i></span>修改信息</button>
                                     </div>
                                 </div>
                             </div>

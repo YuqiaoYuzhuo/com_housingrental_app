@@ -1,6 +1,5 @@
 eclipse.preferences.version=1
 encoding//src/main/java=UTF-8
-encoding//src/main/java/com/xc/houserental/web/baseinfo.properties=UTF-8
 encoding//src/main/resources=UTF-8
 encoding//src/main/resources/spring/applicationContext_base.xml=UTF-8
 encoding//src/main/resources/spring/applicationContext_cache.xml=UTF-8

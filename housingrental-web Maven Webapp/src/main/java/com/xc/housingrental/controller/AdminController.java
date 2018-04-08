@@ -4,7 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.xc.houserental.controller.CommonCotroller;
+import com.xc.webcommon.controller.CommonCotroller;
 /**
  * <p>Title:后台管理系统的首页controller </p>
  * <p>Description: 后台管理系统的首页controller</p>

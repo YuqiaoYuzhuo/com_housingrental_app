@@ -37,25 +37,15 @@
 				<groupId>com.xc.basic</groupId>
 				<artifactId>basic-springmvc</artifactId>
 				<version>${project.version}</version>
-			</dependency>
-		<dependency>
+	 </dependency>
+	   <dependency>
 			<groupId>com.xc.basic</groupId>
-			<artifactId>basic-system-usermanage-core</artifactId>
+			<artifactId>basic-houserental-core</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>com.xc</groupId>
 			<artifactId>housingrental-house-core</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.xc</groupId>
-			<artifactId>housingrental-rental-core</artifactId>
-			<version>${project.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>com.xc.basic</groupId>
-			<artifactId>basic-systemmanage-core</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 		 <dependency>
@@ -102,11 +92,6 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.directwebremoting</groupId>
-			<artifactId>dwr</artifactId>
-			<version>${org.directwebremoting.version}</version>
-		</dependency>
-		<dependency>
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>
 			<version>${commons-io.version}</version>
@@ -142,35 +127,12 @@
 			<artifactId>basic-springmvc</artifactId>
 			<version>${project.version}</version>
 			<type>war</type>
-			 <scope>runtime</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.xc</groupId>
 			<artifactId>housingrental-house-web</artifactId>
 			<version>${project.version}</version>
 			<type>war</type>
-			 <scope>runtime</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.xc</groupId>
-			<artifactId>housingrental-rental-web</artifactId>
-			<version>${project.version}</version>
-			<type>war</type>
-			 <scope>runtime</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.xc.basic</groupId>
-			<artifactId>basic-systemmanage-web</artifactId>
-			<version>${project.version}</version>
-			<type>war</type>
-			 <scope>runtime</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.xc.basic</groupId>
-			<artifactId>basic-system-usermanage-web</artifactId>
-			<version>${project.version}</version>
-			<type>war</type>
-			 <scope>runtime</scope>
 		</dependency>
 	</dependencies>
 	<build>
@@ -196,31 +158,10 @@
 							<groupId>com.xc</groupId>
 							<artifactId>housingrental-house-web</artifactId>
 						</overlay>
-						<overlay>
-							<groupId>com.xc</groupId>
-							<artifactId>housingrental-rental-web</artifactId>
-						</overlay>
-						<overlay>
-							<groupId>com.xc.basic</groupId>
-							<artifactId>basic-systemmanage-web</artifactId>
-						</overlay>
-						<overlay>
-							<groupId>com.xc.basic</groupId>
-							<artifactId>basic-system-usermanage-web</artifactId>
-						</overlay>
 					</overlays>
 				</configuration>
 			</plugin>
 			<!--maven打包编译版本配置 -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.3.2</version>
-				<configuration>
-					<source>1.7</source>
-					<target>1.7</target>
-				</configuration>
-			</plugin>
 			<!--Tomcat 发布网站应用配置开始 -->
 			<plugin>
 				 <groupId>org.codehaus.mojo</groupId>
