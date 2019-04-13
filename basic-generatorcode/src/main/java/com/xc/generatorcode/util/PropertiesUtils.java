@@ -7,10 +7,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.io.support.PropertiesLoaderUtils;
 
-import com.xc.basic.util.SystemPropertiesUtil;
-
 public class PropertiesUtils {
-	 private final static Logger logger  = LoggerFactory.getLogger(SystemPropertiesUtil.class.getName());    
+	 private final static Logger logger  = LoggerFactory.getLogger(PropertiesUtils.class.getName());    
 	    private static Properties props = null;    
 	    private static String file_name  = null;    
 	    //文件上传临时路径
